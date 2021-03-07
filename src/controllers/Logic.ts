@@ -1,9 +1,24 @@
-import { GameStates } from "../models/GameStates";
+import { Session } from "../models/Session";
+import { StateValue } from "../models/StateValue";
 import { IAcceptorController } from "./IAcceptorController";
+import { PlayController } from "./PlayController";
+import { ResumeController } from "./ResumeController";
+import { StartController } from "./StartController";
 
 export class Logic {
-  private readonly controllers: Map<GameStates, IAcceptorController>;
+
+  private readonly session: Session;
+  private readonly controllers: Map<StateValue, IAcceptorController | null>;
   constructor() {
+    this.session = new Session();
     this.controllers = new Map();
+    this.controllers.set(StateValue.Initial, new StartController(this.session));
+    this.controllers.set(StateValue.InGame, new PlayController(this.session));
+    this.controllers.set(StateValue.Resume, new ResumeController(this.session));
+    this.controllers.set(StateValue.Exit, null);
+  }
+
+  getController(): IAcceptorController | null {
+    return this.controllers.get(this.session.getCurrentState())!;
   }
 }

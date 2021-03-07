@@ -1,32 +1,15 @@
-import readline from "readline";
+import readline from "readline-sync";
 
 export class Console {
-	private readonly rl: readline.Interface;
-	constructor() {
-		this.rl = readline.createInterface({
-			input: process.stdin,
-			output: process.stdout
-		});
+	readInt(question: string): number {
+		return Number(readline.question(question));
 	}
-	async readInt(question: string): Promise<number> {
-		return await new Promise(resolve => {
-			this.rl.question(question, (answer) => {
-				resolve(Number(answer));
-				this.rl.close();
-			});
-		})
-	}
-	async readString(question: string): Promise<string> {
-		return await new Promise(resolve => {
-			this.rl.question(question, (answer) => {
-				resolve(answer);
-				this.rl.close();
-			});
-		})
+
+	readString(question: string): string {
+		return readline.question(question);
 	}
 
 	writeln(string: string = "") {
 		console.log(string);
 	}
-
 }

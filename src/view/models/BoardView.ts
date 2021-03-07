@@ -1,0 +1,34 @@
+import { PlayController } from "../../controllers/PlayController";
+import { Coordinate } from "../../utils/Coordinate";
+import { CellView } from "./CellView";
+import { ConsoleView } from "./ConsoleView";
+import { EmptyCellView } from "./EmptyCellView";
+
+export class BoardView extends ConsoleView {
+
+  constructor(private readonly controller: PlayController) {
+    super();
+  }
+
+  render(): void {
+    for (let i = 0; i < this.controller.getBoardSize(); i++) {
+      this.renderRow(i);
+    }
+  }
+
+  private renderRow(row: number) {
+    for (let j = 0; j < this.controller.getBoardSize(); j++) {
+      this.renderCell(new Coordinate(row, j));
+    }
+  }
+
+  private renderCell(coordinate: Coordinate) {
+    if (this.controller.isEmpty(coordinate)) {
+      new EmptyCellView().render();
+    }
+    else {
+      new CellView(this.controller.getToken(coordinate)).render();
+    }
+  }
+}
+
