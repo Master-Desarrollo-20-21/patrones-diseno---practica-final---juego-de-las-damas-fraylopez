@@ -1,7 +1,9 @@
 import { Board } from "./Board";
+import { PlayerType } from "./PlayerType";
 import { Turn } from "./Turn";
 
 export class Game {
+
 
   private readonly board: Board;
   private readonly turn: Turn;
@@ -13,6 +15,10 @@ export class Game {
 
   setNumPlayers(players: number) {
     this.turn.setNumPlayers(players);
+  }
+
+  getCurrentPlayerType(): PlayerType {
+    return this.turn.getCurrentPlayerType();
   }
 }
 
