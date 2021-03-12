@@ -12,4 +12,7 @@ export class Console {
 	writeln(string: string = "") {
 		console.log(string);
 	}
+	writeInln(string: string = "") {
+		process.stdout.write(string);
+	}
 }

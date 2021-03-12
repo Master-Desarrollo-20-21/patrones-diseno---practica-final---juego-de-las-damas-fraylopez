@@ -11,7 +11,7 @@ export abstract class Menu {
     this.commandList = [];
   }
 
-  public async execute(): Promise<void> {
+  public execute(): void {
     const commands: Command[] = [];
     for (let i = 0; i < this.commandList.length; i++) {
       if (this.commandList[i].isActive()) {
@@ -27,12 +27,12 @@ export abstract class Menu {
       for (let i = 0; i < commands.length; i++) {
         console.writeln((i + 1) + ") " + commands[i].getTitle());
       }
-      option = await console.readInt(Menu.OPTION.replace("#size", "" + commands.length)) - 1;
+      option = console.readInt(Menu.OPTION.replace("#size", "" + commands.length)) - 1;
       if (!new ClosedInterval(0, commands.length - 1).includes(option)) {
         error = true;
       }
     } while (error);
-    await commands[option].execute();
+    commands[option].execute();
   }
 
   protected addCommand(command: Command): void {

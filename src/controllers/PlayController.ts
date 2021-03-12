@@ -1,3 +1,4 @@
+import { Color } from "../models/Color";
 import { Move } from "../models/Move";
 import { PlayerType } from "../models/PlayerType";
 import { Session } from "../models/Session";
@@ -10,7 +11,6 @@ import { RedoController } from "./RedoController";
 import { UndoController } from "./UndoController";
 
 export class PlayController implements IAcceptorController {
-
   private readonly moveController: MoveController;
   private readonly undoController: UndoController;
   private readonly redoController: RedoController;
@@ -25,8 +25,8 @@ export class PlayController implements IAcceptorController {
   goNextState() {
     this.moveController.goNextState();
   }
-  isGameWon(): boolean {
-    return this.moveController.isGameWon();
+  isGameOver(): boolean {
+    return this.moveController.isGameOver();
   }
   getToken(coordinate: Coordinate): Token {
     return this.moveController.getToken(coordinate);
@@ -36,6 +36,9 @@ export class PlayController implements IAcceptorController {
   }
   getBoardSize(): number {
     return this.moveController.getBoardSize();
+  }
+  getBoardColor(coordinate: Coordinate): Color {
+    return this.moveController.getBoardColor(coordinate);
   }
   getCurrentPlayerId(): string {
     return this.moveController.getCurrentPlayerId();
@@ -58,4 +61,5 @@ export class PlayController implements IAcceptorController {
   redo() {
     this.redoController.redo();
   }
+
 }

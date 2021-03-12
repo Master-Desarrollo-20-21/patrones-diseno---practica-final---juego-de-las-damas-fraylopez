@@ -5,7 +5,7 @@ import { ResultView } from "./ResultView";
 export class GameView {
   constructor(controller: PlayController) {
     new BoardView(controller).render();
-    if (controller.isGameWon()) {
+    if (controller.isGameOver()) {
       new ResultView(controller.getCurrentPlayerId()).render();
       controller.goNextState();
     }

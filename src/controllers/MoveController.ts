@@ -1,3 +1,4 @@
+import { Color } from "../models/Color";
 import { Move } from "../models/Move";
 import { PlayerType } from "../models/PlayerType";
 import { Token } from "../models/Token";
@@ -5,6 +6,7 @@ import { Coordinate } from "../utils/Coordinate";
 import { SessionController } from "./SessionController";
 
 export class MoveController extends SessionController {
+
   executeMove(move: Move) {
     throw new Error("Method not implemented.");
   }
@@ -16,16 +18,22 @@ export class MoveController extends SessionController {
     throw new Error("Method not implemented.");
   }
   getBoardSize(): number {
-    throw new Error("Method not implemented.");
+    return this.session.getBoardSize();
+  }
+  getBoardColor(coordinate: Coordinate): Color {
+    return this.session.getBoardColor(coordinate);
   }
   isEmpty(coordinate: Coordinate): boolean {
-    throw new Error("Method not implemented.");
+    return this.session.isEmpty(coordinate);
   }
   getToken(coordinate: Coordinate): Token {
-    throw new Error("Method not implemented.");
+    return this.session.getToken(coordinate);
   }
-  isGameWon(): boolean {
-    throw new Error("Method not implemented.");
+  isWinner(color: Color): boolean {
+    return this.session.isWinner(color);
+  }
+  isGameOver(): boolean {
+    return this.session.isGameOver();
   }
   goNextState() {
     throw new Error("Method not implemented.");

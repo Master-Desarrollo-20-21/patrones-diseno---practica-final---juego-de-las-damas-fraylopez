@@ -20,14 +20,16 @@ export class BoardView extends ConsoleView {
     for (let j = 0; j < this.controller.getBoardSize(); j++) {
       this.renderCell(new Coordinate(row, j));
     }
+    this.console.writeln();
   }
 
   private renderCell(coordinate: Coordinate) {
+    const boardColor = this.controller.getBoardColor(coordinate);
     if (this.controller.isEmpty(coordinate)) {
-      new EmptyCellView().render();
+      new EmptyCellView(boardColor).render();
     }
     else {
-      new CellView(this.controller.getToken(coordinate)).render();
+      new CellView(boardColor, this.controller.getToken(coordinate)).render();
     }
   }
 }

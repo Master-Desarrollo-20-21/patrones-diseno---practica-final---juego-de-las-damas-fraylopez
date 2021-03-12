@@ -4,15 +4,26 @@ import { ConsoleView } from "./ConsoleView";
 
 
 export class CellView extends ConsoleView {
-  constructor(private readonly token: Token) {
+  constructor(
+    private readonly cellColor: Color,
+    private readonly token: Token
+  ) {
     super();
   }
 
   render(): void {
-    if (this.token.color === Color.White) {
-      this.console.writeln("● ");
+    if (this.cellColor === Color.White) {
+      if (this.token.color === Color.White) {
+        this.console.writeInln("●█");
+      } else {
+        this.console.writeInln("○█");
+      }
     } else {
-      this.console.writeln("○ ");
+      if (this.token.color === Color.White) {
+        this.console.writeInln("● ");
+      } else {
+        this.console.writeInln("○ ");
+      }
     }
   }
 }
