@@ -43,6 +43,6 @@ export class MoveController extends SessionController {
     return this.session.isGameOver();
   }
   goNextState() {
-    throw new Error("Method not implemented.");
+    this.session.goNextstate();
   }
 }

@@ -9,7 +9,6 @@ import { State } from "./State";
 import { StateValue } from "./StateValue";
 
 export class Session {
-
   private readonly state: State;
   private readonly game: Game;
   private readonly registry: GameRegistry;
@@ -17,6 +16,12 @@ export class Session {
     this.game = new Game();
     this.state = new State();
     this.registry = new GameRegistry(this.game);
+  }
+
+  startNewGame() {
+    this.game.startNewGame();
+    this.state.reset();
+    this.registry.reset();
   }
 
   getCurrentState(): StateValue {
@@ -32,7 +37,7 @@ export class Session {
   getCurrentPlayerId(): string {
     return this.game.getCurrentPlayerId();
   }
-  next() {
+  goNextstate() {
     this.state.next();
   }
   setNumPlayers(users: number) {
@@ -77,14 +82,13 @@ export class Session {
 
   executeMove() {
     this.game.executeMove();
-    this.goNextTurn();
-    this.registry.register();
+    if (!this.isGameOver()) {
+      this.goNextTurn();
+      this.registry.register();
+    }
   }
 
   goNextTurn() {
     this.game.goNextTurn();
   }
-
-
-
 }

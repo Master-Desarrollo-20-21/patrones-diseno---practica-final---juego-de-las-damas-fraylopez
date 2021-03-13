@@ -8,8 +8,8 @@ export class RandomMoveAlgorithm implements IMoveAlgorithm {
   getNextMove(playerColor: Color, board: Board): Move {
     let move: Move | undefined;
     do {
-      const randomCoordinateFrom = this.getRandomCoordinate();
-      const randomCoordinateTo = this.getRandomCoordinate();
+      const randomCoordinateFrom = this.getRandomCoordinate(board.getSize());
+      const randomCoordinateTo = this.getRandomCoordinate(board.getSize());
       const token = board.getToken(randomCoordinateFrom);
       if (token.color !== playerColor) {
         continue;
@@ -17,13 +17,14 @@ export class RandomMoveAlgorithm implements IMoveAlgorithm {
       const randomMove = new Move(token, randomCoordinateFrom, randomCoordinateTo);
       move = randomMove.isValid && board.isValidMove(randomMove) ? randomMove : undefined;
     } while (!move);
+    console.log("AI moves: " + JSON.stringify(move));
     return move;
   }
 
-  private getRandomCoordinate() {
+  private getRandomCoordinate(boardSize: number) {
     return new Coordinate(
-      Math.floor(Math.random() * Board.SIZE),
-      Math.floor(Math.random() * Board.SIZE)
+      Math.floor(Math.random() * boardSize),
+      Math.floor(Math.random() * boardSize)
     );
   }
 }

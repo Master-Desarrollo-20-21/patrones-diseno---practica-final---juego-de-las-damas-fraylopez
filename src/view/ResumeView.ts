@@ -1,7 +1,9 @@
 import { ResumeController } from "../controllers/ResumeController";
+import { ConsoleView } from "./models/ConsoleView";
 
-export class ResumeView {
+export class ResumeView extends ConsoleView {
   interact(controller: ResumeController) {
-    throw new Error("Method not implemented.");
+    const newGameResponse = this.console.readString("Restart? (y/n): ");
+    controller.resume(newGameResponse.toLowerCase() === "y");
   }
 }

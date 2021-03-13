@@ -12,13 +12,19 @@ import { Turn } from "./Turn";
 
 export class Game {
 
-  private readonly board: Board;
+
+  private board!: Board;
   private turn!: Turn;
-  private readonly players: Player[];
+  private players!: Player[];
 
   constructor() {
+    this.startNewGame();
+  }
+
+  startNewGame() {
     this.board = new Board();
     this.players = [];
+    this.turn = new Turn(this.players, 0);
   }
 
   setNumPlayers(numHumanPlayers: number) {
@@ -29,7 +35,6 @@ export class Game {
         this.players.push(new AIPlayer(new Token(i), this.board, PlayerType.AI));
       }
     }
-    this.turn = new Turn(this.players, numHumanPlayers);
   }
 
   getCurrentPlayer(): Player {

@@ -37,8 +37,8 @@ export class Move {
     );
   }
 
-  isKingMove() {
-    return this.token.color === Color.White && this.to.row === Board.SIZE - 1 ||
+  isKingMove(board: Board) {
+    return this.token.color === Color.White && this.to.row === board.getSize() - 1 ||
       this.token.color === Color.Black && this.to.row === 0;
   }
 

@@ -7,7 +7,7 @@ export class StartController implements IAcceptorController {
   constructor(private readonly session: Session) { }
   setNumPlayers(users: number) {
     this.session.setNumPlayers(users);
-    this.session.next();
+    this.session.goNextstate();
   }
   accept(controller: IControllerVisitor) {
     controller.visitStartController(this);

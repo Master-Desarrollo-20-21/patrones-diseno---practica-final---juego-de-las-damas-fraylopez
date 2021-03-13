@@ -5,6 +5,14 @@ import { IControllerVisitor } from "./IControllerVisitor";
 export class ResumeController implements IAcceptorController {
   constructor(private readonly session: Session) { }
   accept(controller: IControllerVisitor) {
-    throw new Error("Method not implemented.");
+    controller.visitResumeController(this);
+  }
+
+  resume(newGame: boolean) {
+    if (newGame) {
+      this.session.startNewGame();
+    } else {
+      this.session.goNextstate();
+    }
   }
 }

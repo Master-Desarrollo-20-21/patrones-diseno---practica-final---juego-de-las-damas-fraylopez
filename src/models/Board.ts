@@ -6,20 +6,22 @@ import { NullToken } from "./NullToken";
 import { Token } from "./Token";
 
 export class Board {
-  public static SIZE = 8;
-  private static TOKENS_PER_PLAYER = 12;
+  private static SIZE = 8;
   private coordinates: Array<Array<Token | undefined>>;
 
   constructor(coordinates?: Array<Array<Token | undefined>>) {
     this.coordinates = coordinates || [];
+    const tokensPerPlayer = Board.SIZE / 2 * (Board.SIZE / 2 - 1);
     if (!coordinates) {
       let addedTokens = 0;
       for (let i = 0; i < Board.SIZE; i++) {
         const row: Array<Token | undefined> = this.coordinates[i] = [];
         for (let j = 0; j < Board.SIZE; j++) {
-          const hasToken = (i + j) % 2 !== 0 && (i < 3 || i > 4);
+          const isOddCoordinate = (i + j) % 2 !== 0;
+          const hasToken = isOddCoordinate &&
+            (i < Board.SIZE / 2 - 1 || i > Board.SIZE / 2);
           if (hasToken) {
-            const tokenColor = addedTokens < Board.TOKENS_PER_PLAYER ? Color.White : Color.Black;
+            const tokenColor = addedTokens < tokensPerPlayer ? Color.White : Color.Black;
             row.push(new Token(tokenColor));
             addedTokens++;
           } else {
@@ -83,7 +85,7 @@ export class Board {
     }
   }
   ckeckKing(move: Move) {
-    if (move.isKingMove()) {
+    if (move.isKingMove(this)) {
       this.getToken(move.to).turnToKing();
     }
   }
@@ -98,7 +100,8 @@ export class Board {
 
   private isValidJump(move: Move) {
     const unitToMove = move.length === 1 && this.getToken(move.to).isNull;
-    const doubleToCapture = move.length === 2 && this.getToken(move.unitMovement.to).color !== move.token.color;
+    const capturableToken = this.getToken(move.unitMovement.to);
+    const doubleToCapture = move.length === 2 && !capturableToken.isNull && capturableToken.color !== move.token.color;
     return unitToMove || doubleToCapture;
   }
 }

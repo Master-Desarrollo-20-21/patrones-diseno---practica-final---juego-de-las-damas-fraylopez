@@ -15,7 +15,7 @@ export class State {
     this.value = State.states[State.states.indexOf(this.value) + 1];
   }
   reset() {
-    this.value = State.states[State.states.indexOf(this.value) + 1];
+    this.value = State.states[0];
   }
   getValue() {
     return this.value;
