@@ -43,13 +43,7 @@ export class Board {
   }
 
   getToken(coordinate: Coordinate): Token {
-    try {
-      return this.coordinates[coordinate.row][coordinate.column] || new NullToken();
-
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
+    return this.coordinates[coordinate.row][coordinate.column] || new NullToken();
   }
 
   removeToken(coordinate: Coordinate) {
