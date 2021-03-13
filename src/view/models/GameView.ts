@@ -6,6 +6,7 @@ export class GameView {
   constructor(controller: PlayController) {
     new BoardView(controller).render();
     if (controller.isGameOver()) {
+      controller.isGameOver();
       new ResultView(controller.getCurrentPlayerId()).render();
       controller.goNextState();
     }

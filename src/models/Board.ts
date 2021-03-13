@@ -43,7 +43,13 @@ export class Board {
   }
 
   getToken(coordinate: Coordinate): Token {
-    return this.coordinates[coordinate.row][coordinate.column] || new NullToken();
+    try {
+      return this.coordinates[coordinate.row][coordinate.column] || new NullToken();
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   }
 
   removeToken(coordinate: Coordinate) {
@@ -55,11 +61,10 @@ export class Board {
   }
 
   isGameWon(color: Color): boolean {
-    const colorExists = !!this.coordinates.find(row => row.find(t => t?.color === color));
-    const otherColorDoesNotExists = !this.coordinates.find(row => row.find(t => t?.color !== color));
+    const colorExists = !!this.coordinates.some(row => row.some(t => t?.color === color));
+    const otherColorDoesNotExists = !this.coordinates.find(row => row.find(t => t && t.color !== color));
     return colorExists && otherColorDoesNotExists;
   }
-
   isValidMove(move: Move) {
     return !this.isEmpty(move.from) && this.isEmpty(move.to) && this.isValidJump(move);
   }
@@ -73,13 +78,19 @@ export class Board {
     this.removeToken(move.from);
     this.setToken(move.to, token);
     this.checkCapture(move);
+    this.ckeckKing(move);
   }
 
   checkCapture(move: Move) {
-    const capturableCoordinate = new Coordinate(move.to.row + move.getVector().row, move.to.column + move.getVector().column);
+    const capturableCoordinate = new Coordinate(move.unitMovement.to.row, move.unitMovement.to.column);
     const capturableToken = this.getToken(capturableCoordinate);
     if (capturableToken && capturableToken.color !== move.token.color) {
       this.removeToken(capturableCoordinate);
+    }
+  }
+  ckeckKing(move: Move) {
+    if (move.isKingMove()) {
+      this.getToken(move.to).turnToKing();
     }
   }
 

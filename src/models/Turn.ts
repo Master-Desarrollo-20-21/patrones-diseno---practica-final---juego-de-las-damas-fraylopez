@@ -7,18 +7,11 @@ export class Turn {
 
   constructor(
     private readonly players: Player[],
-    private numHumanPlayers: number,
     private currentPlayer: number = 0,
-
   ) { }
 
   goNextTurn() {
-    if (this.currentPlayer < this.numHumanPlayers) {
-      this.currentPlayer++;
-    }
-    else {
-      this.currentPlayer = 0;
-    }
+    this.currentPlayer = (this.currentPlayer + 1) % Turn.NUM_PLAYERS;
   }
 
   getCurrentPlayerType(): PlayerType {
@@ -30,8 +23,6 @@ export class Turn {
   getCurrentPlayer() {
     return this.players[this.currentPlayer];
   }
-
-
   copy(players: Player[]): Turn {
     return new Turn(players, this.currentPlayer);
   }

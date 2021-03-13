@@ -1,8 +1,9 @@
 import { Coordinate } from "../utils/Coordinate";
+import { Board } from "./Board";
+import { Color } from "./Color";
 import { Token } from "./Token";
 
 export class Move {
-
   constructor(
     public readonly token: Token,
     public readonly from: Coordinate,
@@ -14,14 +15,15 @@ export class Move {
   }
 
   get isProperLength() {
-    return this.length <= 2 || this.token.isKing;
+    return this.token.isKing || this.length <= 2;
   }
 
   get length(): number {
     return Math.abs(this.from.row - this.to.row);
   }
+
   get isValid(): boolean {
-    return this.isDiagonal && this.isProperLength;
+    return this.isMovingForward && this.isDiagonal && this.isProperLength;
   }
 
   get unitMovement() {
@@ -30,13 +32,25 @@ export class Move {
       this.from,
       new Coordinate(
         this.from.row + this.unitVector.row,
-        this.from.column + this.unitVector.column
+        this.from.column + this.unitVector.column ,
       )
     );
   }
 
+  isKingMove() {
+    return this.token.color === Color.White && this.to.row === Board.SIZE - 1 ||
+      this.token.color === Color.Black && this.to.row === 0;
+  }
+
+  private get isMovingForward(): boolean {
+    return this.token.isKing || Math.pow(-1, this.token.color) * (this.to.row - this.from.row) > 0;
+  }
+
   private get unitVector(): Coordinate {
-    return new Coordinate(Math.abs(this.from.row - this.to.row), Math.abs(this.from.column - this.to.column),);
+    return new Coordinate(
+      (this.to.row - this.from.row) / this.length,
+      (this.to.column - this.from.column) / this.length,
+    );
   }
 
   private get isDiagonal() {

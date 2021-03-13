@@ -12,17 +12,34 @@ export class CellView extends ConsoleView {
   }
 
   render(): void {
+    // TODO: refactor
     if (this.cellColor === Color.White) {
       if (this.token.color === Color.White) {
-        this.console.writeInln("●█");
+        if (this.token.isKing) {
+          this.console.writeInln("◉█");
+        } else {
+          this.console.writeInln("●█");
+        }
       } else {
-        this.console.writeInln("○█");
+        if (this.token.isKing) {
+          this.console.writeInln("◎█");
+        } else {
+          this.console.writeInln("○█");
+        }
       }
     } else {
       if (this.token.color === Color.White) {
-        this.console.writeInln("● ");
+        if (this.token.isKing) {
+          this.console.writeInln("◉ ");
+        } else {
+          this.console.writeInln("● ");
+        }
       } else {
-        this.console.writeInln("○ ");
+        if (this.token.isKing) {
+          this.console.writeInln("◎ ");
+        } else {
+          this.console.writeInln("○ ");
+        }
       }
     }
   }
