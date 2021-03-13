@@ -6,8 +6,7 @@ import { NullToken } from "./NullToken";
 import { Token } from "./Token";
 
 export class Board {
-
-  private static SIZE = 8;
+  public static SIZE = 8;
   private static TOKENS_PER_PLAYER = 12;
   private coordinates: Array<Array<Token | undefined>>;
 
@@ -46,6 +45,7 @@ export class Board {
   getToken(coordinate: Coordinate): Token {
     return this.coordinates[coordinate.row][coordinate.column] || new NullToken();
   }
+
   removeToken(coordinate: Coordinate) {
     this.coordinates[coordinate.row][coordinate.column] = undefined;
   }
@@ -61,13 +61,13 @@ export class Board {
   }
 
   isValidMove(move: Move) {
-    return this.isProperMoveLength(move) && !this.isEmpty(move.from) && this.isEmpty(move.to);
+    return !this.isEmpty(move.from) && this.isEmpty(move.to) && this.isValidJump(move);
   }
 
   move(move: Move) {
     assert(!this.isEmpty(move.from), "Empty from");
     assert(this.isEmpty(move.to), "Empty to");
-    assert(this.isProperMoveLength(move), "long move!");
+    assert(move.isValid, "wrong move!");
 
     const token = this.getToken(move.from);
     this.removeToken(move.from);
@@ -91,7 +91,9 @@ export class Board {
     return new Board(coordinatesCopy);
   }
 
-  private isProperMoveLength(move: Move) {
-    return move.length === 2 || move.token.isKing;
+  private isValidJump(move: Move) {
+    const unitToMove = move.length === 1 && this.getToken(move.to).isNull;
+    const doubleToCapture = move.length === 2 && this.getToken(move.unitMovement.to).color !== move.token.color;
+    return unitToMove || doubleToCapture;
   }
 }

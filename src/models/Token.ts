@@ -13,4 +13,8 @@ export class Token {
   get isKing() {
     return !!this._isKing;
   }
+
+  get isNull() {
+    return this.color === Color.Null;
+  }
 }

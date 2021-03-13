@@ -1,19 +1,19 @@
-import { Board } from "./Board";
 import { Player } from "./Player";
 import { PlayerType } from "./PlayerType";
 
 export class Turn {
 
   public static NUM_PLAYERS = 2;
-  private currentPlayer: number;
-  private numPlayers!: number;
 
-  constructor(private readonly players: Player[], currentPlayer?: number) {
-    this.currentPlayer = currentPlayer || 0;
-  }
+  constructor(
+    private readonly players: Player[],
+    private numHumanPlayers: number,
+    private currentPlayer: number = 0,
+
+  ) { }
 
   goNextTurn() {
-    if (this.currentPlayer < this.numPlayers) {
+    if (this.currentPlayer < this.numHumanPlayers) {
       this.currentPlayer++;
     }
     else {
@@ -24,9 +24,13 @@ export class Turn {
   getCurrentPlayerType(): PlayerType {
     return this.getCurrentPlayer().type;
   }
+  getCurrentPlayerId(): string {
+    return this.getCurrentPlayer().getId();
+  }
   getCurrentPlayer() {
     return this.players[this.currentPlayer];
   }
+
 
   copy(players: Player[]): Turn {
     return new Turn(players, this.currentPlayer);

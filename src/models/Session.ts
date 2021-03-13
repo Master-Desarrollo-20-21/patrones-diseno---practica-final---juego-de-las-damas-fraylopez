@@ -3,12 +3,12 @@ import { Color } from "./Color";
 import { Game } from "./Game";
 import { GameRegistry } from "./GameRegistry";
 import { Move } from "./Move";
+import { Player } from "./Player";
 import { PlayerType } from "./PlayerType";
 import { State } from "./State";
 import { StateValue } from "./StateValue";
 
 export class Session {
-
 
   private readonly state: State;
   private readonly game: Game;
@@ -23,10 +23,15 @@ export class Session {
     return this.state.getValue();
   }
 
+  getCurrentPlayer(): Player {
+    return this.game.getCurrentPlayer();
+  }
   getCurrentPlayerType(): PlayerType {
     return this.game.getCurrentPlayerType();
   }
-
+  getCurrentPlayerId(): string {
+    return this.game.getCurrentPlayerId();
+  }
   next() {
     this.state.next();
   }
@@ -70,8 +75,8 @@ export class Session {
     return this.game.isValidMove(move);
   }
 
-  executeMove(move: Move) {
-    this.game.executeMove(move);
+  executeMove() {
+    this.game.executeMove();
     this.goNextTurn();
     this.registry.register();
   }

@@ -1,5 +1,6 @@
 import { Color } from "../models/Color";
 import { Move } from "../models/Move";
+import { Player } from "../models/Player";
 import { PlayerType } from "../models/PlayerType";
 import { Token } from "../models/Token";
 import { Coordinate } from "../utils/Coordinate";
@@ -9,16 +10,20 @@ export class MoveController extends SessionController {
   isValidMove(move: Move) {
     return this.session.isValidMove(move);
   }
-  executeMove(move: Move) {
-    this.session.executeMove(move);
+  executeMove() {
+    this.session.executeMove();
+  }
+  getCurrentPlayer(): Player {
+    return this.session.getCurrentPlayer();
   }
   getCurrentPlayerType(): PlayerType {
     return this.session.getCurrentPlayerType();
   }
 
   getCurrentPlayerId(): string {
-    throw new Error("Method not implemented.");
+    return this.session.getCurrentPlayerId();
   }
+
   getBoardSize(): number {
     return this.session.getBoardSize();
   }

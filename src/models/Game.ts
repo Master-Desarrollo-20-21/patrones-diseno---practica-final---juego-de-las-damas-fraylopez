@@ -1,4 +1,6 @@
 import { Coordinate } from "../utils/Coordinate";
+import { AIPlayer } from "./AIPlayer";
+import { HumanPlayer } from "./HumanPlayer";
 import { Board } from "./Board";
 import { Color } from "./Color";
 import { Memento } from "./Memento";
@@ -9,6 +11,7 @@ import { Token } from "./Token";
 import { Turn } from "./Turn";
 
 export class Game {
+
   private readonly board: Board;
   private turn!: Turn;
   private readonly players: Player[];
@@ -18,19 +21,26 @@ export class Game {
     this.players = [];
   }
 
-  setNumPlayers(numPlayers: number) {
+  setNumPlayers(numHumanPlayers: number) {
     for (let i = 0; i < Turn.NUM_PLAYERS; i++) {
-      if (i < numPlayers) {
-        this.players.push(new Player(new Token(i), this.board, PlayerType.Human));
+      if (i < numHumanPlayers) {
+        this.players.push(new HumanPlayer(new Token(i), this.board, PlayerType.Human));
       } else {
-        this.players.push(new Player(new Token(i), this.board, PlayerType.AI));
+        this.players.push(new AIPlayer(new Token(i), this.board, PlayerType.AI));
       }
     }
-    this.turn = new Turn(this.players);
+    this.turn = new Turn(this.players, numHumanPlayers);
+  }
+
+  getCurrentPlayer(): Player {
+    return this.turn.getCurrentPlayer();
   }
 
   getCurrentPlayerType(): PlayerType {
     return this.turn.getCurrentPlayerType();
+  }
+  getCurrentPlayerId(): string {
+    return this.turn.getCurrentPlayerId();
   }
   getBoardSize(): number {
     return this.board.getSize();
@@ -50,9 +60,11 @@ export class Game {
   isValidMove(move: Move) {
     return this.board.isValidMove(move);
   }
-  executeMove(move: Move) {
-    this.turn.getCurrentPlayer().move(move);
+
+  executeMove() {
+    this.turn.getCurrentPlayer().move();
   }
+
   goNextTurn() {
     this.turn.goNextTurn();
   }
@@ -65,7 +77,7 @@ export class Game {
   private getPlayersCopy(players: Player[], board: Board): Player[] {
     const playersCopy: Player[] = [];
     for (let i = 0; i < Turn.NUM_PLAYERS; i++) {
-      playersCopy.push(new Player(players[i].token, board, players[i].type));
+      playersCopy.push(players[i].copy(board));
     }
     return playersCopy;
   }

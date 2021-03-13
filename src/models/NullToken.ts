@@ -3,6 +3,6 @@ import { Token } from "./Token";
 
 export class NullToken extends Token {
   constructor() {
-    super("null" as any);
+    super(Color.Null);
   };
 }

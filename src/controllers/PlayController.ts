@@ -1,5 +1,6 @@
 import { Color } from "../models/Color";
 import { Move } from "../models/Move";
+import { Player } from "../models/Player";
 import { PlayerType } from "../models/PlayerType";
 import { Session } from "../models/Session";
 import { Token } from "../models/Token";
@@ -43,14 +44,18 @@ export class PlayController implements IAcceptorController {
   getCurrentPlayerId(): string {
     return this.moveController.getCurrentPlayerId();
   }
+  getCurrentPlayer(): Player {
+    return this.moveController.getCurrentPlayer();
+  }
   getCurrentPlayerType(): PlayerType {
     return this.moveController.getCurrentPlayerType();
   }
   isValidMove(move: Move): boolean {
     return this.moveController.isValidMove(move);
   }
-  executeMove(move: Move) {
-    this.moveController.executeMove(move);
+
+  executeMove() {
+    this.moveController.executeMove();
   }
   isUndoable(): boolean {
     return this.undoController.isUndoable();
