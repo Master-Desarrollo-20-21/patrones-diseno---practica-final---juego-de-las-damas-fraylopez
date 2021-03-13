@@ -11,10 +11,8 @@ export class MoveCommand extends CheckersCommand<PlayController> {
     }
 
     execute() {
-        new BoardView(this.acceptorController).render();
-        const playerView = new PlayView().getPlayerView(this.acceptorController);
-        const move = playerView.getMove(this.acceptorController);
-        this.acceptorController.executeMove(move);
+        new GameView(this.acceptorController);
+        new PlayView().getPlayerView(this.acceptorController);
         new GameView(this.acceptorController);
     }
 

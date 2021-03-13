@@ -46,6 +46,9 @@ export class PlayController implements IAcceptorController {
   getCurrentPlayerType(): PlayerType {
     return this.moveController.getCurrentPlayerType();
   }
+  isValidMove(move: Move): boolean {
+    return this.moveController.isValidMove(move);
+  }
   executeMove(move: Move) {
     this.moveController.executeMove(move);
   }
@@ -61,5 +64,6 @@ export class PlayController implements IAcceptorController {
   redo() {
     this.redoController.redo();
   }
+
 
 }

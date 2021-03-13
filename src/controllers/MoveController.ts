@@ -6,9 +6,11 @@ import { Coordinate } from "../utils/Coordinate";
 import { SessionController } from "./SessionController";
 
 export class MoveController extends SessionController {
-
+  isValidMove(move: Move) {
+    return this.session.isValidMove(move);
+  }
   executeMove(move: Move) {
-    throw new Error("Method not implemented.");
+    this.session.executeMove(move);
   }
   getCurrentPlayerType(): PlayerType {
     return this.session.getCurrentPlayerType();

@@ -11,6 +11,14 @@ export class BoardView extends ConsoleView {
   }
 
   render(): void {
+    this.console.writeln("");
+    this.console.writeln("     columns     ");
+    this.console.writeInln("  ");
+    for (let i = 0; i < this.controller.getBoardSize(); i++) {
+      this.console.writeInln(" " + i.toString());
+    }
+    this.console.writeln();
+
     for (let i = 0; i < this.controller.getBoardSize(); i++) {
       this.renderRow(i);
     }
@@ -18,6 +26,9 @@ export class BoardView extends ConsoleView {
 
   private renderRow(row: number) {
     for (let j = 0; j < this.controller.getBoardSize(); j++) {
+      if (j === 0) {
+        this.console.writeInln(row.toString() + " ");
+      }
       this.renderCell(new Coordinate(row, j));
     }
     this.console.writeln();

@@ -1,17 +1,22 @@
 import { Coordinate } from "../utils/Coordinate";
 import { Color } from "./Color";
 import { Game } from "./Game";
+import { GameRegistry } from "./GameRegistry";
+import { Move } from "./Move";
 import { PlayerType } from "./PlayerType";
 import { State } from "./State";
 import { StateValue } from "./StateValue";
 
 export class Session {
 
+
   private readonly state: State;
   private readonly game: Game;
+  private readonly registry: GameRegistry;
   constructor() {
     this.game = new Game();
     this.state = new State();
+    this.registry = new GameRegistry(this.game);
   }
 
   getCurrentState(): StateValue {
@@ -61,6 +66,20 @@ export class Session {
   isGameOver(): boolean {
     return this.isWinner(Color.Black) || this.isWinner(Color.White);
   }
+  isValidMove(move: Move) {
+    return this.game.isValidMove(move);
+  }
+
+  executeMove(move: Move) {
+    this.game.executeMove(move);
+    this.goNextTurn();
+    this.registry.register();
+  }
+
+  goNextTurn() {
+    this.game.goNextTurn();
+  }
+
 
 
 }
