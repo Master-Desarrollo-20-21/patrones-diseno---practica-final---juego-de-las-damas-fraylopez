@@ -4,8 +4,8 @@ import { Move } from "../../models/Move";
 import { Coordinate } from "../../utils/Coordinate";
 import { PlayerView } from "../PlayerView";
 
-export class HumanPlayerView extends PlayerView<HumanPlayer> {
-  setNextMove(controller: PlayController) {
+export class HumanPlayerView extends PlayerView {
+  setNextMove() {
     let move: Move;
     let isValidMove: boolean;
     do {
@@ -20,13 +20,13 @@ export class HumanPlayerView extends PlayerView<HumanPlayer> {
         Number(to.charAt(0)),
         Number(to.charAt(1))
       );
-      const token = controller.getToken(fromCoordinate);
+      const token = this.controller.getToken(fromCoordinate);
       move = new Move(token, fromCoordinate, toCoordinate);
-      isValidMove = move.isValid && controller.isValidMove(move);
+      isValidMove = move.isValid && this.controller.isValidMove(move);
       if (!isValidMove) {
         this.console.writeln("Wrong move!");
       }
     } while (!isValidMove);
-    this.player.setNextMove(move);
+    this.controller.executeMove(move);
   }
 }

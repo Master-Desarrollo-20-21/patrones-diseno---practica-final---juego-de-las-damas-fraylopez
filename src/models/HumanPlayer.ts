@@ -1,3 +1,4 @@
+import assert from "assert";
 import { Board } from "./Board";
 import { Move } from "./Move";
 import { Player } from "./Player";
@@ -6,6 +7,7 @@ import { Token } from "./Token";
 
 
 export class HumanPlayer extends Player {
+
   constructor(
     token: Token,
     board: Board,
@@ -17,6 +19,11 @@ export class HumanPlayer extends Player {
 
   setNextMove(move: Move) {
     this.nextMove = move;
+  }
+
+  getNextMove(): Move {
+    assert(this.nextMove);
+    return this.nextMove;
   }
 
   copy(board: Board) {

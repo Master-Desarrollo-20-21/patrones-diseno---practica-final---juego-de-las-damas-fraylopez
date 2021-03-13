@@ -12,6 +12,7 @@ import { RedoController } from "./RedoController";
 import { UndoController } from "./UndoController";
 
 export class PlayController implements IAcceptorController {
+
   private readonly moveController: MoveController;
   private readonly undoController: UndoController;
   private readonly redoController: RedoController;
@@ -54,8 +55,8 @@ export class PlayController implements IAcceptorController {
     return this.moveController.isValidMove(move);
   }
 
-  executeMove() {
-    this.moveController.executeMove();
+  executeMove(move?: Move) {
+    this.moveController.executeMove(move);
   }
   isUndoable(): boolean {
     return this.undoController.isUndoable();
@@ -69,6 +70,4 @@ export class PlayController implements IAcceptorController {
   redo() {
     this.redoController.redo();
   }
-
-
 }

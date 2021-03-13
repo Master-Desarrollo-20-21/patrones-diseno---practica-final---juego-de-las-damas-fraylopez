@@ -3,9 +3,9 @@ import { Player } from "../models/Player";
 import { ConsoleView } from "./models/ConsoleView";
 
 
-export abstract class PlayerView<TPlayer extends Player = Player> extends ConsoleView {
-  constructor(protected controller: PlayController, protected player: TPlayer) {
+export abstract class PlayerView extends ConsoleView {
+  constructor(protected controller: PlayController) {
     super();
   }
-  abstract setNextMove(controller: PlayController): void;
+  abstract setNextMove(): void;
 }

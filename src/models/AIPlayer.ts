@@ -19,8 +19,8 @@ export class AIPlayer extends Player {
     this.algorithm = new RandomMoveAlgorithm();
   }
 
-  public computeNextMove(): void {
-    this.nextMove = this.algorithm.getNextMove(this.token.color, this.board);
+  getNextMove(): Move {
+    return this.algorithm.getNextMove(this.token.color, this.board);
   }
 
   copy(board: Board) {

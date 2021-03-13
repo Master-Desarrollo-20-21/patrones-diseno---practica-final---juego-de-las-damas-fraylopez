@@ -10,8 +10,8 @@ export class MoveController extends SessionController {
   isValidMove(move: Move) {
     return this.session.isValidMove(move);
   }
-  executeMove() {
-    this.session.executeMove();
+  executeMove(move?: Move) {
+    this.session.executeMove(move);
   }
   getCurrentPlayer(): Player {
     return this.session.getCurrentPlayer();

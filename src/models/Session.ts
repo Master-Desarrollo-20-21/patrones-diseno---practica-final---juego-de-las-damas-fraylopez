@@ -9,6 +9,7 @@ import { State } from "./State";
 import { StateValue } from "./StateValue";
 
 export class Session {
+
   private readonly state: State;
   private readonly game: Game;
   private readonly registry: GameRegistry;
@@ -80,8 +81,8 @@ export class Session {
     return this.game.isValidMove(move);
   }
 
-  executeMove() {
-    this.game.executeMove();
+  executeMove(move?: Move) {
+    this.game.executeMove(move);
     if (!this.isGameOver()) {
       this.goNextTurn();
       this.registry.register();

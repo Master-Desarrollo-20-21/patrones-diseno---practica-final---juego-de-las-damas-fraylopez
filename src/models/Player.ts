@@ -1,4 +1,3 @@
-import assert from "assert";
 import { Board } from "./Board";
 import { Color } from "./Color";
 import { Move } from "./Move";
@@ -14,12 +13,12 @@ export abstract class Player {
     protected nextMove?: Move,
   ) { }
 
-  move() {
-    assert(this.nextMove);
-    this.board.move(this.nextMove);
+  move(move?: Move) {
+    this.board.move(move || this.getNextMove());
   }
   getId(): string {
     return this.token.color === Color.White ? "White" : "Black";
   }
   abstract copy(board: Board): Player;
+  abstract getNextMove(): Move;
 }

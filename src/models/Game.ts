@@ -12,7 +12,6 @@ import { Turn } from "./Turn";
 
 export class Game {
 
-
   private board!: Board;
   private turn!: Turn;
   private players!: Player[];
@@ -66,8 +65,8 @@ export class Game {
     return this.board.isValidMove(move);
   }
 
-  executeMove() {
-    this.turn.getCurrentPlayer().move();
+  executeMove(move?: Move) {
+    this.turn.getCurrentPlayer().move(move);
   }
 
   goNextTurn() {
