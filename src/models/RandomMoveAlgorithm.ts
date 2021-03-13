@@ -17,7 +17,7 @@ export class RandomMoveAlgorithm implements IMoveAlgorithm {
       const randomMove = new Move(token, randomCoordinateFrom, randomCoordinateTo);
       move = randomMove.isValid && board.isValidMove(randomMove) ? randomMove : undefined;
     } while (!move);
-    console.log("AI moves: " + JSON.stringify(move));
+    // console.log("AI moves: " + JSON.stringify(move));
     return move;
   }
 
