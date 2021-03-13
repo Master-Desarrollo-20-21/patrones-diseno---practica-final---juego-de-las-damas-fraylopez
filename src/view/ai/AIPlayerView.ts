@@ -1,7 +1,8 @@
-import { AIPlayer } from "../../models/AIPlayer";
-import { PlayerView } from "../PlayerView";
+import { PlayerView } from "../models/PlayerView";
 
 export class AIPlayerView extends PlayerView {
-  setNextMove() {
+  getNextMove() {
+    this.console.writeln("Computing next move...");
+    return undefined;
   }
 }

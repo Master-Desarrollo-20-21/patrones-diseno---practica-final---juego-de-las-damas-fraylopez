@@ -2,10 +2,10 @@ import { PlayController } from "../../controllers/PlayController";
 import { HumanPlayer } from "../../models/HumanPlayer";
 import { Move } from "../../models/Move";
 import { Coordinate } from "../../utils/Coordinate";
-import { PlayerView } from "../PlayerView";
+import { PlayerView } from "./PlayerView";
 
 export class HumanPlayerView extends PlayerView {
-  setNextMove() {
+  getNextMove() {
     let move: Move;
     let isValidMove: boolean;
     do {
@@ -27,6 +27,6 @@ export class HumanPlayerView extends PlayerView {
         this.console.writeln("Wrong move!");
       }
     } while (!isValidMove);
-    this.controller.executeMove(move);
+    return move;
   }
 }

@@ -1,5 +1,5 @@
 import { PlayController } from "../../controllers/PlayController";
-import { HumanPlayerView } from "../local/HumanPlayerView";
+import { HumanPlayerView } from "../models/HumanPlayerView";
 import { Strings } from "../models/Strings";
 import { CheckersCommand } from "./Command";
 
@@ -9,7 +9,7 @@ export class MoveCommand extends CheckersCommand<PlayController> {
   }
 
   execute() {
-    new HumanPlayerView(this.acceptorController).setNextMove();
+    new HumanPlayerView(this.acceptorController).getNextMove();
   }
 
   isActive(): boolean {
