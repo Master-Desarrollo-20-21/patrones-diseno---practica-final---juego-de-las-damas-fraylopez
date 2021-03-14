@@ -4,6 +4,7 @@ export class State {
   private static states = [
     StateValue.Initial,
     StateValue.InGame,
+    StateValue.Saving,
     StateValue.Resume,
     StateValue.Exit,
   ];

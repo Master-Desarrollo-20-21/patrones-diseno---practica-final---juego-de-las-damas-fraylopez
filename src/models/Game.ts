@@ -87,7 +87,7 @@ export class Game {
     return this.players;
   }
   setPlayers(players: Player[]) {
-    this.players = players;
+    players.forEach((p, i) => this.players[i] = p);
   }
   getBoard() {
     return this.board;

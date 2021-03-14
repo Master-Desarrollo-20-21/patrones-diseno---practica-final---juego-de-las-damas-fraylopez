@@ -2,5 +2,7 @@ export enum Strings {
   Undo = "Undo",
   Redo = "Redo",
   Move = "Move",
-  Exit = "Exit"
+  Exit = "Exit",
+  NewGame = "NewGame",
+  LoadGame = "LoadGame"
 }

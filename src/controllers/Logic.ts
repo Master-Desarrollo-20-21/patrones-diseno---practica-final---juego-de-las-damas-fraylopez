@@ -1,3 +1,4 @@
+import { SessionDAO } from "../models/dao/SessionDAO";
 import { Session } from "../models/Session";
 import { StateValue } from "../models/StateValue";
 import { IAcceptorController } from "./IAcceptorController";
@@ -13,7 +14,7 @@ export class Logic {
   constructor() {
     this.session = new Session();
     this.controllers = new Map();
-    this.controllers.set(StateValue.Initial, new StartController(this.session));
+    this.controllers.set(StateValue.Initial, new StartController(this.session, new SessionDAO(this.session)));
     this.controllers.set(StateValue.InGame, new PlayController(this.session));
     this.controllers.set(StateValue.Saving, new SaveController(this.session));
     this.controllers.set(StateValue.Resume, new ResumeController(this.session));

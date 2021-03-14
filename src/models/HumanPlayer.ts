@@ -1,4 +1,3 @@
-import assert from "assert";
 import { Board } from "./Board";
 import { Color } from "./Color";
 import { Move } from "./Move";
@@ -20,8 +19,7 @@ export class HumanPlayer extends Player {
     this.nextMove = move;
   }
 
-  getNextMove(): Move {
-    assert(this.nextMove);
+  getNextMove(): Move | undefined {
     return this.nextMove;
   }
 

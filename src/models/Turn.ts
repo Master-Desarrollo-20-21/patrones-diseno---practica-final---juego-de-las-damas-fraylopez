@@ -2,8 +2,6 @@ import { Player } from "./Player";
 import { PlayerType } from "./PlayerType";
 
 export class Turn {
-
-
   public static NUM_PLAYERS = 2;
 
   constructor(
