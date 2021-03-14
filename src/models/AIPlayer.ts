@@ -16,7 +16,7 @@ export class AIPlayer extends Player {
     nextMove?: Move,
   ) {
     super(color, board, type, nextMove);
-    this.algorithm = new RandomMoveWithDummyHeuristicAlgorithm();
+    this.algorithm = new RandomMoveWithDummyHeuristicAlgorithm(100);
   }
 
   getNextMove(): Move {

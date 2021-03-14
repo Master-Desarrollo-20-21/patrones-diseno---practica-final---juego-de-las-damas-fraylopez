@@ -11,6 +11,7 @@ export class BoardView extends ConsoleView {
   }
 
   render(): void {
+    this.console.clear();
     this.console.writeln("");
     this.console.writeln("     columns     ");
     this.console.writeInln("  ");

@@ -1,6 +1,9 @@
 import readline from "readline-sync";
 
 export class Console {
+	clear() {
+		console.clear();
+	}
 	readInt(question: string): number {
 		return Number(readline.question(question));
 	}
