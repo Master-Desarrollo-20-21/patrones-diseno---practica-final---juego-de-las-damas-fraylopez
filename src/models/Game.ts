@@ -11,7 +11,6 @@ import { Token } from "./Token";
 import { Turn } from "./Turn";
 
 export class Game {
-
   private board!: Board;
   private turn!: Turn;
   private players!: Player[];
@@ -76,6 +75,12 @@ export class Game {
   createMemento(): Memento {
     const board = this.board.copy();
     return new Memento(board, this.turn, this.getPlayersCopy(this.players, board));
+  }
+
+  set(memento: Memento) {
+    this.board = memento.board.copy();
+    this.players = this.getPlayersCopy(memento.players, this.board);
+    this.turn = memento.turn.copy(this.players);
   }
 
   private getPlayersCopy(players: Player[], board: Board): Player[] {

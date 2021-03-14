@@ -6,5 +6,5 @@ export abstract class PlayerView extends ConsoleView {
   constructor(protected controller: PlayController) {
     super();
   }
-  abstract getNextMove(): Move | undefined;
+  abstract executeNextMove(): void;
 }

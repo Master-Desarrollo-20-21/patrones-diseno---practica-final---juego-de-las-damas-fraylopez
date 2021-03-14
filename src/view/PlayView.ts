@@ -8,8 +8,7 @@ import { AIPlayerView } from "./ai/AIPlayerView";
 export class PlayView {
   interact(controller: PlayController) {
     new GameView(controller);
-    const move = this.getPlayerView(controller).getNextMove();
-    controller.executeMove(move);
+    this.getPlayerView(controller).executeNextMove();
   }
 
   getPlayerView(controller: PlayController): PlayerView {

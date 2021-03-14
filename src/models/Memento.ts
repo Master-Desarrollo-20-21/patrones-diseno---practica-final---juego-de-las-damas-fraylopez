@@ -3,12 +3,10 @@ import { Player } from "./Player";
 import { Turn } from "./Turn";
 
 export class Memento {
-  private readonly board: Board;
-  private readonly turn: Turn;
   constructor(
-    board: Board,
-    turn: Turn,
-    private readonly players: Player[]
+    public readonly board: Board,
+    public readonly turn: Turn,
+    public readonly players: Player[]
   ) {
     this.board = board.copy();
     this.turn = turn.copy(players);

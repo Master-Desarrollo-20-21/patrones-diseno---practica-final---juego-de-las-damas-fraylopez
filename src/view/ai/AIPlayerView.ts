@@ -1,8 +1,8 @@
 import { PlayerView } from "../models/PlayerView";
 
 export class AIPlayerView extends PlayerView {
-  getNextMove() {
-    this.console.writeln("Computing next move...");
-    return undefined;
+  executeNextMove() {
+    this.console.writeln("AI computing next move...");
+    this.controller.executeMove();
   }
 }

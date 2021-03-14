@@ -5,7 +5,7 @@ import { CheckersCommand } from "./Command";
 
 export class UndoCommand extends CheckersCommand<PlayController> {
   constructor(private readonly playController: PlayController) {
-    super(Strings.Redo, playController);
+    super(Strings.Undo, playController);
   }
 
   execute() {
