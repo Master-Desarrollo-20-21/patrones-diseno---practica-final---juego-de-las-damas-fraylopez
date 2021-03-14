@@ -2,12 +2,11 @@ import { Board } from "./Board";
 import { Color } from "./Color";
 import { Move } from "./Move";
 import { PlayerType } from "./PlayerType";
-import { Token } from "./Token";
 
 export abstract class Player {
 
   constructor(
-    public readonly token: Token,
+    public readonly color: Color,
     public readonly board: Board,
     public readonly type: PlayerType,
     protected nextMove?: Move,
@@ -15,9 +14,10 @@ export abstract class Player {
 
   move(move?: Move) {
     this.board.move(move || this.getNextMove());
+    this.nextMove = undefined;
   }
   getId(): string {
-    return this.token.color === Color.White ? "White" : "Black";
+    return this.color === Color.White ? "White" : "Black";
   }
   abstract copy(board: Board): Player;
   abstract getNextMove(): Move;

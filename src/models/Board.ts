@@ -6,6 +6,7 @@ import { NullToken } from "./NullToken";
 import { Token } from "./Token";
 
 export class Board {
+
   private static SIZE = 8;
   private coordinates: Array<Array<Token | undefined>>;
 
@@ -96,6 +97,13 @@ export class Board {
       coordinatesCopy[i] = this.coordinates[i].slice();
     }
     return new Board(coordinatesCopy);
+  }
+  getCoordinates() {
+    return this.coordinates;
+  }
+
+  setCoordinates(coordinates: (Token | undefined)[][]) {
+    this.coordinates = coordinates;
   }
 
   private isValidJump(move: Move) {

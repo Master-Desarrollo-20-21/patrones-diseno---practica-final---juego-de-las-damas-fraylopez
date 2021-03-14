@@ -28,9 +28,9 @@ export class Game {
   setNumPlayers(numHumanPlayers: number) {
     for (let i = 0; i < Turn.NUM_PLAYERS; i++) {
       if (i < numHumanPlayers) {
-        this.players.push(new HumanPlayer(new Token(i), this.board, PlayerType.Human));
+        this.players.push(new HumanPlayer(i, this.board, PlayerType.Human));
       } else {
-        this.players.push(new AIPlayer(new Token(i), this.board, PlayerType.AI));
+        this.players.push(new AIPlayer(i, this.board, PlayerType.AI));
       }
     }
   }
@@ -81,6 +81,19 @@ export class Game {
     this.board = memento.board.copy();
     this.players = this.getPlayersCopy(memento.players, this.board);
     this.turn = memento.turn.copy(this.players);
+  }
+
+  getPlayers() {
+    return this.players;
+  }
+  setPlayers(players: Player[]) {
+    this.players = players;
+  }
+  getBoard() {
+    return this.board;
+  }
+  getTurn(): Turn {
+    return this.turn;
   }
 
   private getPlayersCopy(players: Player[], board: Board): Player[] {

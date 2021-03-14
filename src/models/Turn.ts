@@ -3,6 +3,7 @@ import { PlayerType } from "./PlayerType";
 
 export class Turn {
 
+
   public static NUM_PLAYERS = 2;
 
   constructor(
@@ -22,6 +23,12 @@ export class Turn {
   }
   getCurrentPlayer() {
     return this.players[this.currentPlayer];
+  }
+  getCurrentPlayerOridinal() {
+    return this.currentPlayer;
+  }
+  setCurrentPlayerOrdinal(currentPlayer: number) {
+    this.currentPlayer = currentPlayer;
   }
   copy(players: Player[]): Turn {
     return new Turn(players, this.currentPlayer);

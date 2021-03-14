@@ -1,4 +1,3 @@
-import assert from "assert";
 import { Coordinate } from "../utils/Coordinate";
 import { Color } from "./Color";
 import { Game } from "./Game";
@@ -9,13 +8,12 @@ import { PlayerType } from "./PlayerType";
 import { State } from "./State";
 import { StateValue } from "./StateValue";
 import { Token } from "./Token";
-import { Turn } from "./Turn";
 
 export class Session {
-
   private readonly state: State;
   private readonly game: Game;
   private readonly registry: GameRegistry;
+  private name?: string;
   constructor() {
     this.game = new Game();
     this.state = new State();
@@ -50,7 +48,7 @@ export class Session {
 
   setNumPlayers(users: number) {
     this.game.setNumPlayers(users);
-    this.registry.register(); //initial game state as memento
+    this.register(); //initial game state as memento
   }
 
   redo() {
@@ -102,12 +100,39 @@ export class Session {
     if (!this.isGameOver()) {
       this.goNextTurn();
       if (this.getCurrentPlayerType() === PlayerType.Human) {
-        this.registry.register();
+        this.register();
       }
     }
   }
 
   goNextTurn() {
     this.game.goNextTurn();
+  }
+
+  getGame(): Game {
+    return this.game;
+  }
+
+  hasName(): boolean {
+    return !!this.name;
+  }
+  getName(): string {
+    if (!this.hasName()) {
+      this.name = "Game " + new Date().toLocaleString();
+    }
+    return this.name!;
+  }
+  setName(name: string) {
+    this.name = name;
+  }
+
+  register() {
+    this.registry.register();
+  }
+  resetRegistry() {
+    this.registry.reset();
+  }
+  goToState(state: StateValue) {
+    this.state.setValue(state);
   }
 }

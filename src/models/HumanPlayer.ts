@@ -1,20 +1,19 @@
 import assert from "assert";
 import { Board } from "./Board";
+import { Color } from "./Color";
 import { Move } from "./Move";
 import { Player } from "./Player";
 import { PlayerType } from "./PlayerType";
-import { Token } from "./Token";
-
 
 export class HumanPlayer extends Player {
 
   constructor(
-    token: Token,
+    color: Color,
     board: Board,
     type: PlayerType,
     nextMove?: Move
   ) {
-    super(token, board, type, nextMove);
+    super(color, board, type, nextMove);
   }
 
   setNextMove(move: Move) {
@@ -27,6 +26,6 @@ export class HumanPlayer extends Player {
   }
 
   copy(board: Board) {
-    return new HumanPlayer(this.token, board, this.type, this.nextMove);
+    return new HumanPlayer(this.color, board, this.type, this.nextMove);
   }
 }
