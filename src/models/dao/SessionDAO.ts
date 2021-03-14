@@ -38,7 +38,7 @@ export class SessionDAO {
 
   isValidGameName(name: string): boolean {
     return !this.getSavedGamesNames()
-      .some(filename => filename === this.getNameWithExtension(filename));
+      .some(filename => filename === this.getNameWithExtension(name));
   }
 
   getSavedGamesNames(): string[] {

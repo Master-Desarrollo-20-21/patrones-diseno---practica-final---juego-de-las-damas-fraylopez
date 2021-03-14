@@ -44,7 +44,7 @@ export class GameDAO {
     const players = data.players.map(d => this.getPlayer(d.color, d.type));
     this.game.setPlayers(players);
     this.turnDAO.load(data.turn);
-    this.turnDAO.load(data.turn);
+    this.boardDAO.load(data.board);
   }
 
   private getPlayer(color: Color, type: PlayerType, _nextMove?: ISerializedMove) {

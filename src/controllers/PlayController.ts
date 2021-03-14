@@ -54,7 +54,9 @@ export class PlayController implements IAcceptorController {
   isValidMove(move: Move): boolean {
     return this.moveController.isValidMove(move);
   }
-
+  isCaptureMove(move: Move): boolean {
+    return this.moveController.isCaptureMove(move);
+  }
   executeMove(move?: Move) {
     this.moveController.executeMove(move);
   }

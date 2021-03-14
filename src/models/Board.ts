@@ -45,6 +45,10 @@ export class Board {
     return !this.coordinates[coordinate.row][coordinate.column];
   }
 
+  isMovingForward(move: Move): boolean {
+    return move.isMovingForward(this);
+  }
+
   getToken(coordinate: Coordinate): Token {
     return this.coordinates[coordinate.row][coordinate.column] || new NullToken();
   }
@@ -63,7 +67,7 @@ export class Board {
     return colorExists && otherColorDoesNotExists;
   }
   isValidMove(move: Move) {
-    return !this.isEmpty(move.from) && this.isEmpty(move.to) && this.isValidJump(move);
+    return !this.isEmpty(move.from) && this.isEmpty(move.to) && this.isMovingForward(move) && this.isValidJump(move);
   }
 
   move(move: Move) {
@@ -106,10 +110,13 @@ export class Board {
     this.coordinates = coordinates;
   }
 
+  isCaptureMove(move: Move) {
+    const capturableToken = this.getToken(move.unitMovement.to);
+    return move.length === 2 && !capturableToken.isNull && capturableToken.color !== move.token.color;
+  }
+
   private isValidJump(move: Move) {
     const unitToMove = move.length === 1 && this.getToken(move.to).isNull;
-    const capturableToken = this.getToken(move.unitMovement.to);
-    const doubleToCapture = move.length === 2 && !capturableToken.isNull && capturableToken.color !== move.token.color;
-    return unitToMove || doubleToCapture;
+    return unitToMove || this.isCaptureMove(move);
   }
 }

@@ -8,17 +8,19 @@ export class BoardDAO {
 
   serialize(): ISerializedBoard {
     const coordinates = this.board.getCoordinates();
-    const rows: Array<"0" | "1" | "00" | "11" | "-"> = [];
+    const rows: Array<Array<"0" | "1" | "00" | "11" | "-">> = [];
     for (let i = 0; i < coordinates.length; i++) {
-      const row = [];
+      const row: Array<"0" | "1" | "00" | "11" | "-"> = [];
       for (let j = 0; j < coordinates[i].length; j++) {
         const token = coordinates[i][j];
         const encodedCoordinate = token ?
           token.color.toString() + (token.isKing ? token.color : "")
           :
           "-";
-        row.push(encodedCoordinate);
+        row.push(encodedCoordinate as "0" | "1" | "00" | "11" | "-");
       }
+      rows.push(row);
+
     }
     return {
       rows

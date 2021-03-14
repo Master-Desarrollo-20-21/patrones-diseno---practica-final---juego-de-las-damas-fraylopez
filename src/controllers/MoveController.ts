@@ -13,6 +13,9 @@ export class MoveController extends SessionController {
   executeMove(move?: Move) {
     this.session.executeMove(move);
   }
+  isCaptureMove(move: Move) {
+    return this.session.isCaptureMove(move);
+  }
   getCurrentPlayer(): Player {
     return this.session.getCurrentPlayer();
   }

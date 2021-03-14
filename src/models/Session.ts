@@ -95,10 +95,16 @@ export class Session {
     return this.game.isValidMove(move);
   }
 
+  isCaptureMove(move: Move) {
+    return this.game.isCaptureMove(move);
+  }
   executeMove(move?: Move) {
+    const isCaptureMove = move && this.isCaptureMove(move);
     this.game.executeMove(move);
     if (!this.isGameOver()) {
-      this.goNextTurn();
+      if (!isCaptureMove) {
+        this.goNextTurn();
+      }
       if (this.getCurrentPlayerType() === PlayerType.Human) {
         this.register();
       }

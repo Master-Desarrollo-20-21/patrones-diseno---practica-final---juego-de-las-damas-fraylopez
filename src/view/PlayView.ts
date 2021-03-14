@@ -12,6 +12,7 @@ export class PlayView {
   }
 
   getPlayerView(controller: PlayController): PlayerView {
+    // TODO: possible extension point. Not extensible in current scope
     const playerType = controller.getCurrentPlayerType();
     switch (playerType) {
       case PlayerType.Human:

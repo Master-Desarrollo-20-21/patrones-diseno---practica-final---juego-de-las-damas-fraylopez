@@ -23,7 +23,7 @@ export class Move {
   }
 
   get isValid(): boolean {
-    return this.isMovingForward && this.isDiagonal && this.isProperLength;
+    return this.isDiagonal && this.isProperLength;
   }
 
   get unitMovement() {
@@ -42,8 +42,8 @@ export class Move {
       this.token.color === Color.Black && this.to.row === 0;
   }
 
-  private get isMovingForward(): boolean {
-    return this.token.isKing || Math.pow(-1, this.token.color) * (this.to.row - this.from.row) > 0;
+  isMovingForward(board: Board): boolean {
+    return board.isCaptureMove(this) || this.token.isKing || Math.pow(-1, this.token.color) * (this.to.row - this.from.row) > 0;
   }
 
   private get unitVector(): Coordinate {

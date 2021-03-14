@@ -4,9 +4,11 @@ import { Color } from "./Color";
 import { IMoveAlgorithm } from "./IMoveAlgorithm";
 import { Move } from "./Move";
 
-export class RandomMoveAlgorithm implements IMoveAlgorithm {
+export class RandomMoveWithDummyHeuristicAlgorithm implements IMoveAlgorithm {
+  constructor(private readonly maxAttempts: number = 10) { }
   getNextMove(playerColor: Color, board: Board): Move {
-    let move: Move | undefined;
+    let bestMove: Move | undefined;
+    let attempts = 0;
     do {
       const randomCoordinateFrom = this.getRandomCoordinate(board.getSize());
       const randomCoordinateTo = this.getRandomCoordinate(board.getSize());
@@ -15,9 +17,14 @@ export class RandomMoveAlgorithm implements IMoveAlgorithm {
         continue;
       }
       const randomMove = new Move(token, randomCoordinateFrom, randomCoordinateTo);
-      move = randomMove.isValid && board.isValidMove(randomMove) ? randomMove : undefined;
-    } while (!move);
-    return move;
+      const currentMove = randomMove.isValid && board.isValidMove(randomMove) ? randomMove : undefined;
+      if (currentMove && board.isCaptureMove(currentMove) || attempts > this.maxAttempts) {
+        bestMove = currentMove;
+      } else {
+        attempts++;
+      }
+    } while (!bestMove);
+    return bestMove;
   }
 
   private getRandomCoordinate(boardSize: number) {

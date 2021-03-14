@@ -63,7 +63,6 @@ export class Game {
   isValidMove(move: Move) {
     return this.board.isValidMove(move);
   }
-
   executeMove(move?: Move) {
     this.turn.getCurrentPlayer().move(move);
   }
@@ -94,6 +93,12 @@ export class Game {
   }
   getTurn(): Turn {
     return this.turn;
+  }
+  getLastMove() {
+    return this.getCurrentPlayer().getLastMove();
+  }
+  isCaptureMove(move: Move) {
+    return this.board.isCaptureMove(move);
   }
 
   private getPlayersCopy(players: Player[], board: Board): Player[] {

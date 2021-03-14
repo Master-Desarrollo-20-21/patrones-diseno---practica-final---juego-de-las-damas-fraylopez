@@ -5,7 +5,7 @@ import { IMoveAlgorithm } from "./IMoveAlgorithm";
 import { Move } from "./Move";
 import { Player } from "./Player";
 import { PlayerType } from "./PlayerType";
-import { RandomMoveAlgorithm } from "./RandomMoveAlgorithm";
+import { RandomMoveWithDummyHeuristicAlgorithm } from "./RandomMoveWithDummyHeuristicAlgorithm";
 
 export class AIPlayer extends Player {
   private algorithm: IMoveAlgorithm;
@@ -16,7 +16,7 @@ export class AIPlayer extends Player {
     nextMove?: Move,
   ) {
     super(color, board, type, nextMove);
-    this.algorithm = new RandomMoveAlgorithm();
+    this.algorithm = new RandomMoveWithDummyHeuristicAlgorithm();
   }
 
   getNextMove(): Move {

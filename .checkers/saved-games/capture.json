@@ -1,0 +1,27 @@
+{
+  "game": {
+    "players": [
+      {
+        "type": 0,
+        "color": 0
+      },
+      {
+        "type": 1,
+        "color": 1,
+        "nextMove": {
+          "token": {
+            "isKing": false
+          },
+          "from": "52",
+          "to": "41"
+        }
+      }
+    ],
+    "turn": {
+      "currentPlayer": 0
+    },
+    "board": {
+      "rows": []
+    }
+  }
+}
