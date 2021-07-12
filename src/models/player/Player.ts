@@ -1,7 +1,7 @@
 import assert from "assert";
-import { Board } from "./Board";
-import { Color } from "./Color";
-import { Move } from "./Move";
+import { Board } from "../Board";
+import { Color } from "../Color";
+import { Move } from "../Move";
 import { PlayerType } from "./PlayerType";
 
 export abstract class Player {

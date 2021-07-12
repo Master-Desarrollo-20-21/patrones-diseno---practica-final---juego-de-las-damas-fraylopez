@@ -1,5 +1,5 @@
 import { Board } from "./Board";
-import { Player } from "./Player";
+import { Player } from "./player/Player";
 import { Turn } from "./Turn";
 
 export class Memento {

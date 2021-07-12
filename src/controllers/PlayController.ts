@@ -1,7 +1,7 @@
 import { Color } from "../models/Color";
 import { Move } from "../models/Move";
-import { Player } from "../models/Player";
-import { PlayerType } from "../models/PlayerType";
+import { Player } from "../models/player/Player";
+import { PlayerType } from "../models/player/PlayerType";
 import { Session } from "../models/Session";
 import { Token } from "../models/Token";
 import { Coordinate } from "../utils/Coordinate";

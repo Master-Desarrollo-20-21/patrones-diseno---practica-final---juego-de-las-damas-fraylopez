@@ -1,5 +1,5 @@
-import { Player } from "./Player";
-import { PlayerType } from "./PlayerType";
+import { Player } from "./player/Player";
+import { PlayerType } from "./player/PlayerType";
 
 export class Turn {
   public static NUM_PLAYERS = 2;

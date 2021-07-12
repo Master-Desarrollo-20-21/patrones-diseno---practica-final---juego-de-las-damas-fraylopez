@@ -1,14 +1,14 @@
 import { Coordinate } from "../utils/Coordinate";
-import { AIPlayer } from "./AIPlayer";
-import { HumanPlayer } from "./HumanPlayer";
+import { HumanPlayer } from "./player/HumanPlayer";
 import { Board } from "./Board";
 import { Color } from "./Color";
 import { Memento } from "./Memento";
 import { Move } from "./Move";
-import { Player } from "./Player";
-import { PlayerType } from "./PlayerType";
+import { PlayerType } from "./player/PlayerType";
 import { Token } from "./Token";
 import { Turn } from "./Turn";
+import { AIPlayer } from "./player/AIPlayer";
+import { Player } from "./player/Player";
 
 export class Game {
   private board!: Board;

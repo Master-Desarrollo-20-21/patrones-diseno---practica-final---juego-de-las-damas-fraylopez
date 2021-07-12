@@ -1,6 +1,6 @@
 import { PlayController } from "../controllers/PlayController";
 import { GameView } from "./models/GameView";
-import { PlayerType } from "../models/PlayerType";
+import { PlayerType } from "../models/player/PlayerType";
 import { HumanPlayerView } from "./models/HumanPlayerView";
 import { PlayerView } from "./models/PlayerView";
 import { AIPlayerView } from "./ai/AIPlayerView";

@@ -1,15 +1,15 @@
 import { Coordinate } from "../../utils/Coordinate";
-import { AIPlayer } from "../AIPlayer";
 import { Color } from "../Color";
 import { Game } from "../Game";
-import { HumanPlayer } from "../HumanPlayer";
+import { HumanPlayer } from "../player/HumanPlayer";
 import { Move } from "../Move";
-import { PlayerType } from "../PlayerType";
+import { PlayerType } from "../player/PlayerType";
 import { Token } from "../Token";
 import { BoardDAO } from "./BoardDAO";
 import { ISerializedGame } from "./ISerializedGame";
 import { ISerializedMove } from "./ISerializedMove";
 import { TurnDAO } from "./TurnDAO";
+import { AIPlayer } from "../player/AIPlayer";
 
 export class GameDAO {
   private readonly turnDAO: TurnDAO;

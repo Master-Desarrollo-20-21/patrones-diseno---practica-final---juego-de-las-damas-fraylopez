@@ -1,6 +1,6 @@
-import { Board } from "./Board";
-import { Color } from "./Color";
-import { Move } from "./Move";
+import { Board } from "../Board";
+import { Color } from "../Color";
+import { Move } from "../Move";
 import { Player } from "./Player";
 import { PlayerType } from "./PlayerType";
 

@@ -1,11 +1,11 @@
-import assert from "assert";
-import { Board } from "./Board";
-import { Color } from "./Color";
-import { IMoveAlgorithm } from "./IMoveAlgorithm";
-import { Move } from "./Move";
+import { Board } from "../Board";
+import { Color } from "../Color";
+import { IMoveAlgorithm } from "../IMoveAlgorithm";
+import { Move } from "../Move";
+import { RandomMoveWithDummyHeuristicAlgorithm } from "../RandomMoveWithDummyHeuristicAlgorithm";
 import { Player } from "./Player";
 import { PlayerType } from "./PlayerType";
-import { RandomMoveWithDummyHeuristicAlgorithm } from "./RandomMoveWithDummyHeuristicAlgorithm";
+
 
 export class AIPlayer extends Player {
   private algorithm: IMoveAlgorithm;

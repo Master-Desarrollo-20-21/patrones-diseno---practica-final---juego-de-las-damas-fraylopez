@@ -1,5 +1,5 @@
 import { Color } from "../Color";
-import { PlayerType } from "../PlayerType";
+import { PlayerType } from "../player/PlayerType";
 import { ISerializedBoard } from "./ISerializedBoard";
 import { ISerializedMove } from "./ISerializedMove";
 import { ISerializedTurn } from "./ISerializedTurn";
