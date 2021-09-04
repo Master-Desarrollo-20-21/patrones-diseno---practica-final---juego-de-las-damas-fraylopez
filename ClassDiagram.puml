@@ -1,0 +1,634 @@
+@startuml
+enum Color {
+    White
+    Black
+    Null
+}
+enum Direction {
+    VERTICAL
+    HORIZONTAL
+    MAIN_DIAGONAL
+    INVERSE_DIAGONAL
+    NULL
+}
+class Coordinate {
+    +row: number
+    +column: number
+    #getDirection(coordinate: Coordinate): Direction
+    -inMainDiagonal(): boolean
+    -inVertical(coordinate: Coordinate): boolean
+    -inHorizontal(coordinate: Coordinate): boolean
+    +getRow(): number
+    +getColumn(): number
+    +equals(coordinate: Coordinate): boolean
+}
+class Token {
+    +color: Color
+    -_isKing?: boolean | undefined
+    +turnToKing(): void
+    +isKing: boolean
+    +isNull: boolean
+}
+class NullToken extends Token
+class Board {
+    -coordinates: (Token | undefined)[][]
+    +getSize(): number
+    +getBoardColor(coordinate: Coordinate): Color
+    +isEmpty(coordinate: Coordinate): boolean
+    +isMovingForward(move: Move): boolean
+    +getToken(coordinate: Coordinate): Token
+    +removeToken(coordinate: Coordinate): void
+    +setToken(coordinate: Coordinate, token: Token): void
+    +isGameWon(color: Color): boolean
+    +isValidMove(move: Move): boolean
+    +move(move: Move): void
+    +checkCapture(move: Move): void
+    +ckeckKing(move: Move): void
+    +copy(): Board
+    +getCoordinates(): (Token | undefined)[][]
+    +setCoordinates(coordinates: (Token | undefined)[][]): void
+    +isCaptureMove(move: Move): boolean
+    -isValidJump(move: Move): boolean
+    -{static} SIZE: number
+}
+class Move {
+    +token: Token
+    +from: Coordinate
+    +to: Coordinate
+    +getVector(): Coordinate
+    +isProperLength: boolean
+    +length: number
+    +isValid: boolean
+    +unitMovement: Move
+    +isKingMove(board: Board): boolean
+    +isMovingForward(board: Board): boolean
+    -unitVector: Coordinate
+    -isDiagonal: boolean
+}
+enum PlayerType {
+    Human
+    AI
+}
+abstract class Player {
+    +color: Color
+    +board: Board
+    +type: PlayerType
+    #nextMove?: Move | undefined
+    -lastMove?: Move | undefined
+    +move(move?: Move | undefined): void
+    +getId(): string
+    +getLastMove(): Move | undefined
+    +{abstract} copy(board: Board): Player
+    +{abstract} getNextMove(): Move | undefined
+}
+class Turn {
+    -players: Player[]
+    -currentPlayer: number
+    +goNextTurn(): void
+    +getCurrentPlayerType(): PlayerType
+    +getCurrentPlayerId(): string
+    +getCurrentPlayer(): Player
+    +getCurrentPlayerOridinal(): number
+    +setCurrentPlayerOrdinal(currentPlayer: number): void
+    +copy(players: Player[]): Turn
+    +{static} NUM_PLAYERS: number
+}
+class Memento {
+    +board: Board
+    +turn: Turn
+    +players: Player[]
+}
+interface IMoveAlgorithm {
+    +getNextMove(playerColor: Color, board: Board): Move
+}
+class RandomMoveAlgorithm implements IMoveAlgorithm {
+    +getNextMove(playerColor: Color, board: Board): Move
+    -getRandomCoordinate(boardSize: number): Coordinate
+}
+class RandomMoveWithDummyHeuristicAlgorithm implements IMoveAlgorithm {
+    -randomAlgorithm: RandomMoveAlgorithm
+    -maxAttempts: number
+    +getNextMove(playerColor: Color, board: Board): Move
+}
+class AIPlayer extends Player {
+    -algorithm: IMoveAlgorithm
+    +getNextMove(): Move
+    +copy(board: Board): AIPlayer
+}
+class HumanPlayer extends Player {
+    +setNextMove(move: Move): void
+    +getNextMove(): Move | undefined
+    +copy(board: Board): HumanPlayer
+}
+class Game {
+    -board: Board
+    -turn: Turn
+    -players: Player[]
+    +startNewGame(): void
+    +setNumPlayers(numHumanPlayers: number): void
+    +getCurrentPlayer(): Player
+    +getCurrentPlayerType(): PlayerType
+    +getCurrentPlayerId(): string
+    +getBoardSize(): number
+    +getBoardColor(coordinate: Coordinate): Color
+    +isEmpty(coordinate: Coordinate): boolean
+    +getToken(coordinate: Coordinate): Token
+    +isGameWon(color: Color): boolean
+    +isValidMove(move: Move): boolean
+    +executeMove(move?: Move | undefined): void
+    +goNextTurn(): void
+    +createMemento(): Memento
+    +set(memento: Memento): void
+    +getPlayers(): Player[]
+    +setPlayers(players: Player[]): void
+    +getBoard(): Board
+    +getTurn(): Turn
+    +getLastMove(): Move | undefined
+    +isCaptureMove(move: Move): boolean
+    -getPlayersCopy(players: Player[], board: Board): Player[]
+}
+class GameRegistry {
+    -mementoList: Memento[]
+    -cursorHead: number
+    -game: Game
+    +register(): void
+    +reset(): void
+    +isRedoable(): boolean
+    +redo(game: Game): void
+    +isUndoable(): boolean
+    +undo(game: Game): void
+}
+enum StateValue {
+    Initial
+    InGame
+    Saving
+    Resume
+    Exit
+}
+class State {
+    -value: StateValue
+    +next(): void
+    +reset(): void
+    +getValue(): StateValue
+    +setValue(state: StateValue): void
+    -{static} states: StateValue[]
+}
+class Session {
+    -state: State
+    -game: Game
+    -registry: GameRegistry
+    -name?: string | undefined
+    +startNewGame(): void
+    +getCurrentState(): StateValue
+    +getCurrentPlayer(): Player
+    +getCurrentPlayerType(): PlayerType
+    +getCurrentPlayerId(): string
+    +goNextstate(): void
+    +setNumPlayers(users: number): void
+    +redo(): void
+    +isRedoable(): boolean
+    +undo(): void
+    +isUndoable(): boolean
+    +getBoardSize(): number
+    +getBoardColor(coordinate: Coordinate): Color
+    +isEmpty(coordinate: Coordinate): boolean
+    +getToken(coordinate: Coordinate): Token
+    +isWinner(color: Color): boolean
+    +isGameOver(): boolean
+    +isValidMove(move: Move): boolean
+    +isCaptureMove(move: Move): boolean
+    +executeMove(move?: Move | undefined): void
+    +goNextTurn(): void
+    +getGame(): Game
+    +hasName(): boolean
+    +getName(): string
+    +setName(name: string): void
+    +register(): void
+    +resetRegistry(): void
+    +goToState(state: StateValue): void
+}
+class SessionController {
+    #session: Session
+}
+class MoveController extends SessionController {
+    +isValidMove(move: Move): boolean
+    +executeMove(move?: Move | undefined): void
+    +isCaptureMove(move: Move): boolean
+    +getCurrentPlayer(): Player
+    +getCurrentPlayerType(): PlayerType
+    +getCurrentPlayerId(): string
+    +getBoardSize(): number
+    +getBoardColor(coordinate: Coordinate): Color
+    +isEmpty(coordinate: Coordinate): boolean
+    +getToken(coordinate: Coordinate): Token
+    +isWinner(color: Color): boolean
+    +isGameOver(): boolean
+    +goNextState(): void
+}
+class RedoController extends SessionController {
+    +isRedoable(): boolean
+    +redo(): void
+}
+class UndoController extends SessionController {
+    +isUndoable(): boolean
+    +undo(): void
+}
+class PlayController implements IAcceptorController {
+    -moveController: MoveController
+    -undoController: UndoController
+    -redoController: RedoController
+    +accept(visitor: IControllerVisitor): void
+    +goNextState(): void
+    +isGameOver(): boolean
+    +getToken(coordinate: Coordinate): Token
+    +isEmpty(coordinate: Coordinate): boolean
+    +getBoardSize(): number
+    +getBoardColor(coordinate: Coordinate): Color
+    +getCurrentPlayerId(): string
+    +getCurrentPlayer(): Player
+    +getCurrentPlayerType(): PlayerType
+    +isValidMove(move: Move): boolean
+    +isCaptureMove(move: Move): boolean
+    +executeMove(move?: Move | undefined): void
+    +isUndoable(): boolean
+    +undo(): void
+    +isRedoable(): boolean
+    +redo(): void
+}
+class ResumeController implements IAcceptorController {
+    -session: Session
+    +accept(controller: IControllerVisitor): void
+    +resume(newGame: boolean): void
+}
+interface ISerializedBoard {
+    +rows: ("0" | "1" | "00" | "11" | "-")[][]
+}
+class BoardDAO {
+    -board: Board
+    +serialize(): ISerializedBoard
+    +load(data: ISerializedBoard): void
+    -decodeToken(encodedToken: "0" | "1" | "00" | "11" | "-"): Token | undefined
+}
+interface ISerializedMove {
+    +token: { isKing: boolean; }
+    +from: string
+    +to: string
+}
+interface ISerializedTurn {
+    +currentPlayer: number
+}
+interface ISerializedGame {
+    +players: { type: PlayerType; color: Color; nextMove?: ISerializedMove | undefined; }[]
+    +turn: ISerializedTurn
+    +board: ISerializedBoard
+}
+class TurnDAO {
+    -turn: Turn
+    +serialize(): ISerializedTurn
+    +load(data: ISerializedTurn): void
+}
+class GameDAO {
+    -turnDAO: TurnDAO
+    -boardDAO: BoardDAO
+    -game: Game
+    +serialize(): ISerializedGame
+    +load(data: ISerializedGame): void
+    -getPlayer(color: Color, type: PlayerType, _nextMove?: ISerializedMove | undefined): AIPlayer | HumanPlayer
+}
+interface ISerializedSession {
+    +game: ISerializedGame
+}
+class SessionDAO {
+    -gameDAO: GameDAO
+    -session: Session
+    +save(name?: string | undefined): void
+    +load(name: string): void
+    +isValidGameName(name: string): boolean
+    +getSavedGamesNames(): string[]
+    -writeToFile(name: string): void
+    -readFromFile(name: string): ISerializedSession
+    -serialize(): ISerializedSession
+    -getNameWithExtension(name: string): string
+    -getNameWithoutExtension(name: string): string
+    -{static} DIR: string
+    -{static} EXTENSION: string
+}
+class SaveController implements IAcceptorController {
+    -sessionDAO: SessionDAO
+    -session: Session
+    +isValidGameName(name: string): boolean
+    +save(name?: string | undefined): void
+    +hasName(): boolean
+    +accept(controller: IControllerVisitor): void
+    +goNextstate(): void
+}
+class StartController implements IAcceptorController {
+    -session: Session
+    -sessionDAO: SessionDAO
+    +setNumPlayers(users: number): void
+    +start(name?: string | undefined): void
+    +accept(controller: IControllerVisitor): void
+    +getSavedGamesNames(): string[]
+}
+interface IControllerVisitor {
+    +visitStartController(controller: StartController): void
+    +visitPlayController(controller: PlayController): void
+    +visitResumeController(controller: ResumeController): void
+    +visitSaveController(controller: SaveController): void
+}
+interface IAcceptorController {
+    +accept(controller: IControllerVisitor): void
+}
+class Logic {
+    -session: Session
+    -controllers: Map<StateValue, IAcceptorController | null>
+    +getController(): IAcceptorController | null
+}
+interface IView {
+    +interact(controller: IAcceptorController): void
+}
+class Console {
+    +clear(): void
+    +readInt(question: string): number
+    +readString(question: string): string
+    +writeln(string?: string): void
+    +writeInln(string?: string): void
+}
+abstract class ConsoleView {
+    #console: Console
+}
+class CellView extends ConsoleView {
+    -cellColor: Color
+    -token: Token
+    +render(): void
+}
+class EmptyCellView extends ConsoleView {
+    -cellColor: Color
+    +render(): void
+}
+class BoardView extends ConsoleView {
+    -controller: PlayController
+    +render(): void
+    -renderRow(row: number): void
+    -renderCell(coordinate: Coordinate): void
+}
+class ResultView extends ConsoleView {
+    -winner: string
+    +render(): void
+}
+class GameView
+class ClosedInterval {
+    -min: number
+    -max: number
+    +includes(value: number): boolean
+}
+abstract class Command {
+    #title: string
+    +{abstract} execute(): void
+    +{abstract} isActive(): boolean
+    +getTitle(): string
+}
+abstract class Menu {
+    -commandList: Command[]
+    +execute(): void
+    #addCommand(command: Command): void
+    -{static} OPTION: string
+}
+enum Strings {
+    Undo
+    Redo
+    Move
+    Exit
+    NewGame
+    LoadGame
+}
+abstract class CheckersCommand<T extends IAcceptorController> extends Command {
+    #acceptorController: T
+}
+class ExitCommand extends CheckersCommand {
+    +execute(): void
+    +isActive(): boolean
+}
+class MoveInputView extends ConsoleView {
+    -controller: PlayController
+    +getMove(): Move
+}
+class MoveCommand extends CheckersCommand {
+    +execute(): void
+    +isActive(): boolean
+}
+class RedoCommand extends CheckersCommand {
+    -playController: PlayController
+    +execute(): void
+    +isActive(): boolean
+}
+class UndoCommand extends CheckersCommand {
+    -playController: PlayController
+    +execute(): void
+    +isActive(): boolean
+}
+class PlayMenu extends Menu
+abstract class PlayerView extends ConsoleView {
+    #controller: PlayController
+    +{abstract} executeNextMove(): void
+}
+class HumanPlayerView extends PlayerView {
+    +executeNextMove(): void
+}
+class AIPlayerView extends PlayerView {
+    +executeNextMove(): void
+}
+class PlayView {
+    +interact(controller: PlayController): void
+    +getPlayerView(controller: PlayController): PlayerView
+}
+class ResumeView extends ConsoleView {
+    +interact(controller: ResumeController): void
+}
+class SaveView extends ConsoleView {
+    +interact(controller: SaveController): void
+}
+class LoadGameCommand extends CheckersCommand {
+    +execute(): void
+    +isActive(): boolean
+}
+class SelectSavedGameMenu extends Menu
+class GameSelectedCommand extends CheckersCommand {
+    +execute(): void
+    +isActive(): boolean
+}
+class ResponseDialog extends ConsoleView {
+    -question: string
+    +askString(): string
+    +askNumber(): number
+}
+class NewGameCommand extends CheckersCommand {
+    +execute(): void
+    +isActive(): boolean
+}
+class StartMenu extends Menu
+class StartView extends ConsoleView {
+    +interact(controller: StartController): void
+}
+class View implements IView, IControllerVisitor {
+    -startView: StartView
+    -playView: PlayView
+    -resumeView: ResumeView
+    -saveView: SaveView
+    +interact(controller: IAcceptorController): void
+    +visitStartController(controller: StartController): void
+    +visitPlayController(controller: PlayController): void
+    +visitResumeController(controller: ResumeController): void
+    +visitSaveController(controller: SaveController): void
+}
+class Checkers {
+    -logic: Logic
+    -view: View
+    +play(): void
+}
+Coordinate --> "1" Direction
+Token --> "1" Color
+Board --> "1" Token
+Board --> "1" Coordinate
+Board --> "1" Color
+Board --> "1" Move
+Move --> "1" Token
+Move --> "1" Coordinate
+Move --> "1" Board
+Player --> "1" Color
+Player --> "1" Board
+Player --> "1" PlayerType
+Player --> "1" Move
+Turn --> "*" Player
+Turn --> "1" PlayerType
+Turn --> "1" Player
+Memento --> "1" Board
+Memento --> "1" Turn
+Memento --> "*" Player
+IMoveAlgorithm --> "1" Color
+IMoveAlgorithm --> "1" Board
+IMoveAlgorithm --> "1" Move
+RandomMoveAlgorithm --> "1" Color
+RandomMoveAlgorithm --> "1" Board
+RandomMoveAlgorithm --> "1" Move
+RandomMoveAlgorithm --> "1" Coordinate
+RandomMoveWithDummyHeuristicAlgorithm --> "1" RandomMoveAlgorithm
+RandomMoveWithDummyHeuristicAlgorithm --> "1" Color
+RandomMoveWithDummyHeuristicAlgorithm --> "1" Board
+RandomMoveWithDummyHeuristicAlgorithm --> "1" Move
+AIPlayer --> "1" IMoveAlgorithm
+AIPlayer --> "1" Move
+AIPlayer --> "1" Board
+HumanPlayer --> "1" Move
+HumanPlayer --> "1" Board
+Game --> "1" Board
+Game --> "1" Turn
+Game --> "*" Player
+Game --> "1" Player
+Game --> "1" PlayerType
+Game --> "1" Coordinate
+Game --> "1" Color
+Game --> "1" Token
+Game --> "1" Move
+Game --> "1" Memento
+GameRegistry --> "*" Memento
+GameRegistry --> "1" Game
+State --> "1" StateValue
+State --> "*" StateValue
+Session --> "1" State
+Session --> "1" Game
+Session --> "1" GameRegistry
+Session --> "1" StateValue
+Session --> "1" Player
+Session --> "1" PlayerType
+Session --> "1" Coordinate
+Session --> "1" Color
+Session --> "1" Token
+Session --> "1" Move
+SessionController --> "1" Session
+MoveController --> "1" Move
+MoveController --> "1" Player
+MoveController --> "1" PlayerType
+MoveController --> "1" Coordinate
+MoveController --> "1" Color
+MoveController --> "1" Token
+PlayController --> "1" MoveController
+PlayController --> "1" UndoController
+PlayController --> "1" RedoController
+PlayController --> "1" IControllerVisitor
+PlayController --> "1" Coordinate
+PlayController --> "1" Token
+PlayController --> "1" Color
+PlayController --> "1" Player
+PlayController --> "1" PlayerType
+PlayController --> "1" Move
+ResumeController --> "1" Session
+ResumeController --> "1" IControllerVisitor
+BoardDAO --> "1" Board
+BoardDAO --> "1" ISerializedBoard
+BoardDAO --> "1" Token
+ISerializedGame --> "1" PlayerType
+ISerializedGame --> "1" Color
+ISerializedGame --> "1" ISerializedMove
+ISerializedGame --> "1" ISerializedTurn
+ISerializedGame --> "1" ISerializedBoard
+TurnDAO --> "1" Turn
+TurnDAO --> "1" ISerializedTurn
+GameDAO --> "1" TurnDAO
+GameDAO --> "1" BoardDAO
+GameDAO --> "1" Game
+GameDAO --> "1" ISerializedGame
+GameDAO --> "1" Color
+GameDAO --> "1" PlayerType
+GameDAO --> "1" ISerializedMove
+GameDAO --> "1" AIPlayer
+GameDAO --> "1" HumanPlayer
+ISerializedSession --> "1" ISerializedGame
+SessionDAO --> "1" GameDAO
+SessionDAO --> "1" Session
+SessionDAO --> "1" ISerializedSession
+SaveController --> "1" SessionDAO
+SaveController --> "1" Session
+SaveController --> "1" IControllerVisitor
+StartController --> "1" Session
+StartController --> "1" SessionDAO
+StartController --> "1" IControllerVisitor
+IControllerVisitor --> "1" StartController
+IControllerVisitor --> "1" PlayController
+IControllerVisitor --> "1" ResumeController
+IControllerVisitor --> "1" SaveController
+IAcceptorController --> "1" IControllerVisitor
+Logic --> "1" Session
+Logic --> "1" StateValue
+Logic --> "1" IAcceptorController
+IView --> "1" IAcceptorController
+ConsoleView --> "1" Console
+CellView --> "1" Color
+CellView --> "1" Token
+EmptyCellView --> "1" Color
+BoardView --> "1" PlayController
+BoardView --> "1" Coordinate
+Menu --> "*" Command
+Menu --> "1" Command
+MoveInputView --> "1" PlayController
+MoveInputView --> "1" Move
+RedoCommand --> "1" PlayController
+UndoCommand --> "1" PlayController
+PlayerView --> "1" PlayController
+PlayView --> "1" PlayController
+PlayView --> "1" PlayerView
+ResumeView --> "1" ResumeController
+SaveView --> "1" SaveController
+StartView --> "1" StartController
+View --> "1" StartView
+View --> "1" PlayView
+View --> "1" ResumeView
+View --> "1" SaveView
+View --> "1" IAcceptorController
+View --> "1" StartController
+View --> "1" PlayController
+View --> "1" ResumeController
+View --> "1" SaveController
+Checkers --> "1" Logic
+Checkers --> "1" View
+@enduml
