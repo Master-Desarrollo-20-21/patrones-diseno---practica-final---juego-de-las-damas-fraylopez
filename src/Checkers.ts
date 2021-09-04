@@ -1,6 +1,6 @@
-import { IAcceptorController } from "./controllers/IAcceptorController";
-import { Logic } from "./controllers/Logic";
-import { View } from "./view/View";
+import { IAcceptorController } from "./contexts/checkers/application/IAcceptorController";
+import { Logic } from "./contexts/checkers/application/Logic";
+import { View } from "./apps/cli/View";
 
 export class Checkers {
   private readonly logic: Logic;
