@@ -3,7 +3,7 @@ import { GameView } from "./models/GameView";
 import { PlayerType } from "../models/player/PlayerType";
 import { HumanPlayerView } from "./models/HumanPlayerView";
 import { PlayerView } from "./models/PlayerView";
-import { AIPlayerView } from "./ai/AIPlayerView";
+import { AIPlayerView } from "./models/AIPlayerView";
 
 export class PlayView {
   interact(controller: PlayController) {

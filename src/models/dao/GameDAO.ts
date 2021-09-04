@@ -1,6 +1,5 @@
 import { Coordinate } from "../../utils/Coordinate";
 import { Color } from "../Color";
-import { Game } from "../Game";
 import { HumanPlayer } from "../player/HumanPlayer";
 import { Move } from "../Move";
 import { PlayerType } from "../player/PlayerType";
@@ -10,6 +9,7 @@ import { ISerializedGame } from "./ISerializedGame";
 import { ISerializedMove } from "./ISerializedMove";
 import { TurnDAO } from "./TurnDAO";
 import { AIPlayer } from "../player/AIPlayer";
+import { Game } from "../Game";
 
 export class GameDAO {
   private readonly turnDAO: TurnDAO;
