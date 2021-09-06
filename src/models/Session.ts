@@ -124,10 +124,15 @@ export class Session {
   }
   getName(): string {
     if (!this.hasName()) {
-      this.name = "Game " + new Date().toLocaleString();
+      this.name = "Game_" + new Date()
+        .toUTCString()
+        .split(",").join("")
+        .split(" ").join("_")
+        ;
     }
     return this.name!;
   }
+
   setName(name: string) {
     this.name = name;
   }

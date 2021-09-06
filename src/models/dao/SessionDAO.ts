@@ -53,7 +53,7 @@ export class SessionDAO {
   }
 
   private readFromFile(name: string): ISerializedSession {
-    const data = fs.readFileSync(`${SessionDAO.DIR}${this.getNameWithExtension(name)}`, "utf-8");
+    const data = fs.readFileSync(this.getPath(name), "utf-8");
     return JSON.parse(data) as ISerializedSession;
   }
 
@@ -61,6 +61,10 @@ export class SessionDAO {
     return {
       game: this.gameDAO.serialize(),
     };
+  }
+
+  private getPath(name: string): string {
+    return `${SessionDAO.DIR}${this.getNameWithExtension(name)}`;
   }
 
   private getNameWithExtension(name: string) {
