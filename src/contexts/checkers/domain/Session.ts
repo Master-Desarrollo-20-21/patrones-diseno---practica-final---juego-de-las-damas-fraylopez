@@ -132,6 +132,7 @@ export class Session {
     }
     return this.name!;
   }
+
   setName(name: string) {
     this.name = name;
   }
