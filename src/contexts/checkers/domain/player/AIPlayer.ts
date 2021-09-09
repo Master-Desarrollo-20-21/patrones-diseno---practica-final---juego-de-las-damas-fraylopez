@@ -1,4 +1,4 @@
-import { ConfigurableDependencies } from "../../infrastructure/RepositoryProvider";
+import { ConfigurableDependencies } from "../../infrastructure/ConfigurableDependencies";
 import { Board } from "../Board";
 import { Color } from "../Color";
 import { IMoveAlgorithm } from "../IMoveAlgorithm";

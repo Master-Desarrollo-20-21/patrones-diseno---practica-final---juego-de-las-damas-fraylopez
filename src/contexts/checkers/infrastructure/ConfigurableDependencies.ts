@@ -4,6 +4,7 @@ import { RandomMoveWithDummyHeuristicAlgorithm } from "../domain/RandomMoveWithD
 import { Session } from "../domain/Session";
 import { SessionDAO } from "./dao/SessionDAO";
 
+//aka Factory, aka ServiceLocator
 export class ConfigurableDependencies {
   private static _instance: ConfigurableDependencies;
 

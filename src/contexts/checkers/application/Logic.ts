@@ -1,6 +1,6 @@
 import { Session } from "../domain/Session";
 import { StateValue } from "../domain/StateValue";
-import { ConfigurableDependencies } from "../infrastructure/RepositoryProvider";
+import { ConfigurableDependencies } from "../infrastructure/ConfigurableDependencies";
 import { IAcceptorController } from "./IAcceptorController";
 import { PlayController } from "./PlayController";
 import { ResumeController } from "./ResumeController";
