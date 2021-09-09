@@ -1,19 +1,20 @@
 import { Session } from "../domain/Session";
 import { IAcceptorController } from "./IAcceptorController";
 import { IControllerVisitor } from "./IControllerVisitor";
-import { SessionDAO } from "../infrastructure/dao/SessionDAO";
+import { InMemorySessionRepository } from "../infrastructure/memory/InMemorySessionRepository";
+import { ISessionRepository } from "../domain/ISessionRepository";
 
 export class SaveController implements IAcceptorController {
-  private readonly sessionDAO: SessionDAO;
+  private readonly repository: ISessionRepository;
   constructor(private readonly session: Session) {
-    this.sessionDAO = new SessionDAO(session);
+    this.repository = new InMemorySessionRepository(session);
   }
 
   isValidGameName(name: string): boolean {
-    return this.sessionDAO.isValidGameName(name);
+    return this.repository.isValidGameName(name);
   }
   save(name?: string) {
-    this.sessionDAO.save(name);
+    this.repository.save(name);
   }
   hasName(): boolean {
     return this.session.hasName();
