@@ -1,8 +1,8 @@
+import { ConfigurableDependencies } from "../../infrastructure/RepositoryProvider";
 import { Board } from "../Board";
 import { Color } from "../Color";
 import { IMoveAlgorithm } from "../IMoveAlgorithm";
 import { Move } from "../Move";
-import { RandomMoveWithDummyHeuristicAlgorithm } from "../RandomMoveWithDummyHeuristicAlgorithm";
 import { Player } from "./Player";
 import { PlayerType } from "./PlayerType";
 
@@ -16,7 +16,7 @@ export class AIPlayer extends Player {
     nextMove?: Move,
   ) {
     super(color, board, type, nextMove);
-    this.algorithm = new RandomMoveWithDummyHeuristicAlgorithm(100);
+    this.algorithm = ConfigurableDependencies.getInstance().getAIMoveAlgorithm();
   }
 
   getNextMove(): Move {
