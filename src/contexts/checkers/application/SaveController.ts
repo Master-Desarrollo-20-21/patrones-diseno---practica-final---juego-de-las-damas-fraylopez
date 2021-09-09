@@ -1,14 +1,13 @@
 import { Session } from "../domain/Session";
 import { IAcceptorController } from "./IAcceptorController";
 import { IControllerVisitor } from "./IControllerVisitor";
-import { InMemorySessionRepository } from "../infrastructure/memory/InMemorySessionRepository";
 import { ISessionRepository } from "../domain/ISessionRepository";
 
 export class SaveController implements IAcceptorController {
-  private readonly repository: ISessionRepository;
-  constructor(private readonly session: Session) {
-    this.repository = new InMemorySessionRepository(session);
-  }
+  constructor(
+    private readonly session: Session,
+    private readonly repository: ISessionRepository
+  ) { }
 
   isValidGameName(name: string): boolean {
     return this.repository.isValidGameName(name);

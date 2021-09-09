@@ -1,6 +1,6 @@
 import { Session } from "../domain/Session";
 import { StateValue } from "../domain/StateValue";
-import { InMemorySessionRepository } from "../infrastructure/memory/InMemorySessionRepository";
+import { ConfigurableDependencies } from "../infrastructure/RepositoryProvider";
 import { IAcceptorController } from "./IAcceptorController";
 import { PlayController } from "./PlayController";
 import { ResumeController } from "./ResumeController";
@@ -14,15 +14,11 @@ export class Logic {
   constructor() {
     this.session = new Session();
     this.controllers = new Map();
-    // this.controllers.set(StateValue.Initial, new StartController(this.session, new SessionDAO(this.session)));
-    this.controllers.set(
-      StateValue.Initial,
-      new StartController(
-        this.session,
-        new InMemorySessionRepository(this.session))
-    );
+    const sessionRepository = ConfigurableDependencies.getInstance()
+      .getSessionRepository(this.session);
+    this.controllers.set(StateValue.Initial, new StartController(this.session, sessionRepository));
     this.controllers.set(StateValue.InGame, new PlayController(this.session));
-    this.controllers.set(StateValue.Saving, new SaveController(this.session));
+    this.controllers.set(StateValue.Saving, new SaveController(this.session, sessionRepository));
     this.controllers.set(StateValue.Resume, new ResumeController(this.session));
     this.controllers.set(StateValue.Exit, null);
   }
