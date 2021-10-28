@@ -1,5 +1,5 @@
 import { MongoClient } from "mongodb";
-import { IAsyncSessionRepository, ISessionRepository } from "../../domain/ISessionRepository";
+import { IAsyncSessionRepository } from "../../domain/ISessionRepository";
 import { Session } from "../../domain/Session";
 import { MongoMemoryServer } from 'mongodb-memory-server';
 
