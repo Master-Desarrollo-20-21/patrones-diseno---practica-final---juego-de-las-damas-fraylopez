@@ -5,6 +5,7 @@
   - [Edit use case view](#edit)
 - [Analysis](#analysis)
   - [Packages](#packages)
+  - [Hexagonal Atchitecture](#hex-arch)
 - [UI Prototype](#player-ui-prototype)
   - [Player](#player-ui-prototype)
   - [AI Trainer](#aitrainer-ui-prototype)
@@ -16,7 +17,7 @@
 ![packages](output/ArchitecturePackages.png)
 ### Hexagonal Atchitecture
 
-![packages](output/ArchHexPackage.png)
+![hex-arch](output/ArchHexPackage.png)
 
 ## Use cases
 

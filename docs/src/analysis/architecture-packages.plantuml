@@ -2,13 +2,13 @@
 package apps #DDDDDD {
   package player-app #DDDDDD { }
   package ai-trainer-app #DDDDDD { }
-  package ... #DDDDDD { }
+  package some-other-app #DDDDDD { }
 }
 
 package contexts #DDDDDD {
   package player #DDDDDD {  }
   package ai-trainer #DDDDDD {  }
-  package ... #DDDDDD {  }
+  package some-other #DDDDDD {  }
 }
 apps ..> contexts
 
