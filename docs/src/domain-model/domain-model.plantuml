@@ -11,30 +11,41 @@ Player o-down-> "0..12" Piece
 Player o-down-> Move
 Player *-down-> Color
 
-Piece *-down-> Type
-Piece *-down-> Color
-Type *-down-> King
-Type *-down-> Men
+Piece *--> Type
+Piece *--> Color
+King -up-|> Type
+Men -up-|> Type
 
-Men ..> "1" Length
-King ..> "1..8" Length
+Men ..> "1..2" Length : "can jump"
+King ..> "1..8" Length : "can jump"
+Men ..> "1" Vector : "towards"
+King ..> "1.2" Vector : "towards"
 
-Color <|-down- X
-Color <|-down- O
+White -up-|> Color
+Black -up-|> Color
 
 Jump <.. "1..n" Move
-Jump ..> "0..8" Length
+Jump ..> "1..8" Length
 
 Board *-down-> "8x8" Square
 Square *-down-> Coordinate
 Square o-down-> "0..1" Piece
 
 Move .down.> Piece
+Move .down.> Vector
+Vector .down.> Color
+
 Jump .down.> Square : origin
 Jump .down.> Square : target
 
 Coordinate *-down-> Row
 Coordinate *-down-> Column
+
+AIPlayer --|> Player
+AIPlayer *--> Configuration
+AITrainer --> Configuration
+
+note bottom of Vector: "Towards White/Black side"
 
 @enduml
 

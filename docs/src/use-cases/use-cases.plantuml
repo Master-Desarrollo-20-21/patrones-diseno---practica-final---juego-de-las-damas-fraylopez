@@ -6,7 +6,7 @@ actor AITrainer
 AITrainer -down-|> Player
 
 usecase Start
-usecase Play
+usecase Move
 usecase Resume
 usecase Undo
 usecase Redo
@@ -18,7 +18,7 @@ usecase ReadConfig
 usecase EditConfig
 
 Player --> Start
-Player --> Play
+Player --> Move
 Player --> Undo
 Player --> Redo
 Player --> Exit
