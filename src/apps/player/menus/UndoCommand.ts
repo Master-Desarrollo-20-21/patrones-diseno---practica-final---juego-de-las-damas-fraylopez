@@ -1,4 +1,4 @@
-import { PlayController } from "../../../contexts/checkers/application/PlayController";
+import { PlayController } from "../../../contexts/player/application/PlayController";
 import { GameView } from "../models/GameView";
 import { Strings } from "../models/Strings";
 import { CheckersCommand } from "./Command";

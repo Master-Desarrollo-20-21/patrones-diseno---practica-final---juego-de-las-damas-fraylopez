@@ -1,4 +1,4 @@
-import { StartController } from "../../../contexts/checkers/application/StartController";
+import { StartController } from "../../../contexts/player/application/StartController";
 import { Menu } from "../utils/Menu";
 import { LoadGameCommand } from "./LoadGameCommand";
 import { NewGameCommand } from "./NewGameCommand";

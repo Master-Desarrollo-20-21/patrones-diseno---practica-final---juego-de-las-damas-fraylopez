@@ -1,5 +1,5 @@
-import { PlayController } from "../../../contexts/checkers/application/PlayController";
-import { Coordinate } from "../../../contexts/checkers/_shared/Coordinate";
+import { PlayController } from "../../../contexts/player/application/PlayController";
+import { Coordinate } from "../../../contexts/player/_shared/Coordinate";
 import { CellView } from "./CellView";
 import { ConsoleView } from "./ConsoleView";
 import { EmptyCellView } from "./EmptyCellView";

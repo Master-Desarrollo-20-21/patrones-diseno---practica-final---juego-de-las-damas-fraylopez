@@ -1,6 +1,6 @@
-import { PlayController } from "../../contexts/checkers/application/PlayController";
+import { PlayController } from "../../contexts/player/application/PlayController";
 import { GameView } from "./models/GameView";
-import { PlayerType } from "../../contexts/checkers/domain/player/PlayerType";
+import { PlayerType } from "../../contexts/player/domain/player/PlayerType";
 import { HumanPlayerView } from "./models/HumanPlayerView";
 import { PlayerView } from "./models/PlayerView";
 import { AIPlayerView } from "./models/AIPlayerView";

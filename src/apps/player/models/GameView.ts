@@ -1,4 +1,4 @@
-import { PlayController } from "../../../contexts/checkers/application/PlayController";
+import { PlayController } from "../../../contexts/player/application/PlayController";
 import { BoardView } from "./BoardView";
 import { ResultView } from "./ResultView";
 

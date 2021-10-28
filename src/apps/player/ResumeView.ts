@@ -1,4 +1,4 @@
-import { ResumeController } from "../../contexts/checkers/application/ResumeController";
+import { ResumeController } from "../../contexts/player/application/ResumeController";
 import { ConsoleView } from "./models/ConsoleView";
 
 export class ResumeView extends ConsoleView {

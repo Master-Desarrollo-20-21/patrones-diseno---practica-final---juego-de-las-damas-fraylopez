@@ -1,4 +1,4 @@
-import { ClosedInterval } from "../../../contexts/checkers/_shared/ClosedInterval";
+import { ClosedInterval } from "../../../contexts/player/_shared/ClosedInterval";
 import { Command } from "./Command";
 import { Console } from "./Console";
 

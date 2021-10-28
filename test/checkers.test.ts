@@ -1,7 +1,7 @@
-import { PlayView } from "../src/apps/cli/PlayView";
-import { PlayController } from "../src/contexts/checkers/application/PlayController";
-import { Color } from "../src/contexts/checkers/domain/Color";
-import { Session } from "./../src/contexts/checkers/domain/Session";
+import { PlayView } from "../src/apps/player/PlayView";
+import { PlayController } from "../src/contexts/player/application/PlayController";
+import { Color } from "../src/contexts/player/domain/Color";
+import { Session } from "../src/contexts/player/domain/Session";
 import { expect } from "chai";
 describe('checkers tests', () => {
   let session: Session;

@@ -1,5 +1,5 @@
-import { PlayController } from "../../../contexts/checkers/application/PlayController";
-import { Move } from "../../../contexts/checkers/domain/Move";
+import { PlayController } from "../../../contexts/player/application/PlayController";
+import { Move } from "../../../contexts/player/domain/Move";
 import { MoveInputView } from "../models/MoveInputView";
 import { Strings } from "../models/Strings";
 import { CheckersCommand } from "./Command";

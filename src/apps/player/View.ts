@@ -1,9 +1,9 @@
-import { IAcceptorController } from "../../contexts/checkers/application/IAcceptorController";
-import { IControllerVisitor } from "../../contexts/checkers/application/IControllerVisitor";
-import { PlayController } from "../../contexts/checkers/application/PlayController";
-import { ResumeController } from "../../contexts/checkers/application/ResumeController";
-import { SaveController } from "../../contexts/checkers/application/SaveController";
-import { StartController } from "../../contexts/checkers/application/StartController";
+import { IAcceptorController } from "../../contexts/player/application/IAcceptorController";
+import { IControllerVisitor } from "../../contexts/player/application/IControllerVisitor";
+import { PlayController } from "../../contexts/player/application/PlayController";
+import { ResumeController } from "../../contexts/player/application/ResumeController";
+import { SaveController } from "../../contexts/player/application/SaveController";
+import { StartController } from "../../contexts/player/application/StartController";
 import { IView } from "./IView";
 import { PlayView } from "./PlayView";
 import { ResumeView } from "./ResumeView";

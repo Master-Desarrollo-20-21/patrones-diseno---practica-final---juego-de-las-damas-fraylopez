@@ -1,4 +1,4 @@
-import { PlayController } from "../../../contexts/checkers/application/PlayController";
+import { PlayController } from "../../../contexts/player/application/PlayController";
 import { Menu } from "../utils/Menu";
 import { ExitCommand } from "./ExitCommand";
 import { MoveCommand } from "./MoveCommand";

@@ -1,6 +1,6 @@
-import { PlayController } from "../../../contexts/checkers/application/PlayController";
-import { Move } from "../../../contexts/checkers/domain/Move";
-import { Coordinate } from "../../../contexts/checkers/_shared/Coordinate";
+import { PlayController } from "../../../contexts/player/application/PlayController";
+import { Move } from "../../../contexts/player/domain/Move";
+import { Coordinate } from "../../../contexts/player/_shared/Coordinate";
 import { ConsoleView } from "./ConsoleView";
 
 export class MoveInputView extends ConsoleView {

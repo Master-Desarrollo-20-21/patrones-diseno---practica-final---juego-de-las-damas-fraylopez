@@ -1,5 +1,5 @@
 import { Checkers } from "./Checkers";
-import { MongoServer } from "./contexts/checkers/infrastructure/mongo/MongoServer";
+import { MongoServer } from "./contexts/player/infrastructure/mongo/MongoServer";
 
 console.log("initializing...");
 

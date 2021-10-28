@@ -1,4 +1,4 @@
-import { StartController } from "../../../contexts/checkers/application/StartController";
+import { StartController } from "../../../contexts/player/application/StartController";
 import { Menu } from "../utils/Menu";
 import { Strings } from "../models/Strings";
 import { CheckersCommand } from "./Command";

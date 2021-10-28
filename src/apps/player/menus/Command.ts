@@ -1,4 +1,4 @@
-import { IAcceptorController } from "../../../contexts/checkers/application/IAcceptorController";
+import { IAcceptorController } from "../../../contexts/player/application/IAcceptorController";
 import { Command } from "../utils/Command";
 
 export abstract class CheckersCommand<T extends IAcceptorController> extends Command {

@@ -1,4 +1,4 @@
-import { Color } from "../../../contexts/checkers/domain/Color";
+import { Color } from "../../../contexts/player/domain/Color";
 import { ConsoleView } from "./ConsoleView";
 
 

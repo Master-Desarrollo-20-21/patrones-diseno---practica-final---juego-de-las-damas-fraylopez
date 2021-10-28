@@ -1,4 +1,4 @@
-import { SaveController } from "../../contexts/checkers/application/SaveController";
+import { SaveController } from "../../contexts/player/application/SaveController";
 import { ConsoleView } from "./models/ConsoleView";
 
 export class SaveView extends ConsoleView {

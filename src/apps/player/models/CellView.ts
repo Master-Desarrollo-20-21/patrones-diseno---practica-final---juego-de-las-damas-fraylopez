@@ -1,5 +1,5 @@
-import { Color } from "../../../contexts/checkers/domain/Color";
-import { Token } from "../../../contexts/checkers/domain/Token";
+import { Color } from "../../../contexts/player/domain/Color";
+import { Token } from "../../../contexts/player/domain/Token";
 import { ConsoleView } from "./ConsoleView";
 
 

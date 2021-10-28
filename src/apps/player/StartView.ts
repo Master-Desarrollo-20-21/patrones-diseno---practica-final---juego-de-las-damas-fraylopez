@@ -1,4 +1,4 @@
-import { StartController } from "../../contexts/checkers/application/StartController";
+import { StartController } from "../../contexts/player/application/StartController";
 import { StartMenu } from "./menus/StartMenu";
 import { ConsoleView } from "./models/ConsoleView";
 

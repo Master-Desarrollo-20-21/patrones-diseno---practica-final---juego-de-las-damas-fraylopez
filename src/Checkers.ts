@@ -1,6 +1,6 @@
-import { IAcceptorController } from "./contexts/checkers/application/IAcceptorController";
-import { Logic } from "./contexts/checkers/application/Logic";
-import { View } from "./apps/cli/View";
+import { IAcceptorController } from "./contexts/player/application/IAcceptorController";
+import { Logic } from "./contexts/player/application/Logic";
+import { View } from "./apps/player/View";
 
 export class Checkers {
   private readonly logic: Logic;
