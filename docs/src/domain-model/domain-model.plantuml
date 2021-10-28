@@ -1,0 +1,49 @@
+@startuml DomainModel
+
+Checkers *-down-> "2" Player
+Checkers *-down-> Board
+Checkers *-down-> Turn
+
+Turn -down-> "2" Player
+
+Player -down-> Board
+Player o-down-> "0..8" Piece
+Player o-down-> Move
+Player *-down-> Color
+
+Piece *-down-> Type
+Piece *-down-> Color
+Type *-down-> King
+Type *-down-> Men
+
+Men ..> "1" Length
+King ..> "1..8" Length
+
+Color <|-down- X
+Color <|-down- O
+
+Jump <.. "1..n" Move
+Jump ..> "0..8" Length
+
+Board *-down-> "8x8" Square
+Square *-down-> Coordinate
+Square o-down-> "0..1" Piece
+
+Move .down.> Piece
+Jump .down.> Square : origin
+Jump .down.> Square : target
+
+Coordinate *-down-> Row
+Coordinate *-down-> Column
+
+@enduml
+
+@startuml Instrucciones
+state A as " "
+state B as " "
+[*] --> A
+A --> B : move White
+B --> A : move Black
+A --> [*] : [WinBlack]
+B --> [*] : [WinWhite]
+@enduml
