@@ -1,0 +1,29 @@
+@startuml UseCases
+left to right direction
+actor Player
+actor AITrainer
+
+AITrainer -down-|> Player
+
+usecase Start
+usecase Play
+usecase Resume
+usecase Undo
+usecase Redo
+usecase Exit
+usecase Save
+usecase Load
+
+usecase Edit
+
+Player --> Start
+Player --> Play
+Player --> Undo
+Player --> Redo
+Player --> Exit
+Player --> Save
+Player --> Resume
+Player --> Load
+
+AITrainer --> Edit
+@enduml

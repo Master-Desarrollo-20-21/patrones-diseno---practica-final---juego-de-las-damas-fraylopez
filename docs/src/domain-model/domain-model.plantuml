@@ -7,7 +7,7 @@ Checkers *-down-> Turn
 Turn -down-> "2" Player
 
 Player -down-> Board
-Player o-down-> "0..8" Piece
+Player o-down-> "0..12" Piece
 Player o-down-> Move
 Player *-down-> Color
 

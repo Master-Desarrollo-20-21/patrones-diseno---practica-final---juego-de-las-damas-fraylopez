@@ -1,3 +1,18 @@
+# Checkers requirements
+
+
+- [Use cases](#use-cases)
+  - [Edit use case view](#edit)
+- [UI Prototype](#ui-prototype)
+
+
+## Use cases
+
+![use-cases](output/UseCases.png)
+
+## Edit use case view
+![edit](output/StateDiagramFluxEditState.png)
+
 ## UI Prototype
 
 ```

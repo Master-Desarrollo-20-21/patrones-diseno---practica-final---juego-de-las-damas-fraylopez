@@ -1,0 +1,14 @@
+@startuml StateDiagramFluxEditState
+state INITIAL
+state EDIT as "EDIT"
+state if <<choice>>
+state SAVE as "SAVE"
+
+[*] --> INITIAL
+INITIAL --> EDIT: AITrainer requests to load current configuration values
+EDIT --> PLAY: System shows new game board with new configuration
+PLAY --> if
+if  --> SAVE :[win]
+if  --> EDIT: [loose]
+SAVE --> [*]
+@enduml
