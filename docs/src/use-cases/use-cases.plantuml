@@ -14,7 +14,8 @@ usecase Exit
 usecase Save
 usecase Load
 
-usecase Edit
+usecase ReadConfig
+usecase EditConfig
 
 Player --> Start
 Player --> Play
@@ -25,5 +26,6 @@ Player --> Save
 Player --> Resume
 Player --> Load
 
-AITrainer --> Edit
+AITrainer --> ReadConfig
+AITrainer --> EditConfig
 @enduml
