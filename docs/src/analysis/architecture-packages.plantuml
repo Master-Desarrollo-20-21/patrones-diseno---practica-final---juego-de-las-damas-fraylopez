@@ -1,0 +1,34 @@
+@startuml ArchitecturePackages
+package apps #DDDDDD {
+  package player-app #DDDDDD { }
+  package ai-trainer-app #DDDDDD { }
+  package ... #DDDDDD { }
+}
+
+package contexts #DDDDDD {
+  package player #DDDDDD {  }
+  package ai-trainer #DDDDDD {  }
+  package ... #DDDDDD {  }
+}
+apps ..> contexts
+
+@enduml
+
+
+@startuml ArchHexPackage
+  package some-app #DDDDDD {
+    package framework #DDDDDD {}
+  }
+  package some-context #DDDDDD {
+    package application #DDDDDD { }
+    package domain #DDDDDD { }
+    package infrastructure #DDDDDD { }
+}
+
+framework ..> application
+application ..> domain
+application ..> infrastructure
+
+infrastructure ..|> domain
+
+@enduml

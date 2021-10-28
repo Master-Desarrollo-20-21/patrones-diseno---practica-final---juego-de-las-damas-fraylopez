@@ -3,10 +3,20 @@
 
 - [Use cases](#use-cases)
   - [Edit use case view](#edit)
+- [Analysis](#analysis)
+  - [Packages](#packages)
 - [UI Prototype](#player-ui-prototype)
   - [Player](#player-ui-prototype)
   - [AI Trainer](#aitrainer-ui-prototype)
 
+
+## Analysis
+### Packages
+
+![packages](output/ArchitecturePackages.png)
+### Hexagonal Atchitecture
+
+![packages](output/ArchHexPackage.png)
 
 ## Use cases
 
