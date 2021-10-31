@@ -28,6 +28,5 @@
   },
   "scripts": {
     "test": "mocha",
-    "docs": "rm -rf ./docs/output/ && plantuml  -o /home/victor/Documents/luis/ejercicios/checkers/docs/output/ ./docs/src/**/*.plantuml "
   }
 }
