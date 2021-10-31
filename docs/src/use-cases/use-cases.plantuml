@@ -15,7 +15,8 @@ usecase Save
 usecase Load
 
 usecase ReadConfig
-usecase EditConfig
+usecase TestNewConfig
+usecase SaveConfig
 
 Player --> Start
 Player --> Move
@@ -27,5 +28,8 @@ Player --> Resume
 Player --> Load
 
 AITrainer --> ReadConfig
-AITrainer --> EditConfig
+AITrainer --> TestNewConfig
+AITrainer --> SaveConfig
+
+TestNewConfig --> Start :"include"
 @enduml

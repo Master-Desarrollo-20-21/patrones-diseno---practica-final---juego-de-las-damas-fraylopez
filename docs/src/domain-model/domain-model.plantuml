@@ -1,51 +1,61 @@
 @startuml DomainModel
 
-Checkers *-down-> "2" Player
-Checkers *-down-> Board
-Checkers *-down-> Turn
+package Game {
+  Checkers *-down-> "2" Player
+  Checkers *-down-> Board
+  Checkers *-down-> Turn
 
-Turn -down-> "2" Player
+  Turn -down-> "2" Player
 
-Player -down-> Board
-Player o-down-> "0..12" Piece
-Player o-down-> Move
-Player *-down-> Color
+  Player -down-> Board
+  Player o-down-> "0..12" Piece
+  Player o-down-> Move
+  Player *-down-> Color
 
-Piece *--> Type
-Piece *--> Color
-King -up-|> Type
-Men -up-|> Type
+  Piece *--> Type
+  Piece *--> Color
+  King -up-|> Type
+  Men -up-|> Type
 
-Men ..> "1..2" Length : "can jump"
-King ..> "1..8" Length : "can jump"
-Men ..> "1" Vector : "towards"
-King ..> "1.2" Vector : "towards"
+  Men ..> "1..2" Length : "max"
+  King ..> "1..8" Length : "max"
+  Men ..> "1" Vector : "towards"
+  King ..> "1.2" Vector : "towards"
 
-White -up-|> Color
-Black -up-|> Color
+  White -up-|> Color
+  Black -up-|> Color
 
-Jump <.. "1..n" Move
-Jump ..> "1..8" Length
+  Move *--> "1..n" Jump
+  Jump ..> "1..8" Length
+  Jump .down.> Vector
 
-Board *-down-> "8x8" Square
-Square *-down-> Coordinate
-Square o-down-> "0..1" Piece
+  enum Vector {
+    Up
+    Down
+  }
+  Jump ..> Vector
 
-Move .down.> Piece
-Move .down.> Vector
-Vector .down.> Color
+  Board *-down-> "8x8" Square
+  Square *-down-> Coordinate
+  Square o-down-> "0..1" Piece
 
-Jump .down.> Square : origin
-Jump .down.> Square : target
+  Move .down.> Piece
 
-Coordinate *-down-> Row
-Coordinate *-down-> Column
+  Jump .down.> Square : origin
+  Jump .down.> Square : target
 
-AIPlayer --|> Player
-AIPlayer *--> Configuration
-AITrainer --> Configuration
+  Coordinate *-down-> Row
+  Coordinate *-down-> Column
 
-note bottom of Vector: "Towards White/Black side"
+  AIPlayer -up-|> Player
+}
+
+package AITraining {
+  Configuration --> Difficulty
+  AIPlayer -up-|> Player
+  AIPlayer --> Configuration
+  AITrainer --> Configuration
+}
 
 @enduml
 
