@@ -1,9 +1,11 @@
 @startuml DomainModel
 
+
 package Game {
   Checkers *-down-> "2" Player
   Checkers *-down-> Board
   Checkers *-down-> Turn
+  Checkers *-down-> Configuration
 
   Turn -down-> "2" Player
 
@@ -12,28 +14,33 @@ package Game {
   Player o-down-> Move
   Player *-down-> Color
 
-  Piece *--> Type
   Piece *--> Color
-  King -up-|> Type
-  Men -up-|> Type
+  King -up-|> Piece
+  Men -up-|> Piece
 
-  Men ..> "1..2" Length : "max"
-  King ..> "1..8" Length : "max"
-  Men ..> "1" Vector : "towards"
-  King ..> "1.2" Vector : "towards"
+  Men ..> Jump : "max 2"
+
+  King ..>  Jump : "max 8"
+  ' Men ..> "1" Vector : "towards"
+  ' King ..> "1.2" Vector : "towards"
 
   White -up-|> Color
   Black -up-|> Color
 
   Move *--> "1..n" Jump
-  Jump ..> "1..8" Length
-  Jump .down.> Vector
+  Jump *..> "1..8" Length
+  Jump -down-> Vector
 
-  enum Vector {
-    Up
-    Down
-  }
+'   enum Vector {
+'     Forward,
+'     Backwards,
+'   }
+'  note left : "Sentido en castellano"
+
   Jump ..> Vector
+
+  ' JumpKing -up-|> Jump
+  ' JumpMan -up-|> Jump
 
   Board *-down-> "8x8" Square
   Square *-down-> Coordinate
@@ -48,14 +55,20 @@ package Game {
   Coordinate *-down-> Column
 
   AIPlayer -up-|> Player
+
+  Configuration --> Difficulty
 }
 
 package AITraining {
-  Configuration --> Difficulty
-  AIPlayer -up-|> Player
   AIPlayer --> Configuration
-  AITrainer --> Configuration
+  AITrainer --> Configuration : "configure"
 }
+
+
+
+' dominio distinto AITrainer/Game o el mismo?
+' simulamos que el dominio AITraining es grande y complejo
+'
 
 @enduml
 

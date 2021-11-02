@@ -1,0 +1,40 @@
+@startuml AITrainerContextDiagram
+title AITrainer Context Diagram
+state INITIAL
+state IN_GAME
+state OPENED_CONFIGURATION
+state GAME_FINISHED
+INITIAL --> OPENED_CONFIGURATION
+    note on link
+        ReadConfig
+    end note
+
+OPENED_CONFIGURATION --> IN_GAME
+    note on link
+        EditConfig
+    end note
+IN_GAME --> IN_GAME
+    note on link
+        Move
+        Undo
+        Redo
+        Resume
+    end note
+IN_GAME --> GAME_FINISHED
+    note on link
+        Move
+    end note
+IN_GAME --> [*]
+    note on link
+        Exit
+    end note
+GAME_FINISHED --> INITIAL
+    note on link
+        Save
+        Start
+    end note
+GAME_FINISHED --> [*]
+    note on link
+        Exit
+    end note
+@enduml

@@ -1,0 +1,41 @@
+@startuml StateDiagramFluxEditConfigState
+title GameContextDiagram
+state INITIAL
+state IN_GAME
+state GAME_FINISHED
+state IN_EXIT
+
+INITIAL --> IN_GAME
+    note on link
+        Start
+        Load
+    end note
+IN_GAME --> IN_GAME
+    note on link
+        Move
+        Undo
+        Redo
+        Resume
+    end note
+IN_GAME --> GAME_FINISHED
+    note on link
+        Move
+    end note
+IN_GAME --> IN_EXIT
+    note on link
+        Exit
+    end note
+IN_EXIT --> [*]
+    note on link
+        Save
+    end note
+
+GAME_FINISHED --> INITIAL
+    note on link
+        Start
+    end note
+GAME_FINISHED --> IN_EXIT
+    note on link
+        Exit
+    end note
+@enduml
