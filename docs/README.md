@@ -178,6 +178,11 @@ Player Black won!
 
 Save Configuration? (y/n): y
 
+-------------------
+
+Assign difficulty to this configuration(1-10): 6
+Done!
+
 ```
 
 ## Analysis
