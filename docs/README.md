@@ -28,6 +28,10 @@ Option? [1-2]: 1
 How many players?1
 
 -------------------
+
+Select difficulty? [1-8]: 1
+
+-------------------
      columns
    0 1 2 3 4 5 6 7
 0 ██● ██● ██● ██●
