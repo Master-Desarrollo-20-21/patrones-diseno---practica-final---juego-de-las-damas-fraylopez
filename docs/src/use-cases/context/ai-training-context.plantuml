@@ -1,9 +1,10 @@
 @startuml AITrainerContextDiagram
-title AITrainer Context Diagram
+title AITraining Context Diagram
 state INITIAL
 state IN_GAME
 state GAME_FINISHED
 state IF <<choice>>
+state IF2 <<choice>>
 
 [*] --> INITIAL
 
@@ -31,18 +32,27 @@ IN_GAME --> GAME_FINISHED
 IN_EXIT -->IF
 IF -->[*]
     note on link
-        Save
+        SaveGame
     end note
 
-IF --> [*]
+IF --> [*] : [exit without save]
 
 IN_GAME -->IN_EXIT
     note on link
         Exit
     end note
-GAME_FINISHED --> IN_EXIT
+
+GAME_FINISHED --> IF2 : [loose]
+
+IF2 --> IN_GAME
     note on link
-        Exit
+        Restart
     end note
+
+GAME_FINISHED --> [*] : [won]
+    note on link
+        SaveConfig
+    end note
+IF2 --> [*]
 
 @enduml

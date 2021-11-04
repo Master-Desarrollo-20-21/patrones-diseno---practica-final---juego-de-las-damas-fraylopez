@@ -7,27 +7,31 @@ AITrainer -down-|> Player
 
 usecase Start
 usecase Move
-usecase Resume
+usecase Restart
 usecase Undo
 usecase Redo
 usecase Exit
-usecase Save
+usecase SaveGame
 usecase Load
 
-usecase ReadConfig
-usecase EditConfig
+
 
 Player --> Start
 Player --> Move
 Player --> Undo
 Player --> Redo
 Player --> Exit
-Player --> Save
-Player --> Resume
+Player --> SaveGame
+Player --> Restart
 Player --> Load
+
+usecase ReadConfig
+usecase EditConfig
+usecase SaveConfig
 
 AITrainer --> ReadConfig
 AITrainer --> EditConfig
 
 EditConfig ..> Start :"include"
+EditConfig <.. SaveConfig :"extends"
 @enduml

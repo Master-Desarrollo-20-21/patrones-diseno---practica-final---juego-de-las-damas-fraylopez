@@ -1,5 +1,5 @@
 @startuml
-title EditConfig Usecase Specification
+title EditConfigUsecaseSpecification
 skinparam NoteBackgroundColor white
 hide empty description
 
@@ -9,6 +9,10 @@ state Start
 
 state state1 as " "
 state state2 as " "
+state state3 as " "
+state state4 as " "
+state state5 as " "
+state state6 as " "
 
 
 [*] --> INIT
@@ -40,6 +44,49 @@ note on link #white
   * Test config
 end note
 
-Start --> IN_GAME
+Start -[#green]-> IN_GAME
+IN_GAME -[#green]-> state3 : [won]
+
+state3 -[#green]-> state4
+note on link #white
+  <b>System allows to
+  * Save config
+end note
+
+state4 -[#green]-> SaveConfig
+note on link #white
+  <b>AITrainer request to
+  * Save config
+end note
+
+state4 -[#red]-> [*]
+note on link #white
+  <b>AITrainer request to
+  * Exit without save
+end note
+
+IN_GAME -[#red]-> state5 : [loose]
+
+state5 -[#red]-> state6
+note on link #white
+  <b>System allows
+  * Restart
+  * Exit
+end note
+
+state6 -[#red]-> Restart
+note on link #white
+  <b>AITrainer request to
+  * Restart
+end note
+
+Restart -[#red]-> IN_GAME
+
+state6 -[#red]-> [*]
+note on link #white
+  <b>AITrainer request to
+  * Exit
+end note
+
 
 @enduml

@@ -19,7 +19,7 @@ IN_GAME --> IN_GAME
         Move
         Undo
         Redo
-        Resume
+        ' Resume
     end note
 IN_GAME --> GAME_FINISHED
     note on link
@@ -32,7 +32,7 @@ IN_GAME --> IN_EXIT
 IN_EXIT -->IF
 IF -->[*]
     note on link
-        Save
+        SaveGame
     end note
 
 IF --> [*]
@@ -41,8 +41,9 @@ GAME_FINISHED --> INITIAL
     note on link
         Start
     end note
-GAME_FINISHED --> IN_EXIT
+GAME_FINISHED --> IN_GAME
     note on link
-        Exit
+        Restart
     end note
+GAME_FINISHED --> IF
 @enduml

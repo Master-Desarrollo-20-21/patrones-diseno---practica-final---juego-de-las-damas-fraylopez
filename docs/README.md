@@ -90,9 +90,18 @@ Option? [1-3]: 1
 7 ○ ██  ██  ██  ██
 Player Black won!
 
+
+------------
+1) New Game
+2) Restart (with same difficulty)
+3) Save Game
+Option? [1-3]: 3
+
+------------
+
 Save game? (y/n): y
 Insert game name: my-game
-Restart? (y/n): y
+
 ```
 
 ### AITrainer UI Prototype
@@ -130,24 +139,7 @@ Insert new value for [alpha (0.45)]: 0.55
 3) Test
 Option? [1-3]: 3
 
------------------
 
-Win the game to save the new configuration!
-
-     columns
-   0 1 2 3 4 5 6 7
-0 ██● ██● ██● ██●
-1 ● ██● ██● ██● ██
-2 ██● ██● ██● ██●
-3   ██  ██  ██  ██
-4 ██  ██  ██  ██
-5 ○ ██○ ██○ ██○ ██
-6 ██○ ██○ ██○ ██○
-7 ○ ██○ ██○ ██○ ██
-
-1) Move
-2) Exit
-Option? [1-2]: 1
 -------------------
 
 select token from rowcolumn (ie: 21):21
@@ -172,7 +164,7 @@ move to rowcolumn (ie: 30):30
 5   ██○ ██  ██  ██
 6 ██○ ██  ██  ██
 7 ○ ██  ██  ██  ██
-Player Black won!
+AITrainer won!
 
 -------------------
 
@@ -181,7 +173,27 @@ Save Configuration? (y/n): y
 -------------------
 
 Assign difficulty to this configuration(1-10): 6
-Done!
+Done, now exiting.
+
+-------------------
+
+     columns
+   0 1 2 3 4 5 6 7
+0 ██◎ ██  ██  ██
+1   ██  ██  ██  ██
+2 ██  ██  ██  ██
+3   ██○ ██○ ██  ██
+4 ██  ██  ██◎ ██
+5   ██○ ██  ██  ██
+6 ██○ ██  ██  ██
+7 ○ ██  ██  ██  ██
+AITrainer loose!
+
+-------------------
+
+1) Retry
+2) Exit
+Option? [1-2]: 1
 
 ```
 

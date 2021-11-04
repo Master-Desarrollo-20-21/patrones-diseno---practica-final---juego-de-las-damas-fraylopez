@@ -19,11 +19,8 @@ note on link
   -title required number of players
   -select difficulty
   <b>System requires
-  -number of players
-  -difficulty level
-  <b>System allows
-  -only numbers >= 0
-  -only numbers [1,10]
+  -number of players (>=0)
+  -difficulty level [1,10]
 end note
 numberOfPlayers -[#green]-> ifValidNumberOfPlayers
 note on link
@@ -40,7 +37,7 @@ end note
 ifValidNumberOfPlayers -[#green]-> IN_GAME
 note on link
   <b>System shows
-  player ui
+  game board
 end note
 
 @enduml
