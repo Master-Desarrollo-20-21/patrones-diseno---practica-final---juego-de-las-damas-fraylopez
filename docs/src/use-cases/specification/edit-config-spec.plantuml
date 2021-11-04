@@ -1,0 +1,45 @@
+@startuml
+title EditConfig Usecase Specification
+skinparam NoteBackgroundColor white
+hide empty description
+
+state INIT as "INIT"
+state IN_GAME
+state Start
+
+state state1 as " "
+state state2 as " "
+
+
+[*] --> INIT
+
+INIT -[#green]-> state1
+note on link #white
+  <b>AITrainer request to
+  Edit config
+end note
+
+state1 -[#green]-> state2
+note on link #white
+  <b>System allows
+  * Edit alpha paramter
+  * Edit beta parameter
+  * Test [one parameter changed]
+end note
+
+state2 -[#green]-> state2
+note on link #white
+  <b>AITrainer Provides
+  * Alpha
+  * Beta
+end note
+
+state2 -[#green]-> Start
+note on link #white
+  <b>AITrainer request to
+  * Test config
+end note
+
+Start --> IN_GAME
+
+@enduml

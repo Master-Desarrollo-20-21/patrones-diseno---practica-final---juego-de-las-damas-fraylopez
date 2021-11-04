@@ -1,13 +1,20 @@
-@startuml StateDiagramFluxEditConfigState
-title GameContextDiagram
+@startuml AITrainerContextDiagram
+title AITrainer Context Diagram
 state INITIAL
 state IN_GAME
 state GAME_FINISHED
-state IN_EXIT
+state IF <<choice>>
+
+[*] --> INITIAL
+
+INITIAL --> INITIAL
+    note on link
+        ReadConfig
+    end note
 
 INITIAL --> IN_GAME
     note on link
-        Start
+        EditConfig
         Load
     end note
 IN_GAME --> IN_GAME
@@ -21,21 +28,21 @@ IN_GAME --> GAME_FINISHED
     note on link
         Move
     end note
-IN_GAME --> IN_EXIT
-    note on link
-        Exit
-    end note
-IN_EXIT --> [*]
+IN_EXIT -->IF
+IF -->[*]
     note on link
         Save
     end note
 
-GAME_FINISHED --> INITIAL
+IF --> [*]
+
+IN_GAME -->IN_EXIT
     note on link
-        Start
+        Exit
     end note
 GAME_FINISHED --> IN_EXIT
     note on link
         Exit
     end note
+
 @enduml

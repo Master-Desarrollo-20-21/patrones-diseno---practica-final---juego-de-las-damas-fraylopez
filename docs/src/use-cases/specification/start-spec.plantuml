@@ -1,0 +1,46 @@
+@startuml StartUseCaseSpecification
+title StartUseCaseSpecification
+skinparam NoteBackgroundColor white
+hide empty description
+state INIT as "INIT"
+state startedGame as " "
+state numberOfPlayers as " "
+state ifValidNumberOfPlayers <<choice>>
+
+[*] --> INIT
+INIT -[#green]-> startedGame
+note on link #white
+  <b>Player request to
+  start a new game
+end note
+startedGame -[#green]-> numberOfPlayers
+note on link
+  <b>System shows
+  -title required number of players
+  -select difficulty
+  <b>System requires
+  -number of players
+  -difficulty level
+  <b>System allows
+  -only numbers >= 0
+  -only numbers [1,10]
+end note
+numberOfPlayers -[#green]-> ifValidNumberOfPlayers
+note on link
+  <b>Player provides
+  -number of players
+  -difficulty
+end note
+ifValidNumberOfPlayers --> startedGame
+note on link
+  <b>System shows
+  -invalid numer of players
+  -invalid difficulty level
+end note
+ifValidNumberOfPlayers -[#green]-> IN_GAME
+note on link
+  <b>System shows
+  player ui
+end note
+
+@enduml
