@@ -1,4 +1,4 @@
-@startuml AITrainerContextDiagram
+@startuml AITrainingContextDiagram
 title AITraining Context Diagram
 state INITIAL
 state IN_GAME

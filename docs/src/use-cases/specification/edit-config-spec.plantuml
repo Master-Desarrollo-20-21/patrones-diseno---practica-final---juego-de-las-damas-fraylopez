@@ -1,5 +1,5 @@
-@startuml
-title EditConfigUsecaseSpecification
+@startuml EditConfigUseCaseSpecification
+title EditConfigUseCaseSpecification
 skinparam NoteBackgroundColor white
 hide empty description
 

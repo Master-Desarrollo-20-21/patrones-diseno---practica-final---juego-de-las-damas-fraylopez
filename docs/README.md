@@ -1,8 +1,11 @@
 # Checkers requirements
 
-
 - [Use cases](#use-cases)
-  - [EditConfig use case](#editconfig-use-case)
+  - [Game Context](#game-context)
+  - [AITrainer Context](#ai-training-context)
+  - [Specification](#specification)
+    - [Start](#start-use-case)
+    - [EditConfig](#editconfig-use-case)
 - [Analysis](#analysis)
   - [Packages](#packages)
   - [Hexagonal Architecture](#hex-arch)
@@ -11,11 +14,18 @@
   - [AI Trainer](#aitrainer-ui-prototype)
 
 ## Use cases
+![use-cases](output/use-cases/UseCases.png)
 
-![use-cases](output/UseCases.png)
+### Game Context
+![Game context](output/use-cases/context/GameContextDiagram.png)
+### AI training Context Diagram
 
-## EditConfig use case
-![edit](output/StateDiagramFluxEditConfigState.png)
+![ai-training-context](output/use-cases/context/AITrainingContextDiagram.png)
+
+## Start use case specification
+![start-use-case](output/use-cases/specification/StartUseCaseSpecification.png)
+## EditConfig use case specification
+![editconfig-use-case](output/use-cases/specification/EditConfigUseCaseSpecification.png)
 
 ## UI Prototype
 ### Player UI Prototype

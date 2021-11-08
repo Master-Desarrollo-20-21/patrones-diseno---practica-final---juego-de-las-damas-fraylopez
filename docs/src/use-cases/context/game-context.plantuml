@@ -1,4 +1,4 @@
-@startuml StateDiagramFluxEditConfigState
+@startuml GameContextDiagram
 title GameContextDiagram
 state INITIAL
 state IN_GAME
