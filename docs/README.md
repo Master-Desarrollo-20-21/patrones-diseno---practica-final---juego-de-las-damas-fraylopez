@@ -4,8 +4,8 @@
   - [Game Context](#game-context)
   - [AITrainer Context](#ai-training-context)
   - [Specification](#specification)
-    - [Start](#start-use-case)
-    - [EditConfig](#editconfig-use-case)
+    - [Start](#start-use-case-specification)
+    - [EditConfig](#editconfig-use-case-specification)
 - [Analysis](#analysis)
   - [Packages](#packages)
   - [Hexagonal Architecture](#hex-arch)
@@ -14,18 +14,18 @@
   - [AI Trainer](#aitrainer-ui-prototype)
 
 ## Use cases
-![use-cases](output/use-cases/UseCases.png)
+![Actors and Use Cases](output/use-cases/UseCases.png)
 
 ### Game Context
 ![Game context](output/use-cases/context/GameContextDiagram.png)
-### AI training Context Diagram
+### AI training Context
 
-![ai-training-context](output/use-cases/context/AITrainingContextDiagram.png)
+![AI Training Context](output/use-cases/context/AITrainingContextDiagram.png)
 
 ## Start use case specification
-![start-use-case](output/use-cases/specification/StartUseCaseSpecification.png)
+![Start Specification](output/use-cases/specification/StartUseCaseSpecification.png)
 ## EditConfig use case specification
-![editconfig-use-case](output/use-cases/specification/EditConfigUseCaseSpecification.png)
+![EditConfig Specification(output/use-cases/specification/EditConfigUseCaseSpecification.png)
 
 ## UI Prototype
 ### Player UI Prototype
@@ -210,7 +210,7 @@ Option? [1-2]: 1
 ## Analysis
 ### Packages
 
-![packages](output/ArchitecturePackages.png)
+![packages](output/analysis/ArchitecturePackages.png)
 ### Hexagonal Architecture
 
-![hex-arch](output/ArchHexPackage.png)
+![hex-arch](output/analysis/ArchHexPackage.png)
