@@ -12,6 +12,6 @@ Las instrucciones completas se pueden ver en la [wikipedia](https://es.wikipedia
 - [Requirements](docs/README.md)
 
 ## Domain Model
-![domain-model](docs/output/DomainModel.png)
+![domain-model](docs/output/domain-model/DomainModel.png)
 ## Instructions
-![instructions](docs/output/Instrucciones.png)
+![instructions](docs/output/domain-model/Instrucciones.png)
