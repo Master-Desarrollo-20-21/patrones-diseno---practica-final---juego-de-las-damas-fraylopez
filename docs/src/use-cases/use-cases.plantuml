@@ -2,11 +2,14 @@
 left to right direction
 actor Player
 actor AITrainer
+actor AbstractPlayer
 
-AITrainer -down-|> Player
+AITrainer -down-|> AbstractPlayer
+Player -down-|> AbstractPlayer
 
+usecase Launch
 usecase Start
-usecase Move
+usecase PlayerMove
 usecase Restart
 usecase Undo
 usecase Redo
@@ -14,24 +17,30 @@ usecase Exit
 usecase SaveGame
 usecase Load
 
-
+AbstractPlayer --> Launch
+' AbstractPlayer --> Move
+AbstractPlayer --> Undo
+AbstractPlayer --> Redo
+AbstractPlayer --> Exit
+AbstractPlayer --> SaveGame
+AbstractPlayer --> Restart
+AbstractPlayer --> Load
 
 Player --> Start
-Player --> Move
-Player --> Undo
-Player --> Redo
-Player --> Exit
-Player --> SaveGame
-Player --> Restart
-Player --> Load
+Player --> PlayerMove
 
 usecase ReadConfig
 usecase EditConfig
 usecase SaveConfig
+usecase TestConfig
+usecase TrainerMove
 
 AITrainer --> ReadConfig
 AITrainer --> EditConfig
+AITrainer --> SaveConfig
+AITrainer --> TestConfig
+AITrainer --> TrainerMove
 
-EditConfig ..> Start :"include"
-EditConfig <.. SaveConfig :"extends"
+' EditConfig ..> Start :"include"
+' EditConfig <.. SaveConfig :"extends"
 @enduml

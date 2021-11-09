@@ -5,6 +5,8 @@ state IN_GAME
 state GAME_FINISHED
 state IF <<choice>>
 state IF2 <<choice>>
+state IF3 <<choice>>
+' state IF4 <<choice>>
 
 [*] --> INITIAL
 
@@ -20,15 +22,19 @@ INITIAL --> IN_GAME
     end note
 IN_GAME --> IN_GAME
     note on link
-        Move
         Undo
         Redo
         Resume
     end note
-IN_GAME --> GAME_FINISHED
+
+IN_GAME --> IF3
     note on link
         Move
     end note
+
+IF3 --> IN_GAME
+IF3 --> GAME_FINISHED : [gameOver]
+
 IN_EXIT -->IF
 IF -->[*]
     note on link
