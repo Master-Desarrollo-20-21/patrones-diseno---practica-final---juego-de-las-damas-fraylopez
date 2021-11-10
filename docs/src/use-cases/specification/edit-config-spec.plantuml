@@ -3,90 +3,48 @@ title EditConfigUseCaseSpecification
 skinparam NoteBackgroundColor white
 hide empty description
 
-state INIT as "INIT"
-state IN_GAME
-state Start
-
 state state1 as " "
 state state2 as " "
 state state3 as " "
-state state4 as " "
-state state5 as " "
-state state6 as " "
 
 
-[*] --> INIT
-
-INIT -[#green]-> state1
+INITIAL -[#green]-> state1
 note on link #white
-  <b>AITrainer request to
-  Edit config
+  <b>AITrainer requests to
+  * Edit config
 end note
 
 state1 -[#green]-> state2
 note on link #white
-  <b>System allows
-  * Edit alpha paramter
-  * Edit beta parameter
-  * Test [one parameter changed]
+  <b>System requires
+  * Alpha parameters
+  * Beta parameter
+  <b>System allows to
+  * Test config [config was modified]
 end note
 
-state2 -[#green]-> state2
+state2 -[#green]-> state1
 note on link #white
-  <b>AITrainer Provides
-  * Alpha
-  * Beta
+  <b>AITrainer provides
+  * Alpha parameter, and/or
+  * Beta parameter
 end note
 
-state2 -[#green]-> Start
+state2 -[#green]-> state3
 note on link #white
-  <b>AITrainer request to
+  <b>AITrainer requests to
   * Test config
 end note
 
-Start -[#green]-> IN_GAME
-IN_GAME -[#green]-> state3 : [won]
-
-state3 -[#green]-> state4
+state3 -[#green]-> IN_GAME
 note on link #white
-  <b>System allows to
-  * Save config
+  <b>System shows
+  * Game board in its initial state
 end note
 
-state4 -[#green]-> SaveConfig
-note on link #white
-  <b>AITrainer request to
-  * Save config
+note as note
+  ¿No debe haber una opción de cancelar
+  que regrese al estado INITIAL?
 end note
-
-state4 -[#red]-> [*]
-note on link #white
-  <b>AITrainer request to
-  * Exit without save
-end note
-
-IN_GAME -[#red]-> state5 : [loose]
-
-state5 -[#red]-> state6
-note on link #white
-  <b>System allows
-  * Restart
-  * Exit
-end note
-
-state6 -[#red]-> Restart
-note on link #white
-  <b>AITrainer request to
-  * Restart
-end note
-
-Restart -[#red]-> IN_GAME
-
-state6 -[#red]-> [*]
-note on link #white
-  <b>AITrainer request to
-  * Exit
-end note
-
 
 @enduml
