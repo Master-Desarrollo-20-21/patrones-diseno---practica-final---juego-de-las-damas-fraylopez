@@ -6,13 +6,15 @@ state GAME_FINISHED
 state IF <<choice>>
 state IF2 <<choice>>
 state IF3 <<choice>>
-' state IF4 <<choice>>
 
 [*] --> INITIAL
+note on link
+    Launch
+end note
 
 INITIAL --> INITIAL
     note on link
-        ReadConfig
+        ShowCurrentConfig
     end note
 
 INITIAL --> IN_GAME

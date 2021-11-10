@@ -17,10 +17,10 @@ end note
 state1 -[#green]-> state2
 note on link #white
   <b>System requires
-  * Alpha parameters
+  * Alpha parameter
   * Beta parameter
   <b>System allows to
-  * Test config [config was modified]
+  * Test config [a parameter was modified]
 end note
 
 state2 -[#green]-> state1
@@ -42,9 +42,9 @@ note on link #white
   * Game board in its initial state
 end note
 
-note as note
-  ¿No debe haber una opción de cancelar
-  que regrese al estado INITIAL?
-end note
+' note as note
+'   ¿No debe haber una opción de cancelar
+'   que regrese al estado INITIAL?
+' end note
 
 @enduml

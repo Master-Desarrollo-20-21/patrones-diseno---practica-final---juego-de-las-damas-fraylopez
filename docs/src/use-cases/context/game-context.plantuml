@@ -1,14 +1,15 @@
-@startuml GameContextDiagram
-title GameContextDiagram
+@startuml PlayerContextDiagram
+title PlayerContextDiagram
 state INITIAL
 state IN_GAME
 state GAME_FINISHED
-state IN_EXIT
 
 state IF <<choice>>
-state IF2 <<choice>>
 
 [*] --> INITIAL
+note on link
+    Launch
+end note
 
 INITIAL --> IN_GAME
     note on link
@@ -21,34 +22,31 @@ IN_GAME --> IN_GAME
         Redo
         ' Resume
     end note
-
-IN_GAME --> IF2
-    note on link
-        Move
-    end note
-
-IF2 --> IN_GAME
-IF2 --> GAME_FINISHED: [gameOver]
-
-IN_GAME --> IN_EXIT
-    note on link
-        Exit
-    end note
-IN_EXIT -->IF
-IF -->[*]
-    note on link
-        SaveGame
-    end note
-
-IF --> [*]
-
-GAME_FINISHED --> INITIAL
+GAME_FINISHED --> IN_GAME
     note on link
         Start
     end note
+
 GAME_FINISHED --> IN_GAME
     note on link
         Restart
     end note
-GAME_FINISHED --> IF
+IN_GAME --> IF
+    note on link
+        Move
+    end note
+
+IF --> IN_GAME
+IF --> GAME_FINISHED: [game finished]
+
+IN_GAME --> [*]
+    note on link
+        Exit
+    end note
+
+
+GAME_FINISHED --> [*]
+    note on link
+        SaveGame
+    end note
 @enduml

@@ -1,5 +1,5 @@
-@startuml StartUseCaseSpecification
-title StartUseCaseSpecification
+@startuml SaveConfigUseCaseSpecification
+title SaveConfigUseCaseSpecification
 skinparam NoteBackgroundColor white
 hide empty description
 
@@ -7,18 +7,16 @@ state startedGame as " "
 state numberOfPlayers as " "
 state ifValidNumberOfPlayers <<choice>>
 
-
-INITIAL -[#green]-> startedGame
+GAME_FINISHED -[#green]-> startedGame
 note on link #white
-  <b>Player requests to
-  * Start a new game
+  <b>AITrainer requests to
+  * Save config
 end note
 
 startedGame -[#green]-> numberOfPlayers
 note on link
   <b>System requires
-  * number of players [0,2]
-  * difficulty level [1,10]
+  * Difficulty level [1,10]
 end note
 
 numberOfPlayers -[#green]-> ifValidNumberOfPlayers

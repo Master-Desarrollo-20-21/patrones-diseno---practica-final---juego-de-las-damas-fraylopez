@@ -18,7 +18,6 @@ usecase SaveGame
 usecase Load
 
 AbstractPlayer --> Launch
-' AbstractPlayer --> Move
 AbstractPlayer --> Undo
 AbstractPlayer --> Redo
 AbstractPlayer --> Exit
@@ -29,18 +28,14 @@ AbstractPlayer --> Load
 Player --> Start
 Player --> PlayerMove
 
-usecase ReadConfig
+usecase ShowCurrentConfig
 usecase EditConfig
 usecase SaveConfig
-usecase TestConfig
-usecase TrainerMove
+usecase AITrainerMove
 
-AITrainer --> ReadConfig
+AITrainer --> ShowCurrentConfig
 AITrainer --> EditConfig
 AITrainer --> SaveConfig
-AITrainer --> TestConfig
-AITrainer --> TrainerMove
+AITrainer --> AITrainerMove
 
-' EditConfig ..> Start :"include"
-' EditConfig <.. SaveConfig :"extends"
 @enduml
