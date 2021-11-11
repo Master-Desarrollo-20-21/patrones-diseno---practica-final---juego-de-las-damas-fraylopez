@@ -1,15 +1,15 @@
 @startuml UseCases
 left to right direction
-actor Player
+actor User
 actor AITrainer
-actor AbstractPlayer
+actor Player
 
-AITrainer -down-|> AbstractPlayer
-Player -down-|> AbstractPlayer
+AITrainer -down-|> Player
+User -down-|> Player
 
 usecase Launch
 usecase Start
-usecase PlayerMove
+usecase Move
 usecase Restart
 usecase Undo
 usecase Redo
@@ -17,25 +17,26 @@ usecase Exit
 usecase SaveGame
 usecase Load
 
-AbstractPlayer --> Launch
-AbstractPlayer --> Undo
-AbstractPlayer --> Redo
-AbstractPlayer --> Exit
-AbstractPlayer --> SaveGame
-AbstractPlayer --> Restart
-AbstractPlayer --> Load
+Player --> Launch
+Player --> Undo
+Player --> Redo
+Player --> Exit
+Player --> SaveGame
+Player --> Restart
+Player --> Load
+Player --> Move
 
-Player --> Start
-Player --> PlayerMove
+User --> Start
+' User --> Move
 
-usecase ShowCurrentConfig
+usecase ShowConfig
 usecase EditConfig
 usecase SaveConfig
-usecase AITrainerMove
+' usecase AITrainerMove
 
-AITrainer --> ShowCurrentConfig
+AITrainer --> ShowConfig
 AITrainer --> EditConfig
 AITrainer --> SaveConfig
-AITrainer --> AITrainerMove
+' AITrainer --> AITrainerMove
 
 @enduml

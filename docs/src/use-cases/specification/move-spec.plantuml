@@ -1,18 +1,21 @@
-@startuml AITrainerMoveUseCaseSpecification
-title AITrainerMoveUseCaseSpecification
+@startuml PlayerMoveUseCaseSpecification
+title PlayerMoveUseCaseSpecification
 skinparam NoteBackgroundColor white
 hide empty description
 state IN_GAME as "IN_GAME"
+state IN_GAME_FINISH as "IN_GAME"
 state startedGame as " "
 state numberOfPlayers as " "
 state ifValidNumberOfPlayers <<choice>>
 state state1 as " "
 state state2 as " "
+state actorChoice <<choice>>
+state state3 as " "
 
 ' [*] --> IN_GAME
 IN_GAME -[#green]-> startedGame
 note on link #white
-  <b>AITrainer request to
+  <b>Player request to
   move
 end note
 startedGame -[#green]-> numberOfPlayers
@@ -28,7 +31,7 @@ note on link
   -origin
   -target
 end note
-ifValidNumberOfPlayers --> startedGame
+ifValidNumberOfPlayers --> startedGame : [does NOT contains piece from player color || is NOT empty]
 note on link
   <b>System shows
   -invalid origin
@@ -41,13 +44,19 @@ note on link
   <b>System shows
   game board
 end note
-state2 -[#green]-> IN_GAME
-state2 -[#green]-> GAME_FINISHED : [game finished]
+' state2 -[#green]-> GAME_FINISHED : [game finished]
+state2 -[#green]-> actorChoice : [game finished]
 note on link
   <b>System shows
-  -result
+  result
+end note
+actorChoice -[#green]-> GAME_FINISHED
+actorChoice -[#green]-> state3: [Player is AITrainer]
+state3 -[#green]-> GAME_FINISHED
+note on link
   <b>System allows
   -saveConfig [won]
 end note
+state2 -[#green]-> IN_GAME_FINISH
 
 @enduml

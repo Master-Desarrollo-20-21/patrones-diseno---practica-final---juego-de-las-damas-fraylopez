@@ -1,5 +1,5 @@
-@startuml PlayerContextDiagram
-title PlayerContextDiagram
+@startuml UserContextDiagram
+title UserContextDiagram
 state INITIAL
 state IN_GAME
 state GAME_FINISHED

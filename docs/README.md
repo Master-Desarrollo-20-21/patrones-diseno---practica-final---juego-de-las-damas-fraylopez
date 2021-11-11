@@ -26,6 +26,8 @@
 ![Start Specification](output/use-cases/specification/StartUseCaseSpecification.png)
 ## EditConfig use case specification
 ![EditConfig Specification(output/use-cases/specification/EditConfigUseCaseSpecification.png)
+## PlayerMove use case specification
+![PlayerMove Specification(output/use-cases/specification/PlayerMoveUseCaseSpecification.png)
 
 ## UI Prototype
 ### Player UI Prototype

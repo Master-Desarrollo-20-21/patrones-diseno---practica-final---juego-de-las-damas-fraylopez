@@ -4,7 +4,7 @@ state INITIAL
 state IN_GAME
 state GAME_FINISHED
 state IF <<choice>>
-state IF2 <<choice>>
+' state IF2 <<choice>>
 state IF3 <<choice>>
 
 [*] --> INITIAL
@@ -14,7 +14,7 @@ end note
 
 INITIAL --> INITIAL
     note on link
-        ShowCurrentConfig
+        ShowConfig
     end note
 
 INITIAL --> IN_GAME
@@ -26,7 +26,6 @@ IN_GAME --> IN_GAME
     note on link
         Undo
         Redo
-        Resume
     end note
 
 IN_GAME --> IF3
@@ -35,7 +34,7 @@ IN_GAME --> IF3
     end note
 
 IF3 --> IN_GAME
-IF3 --> GAME_FINISHED : [gameOver]
+IF3 --> GAME_FINISHED : [game finished]
 
 IN_EXIT -->IF
 IF -->[*]
@@ -50,17 +49,17 @@ IN_GAME -->IN_EXIT
         Exit
     end note
 
-GAME_FINISHED --> IF2 : [loose]
+GAME_FINISHED --> INITIAL : [loose]
 
-IF2 --> IN_GAME
-    note on link
-        Restart
-    end note
+' IF2 --> IN_GAME
+'     note on link
+'         Restart
+'     end note
 
 GAME_FINISHED --> [*] : [won]
     note on link
         SaveConfig
     end note
-IF2 --> [*]
+' IF2 --> [*]
 
 @enduml
