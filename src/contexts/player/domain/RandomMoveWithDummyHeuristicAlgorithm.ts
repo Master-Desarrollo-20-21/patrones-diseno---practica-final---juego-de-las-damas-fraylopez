@@ -6,7 +6,9 @@ import { RandomMoveAlgorithm } from "./RandomMoveAlgorithm";
 
 export class RandomMoveWithDummyHeuristicAlgorithm implements IMoveAlgorithm {
   private readonly randomAlgorithm: RandomMoveAlgorithm;
-  constructor(private readonly maxAttempts: number = 10) {
+  constructor(
+    private readonly maxAttempts: number = 10,
+  ) {
     this.randomAlgorithm = new RandomMoveAlgorithm();
   }
   getNextMove(playerColor: Color, board: Board): Move {

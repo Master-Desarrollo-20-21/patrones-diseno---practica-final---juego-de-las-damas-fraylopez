@@ -1,0 +1,72 @@
+@startuml Packages
+
+
+
+package checkers.User{
+  package checkers.User.Controllers{
+    control StartController
+  }
+  package checkers.User.Views{
+    boundary StartView
+  }
+}
+
+package checkers.AITrainer {
+  package checkers.AITrainer.Controllers{
+    control ShowConfigController
+    control EditConfigController
+    control SaveConfigController
+  }
+  package checkers.AITrainer.Views{
+    boundary ShowConfigView
+    boundary EditConfigView
+    boundary SaveConfigView
+  }
+}
+
+package checkers.Player {
+  package checkers.Player.Models{
+    entity Checkers
+    entity Turn
+    entity Player
+    entity Board
+    entity Color
+    entity Coordinate
+    entity Configuration
+    ' entity Move
+    ' entity Jump
+    ' entity Piece
+    ' entity Square
+  }
+
+  package checkers.Player.Controllers{
+    control LaunchController
+    control LoadController
+    control MoveController
+    control UndoController
+    control RedoController
+    control ExitController
+    control SaveGameController
+    control RestartController
+  }
+
+  package checkers.Player.Views{
+    ' boundary CheckersView
+    boundary LaunchView
+    boundary LoadView
+    boundary BoardView
+    ' boundary PieceView
+    boundary MoveView
+    boundary ExitView
+    boundary SaveGameView
+  }
+}
+
+checkers.User ..> checkers.Player
+checkers.AITrainer ..> checkers.Player
+
+
+
+
+
+@enduml

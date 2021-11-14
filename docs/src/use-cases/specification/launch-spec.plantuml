@@ -1,0 +1,29 @@
+@startuml
+title LaunchUseCaseSpecification
+skinparam NoteBackgroundColor white
+hide empty description
+state conditionLaunch <<choice>>
+state asTrainner as " "
+
+[*]-[#green]-> conditionLaunch
+note on link #white
+  <b>Player requests to
+  Launch a new game
+end note
+
+conditionLaunch -[#green]-> INITIAL
+note on link #white
+  <b>System allows
+  start
+  load
+end note
+
+conditionLaunch -[#green]-> asTrainner : [Player as AITrainner]
+asTrainner -[#green]-> INITIAL
+note on link #white
+  <b>System allows
+  showConfig
+  editConfig
+  load
+end note
+@enduml
