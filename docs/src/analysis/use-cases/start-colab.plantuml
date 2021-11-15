@@ -39,7 +39,7 @@ package views {
 
 }
 
-Player --> StartView
+User --> StartView
 note on link
     start()
 end note
