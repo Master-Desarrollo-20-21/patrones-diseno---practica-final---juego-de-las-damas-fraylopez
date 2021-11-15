@@ -1,14 +1,13 @@
 @startuml ArchitecturePackages
 package apps #DDDDDD {
-  package player-app #DDDDDD { }
-  package ai-trainer-app #DDDDDD { }
-  package some-other-app #DDDDDD { }
+  package user #DDDDDD { }
+  package ai-trainer #DDDDDD { }
 }
 
 package contexts #DDDDDD {
-  package player #DDDDDD {  }
-  package ai-trainer #DDDDDD {  }
-  package some-other #DDDDDD {  }
+  package player-context #DDDDDD {  }
+  package user-context #DDDDDD {  }
+  package ai-trainer-context #DDDDDD {  }
 }
 apps ..> contexts
 
