@@ -1,5 +1,5 @@
-@startuml PlayerMoveUseCaseSpecification
-title PlayerMoveUseCaseSpecification
+@startuml MoveUseCaseSpecification
+title MoveUseCaseSpecification
 skinparam NoteBackgroundColor white
 hide empty description
 state IN_GAME as "IN_GAME"

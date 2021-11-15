@@ -1,4 +1,4 @@
-@startuml
+@startuml LaunchUseCaseSpecification
 title LaunchUseCaseSpecification
 skinparam NoteBackgroundColor white
 hide empty description

@@ -1,14 +1,14 @@
 # Checkers requirements
 
 - [Use cases](#use-cases)
-  - [Game Context](#game-context)
+  - [Player Context](#game-context)
   - [AITrainer Context](#ai-training-context)
   - [Specification](#specification)
     - [Start](#start-use-case-specification)
     - [EditConfig](#editconfig-use-case-specification)
 - [Analysis](#analysis)
-  - [Packages](#packages)
-  - [Hexagonal Architecture](#hex-arch)
+  - [Packages](#packages-mvc)
+  - [Hexagonal Architecture](#hexagonal-architecture)
 - [UI Prototype](#player-ui-prototype)
   - [Player](#player-ui-prototype)
   - [AI Trainer](#aitrainer-ui-prototype)
@@ -16,18 +16,22 @@
 ## Use cases
 ![Actors and Use Cases](output/use-cases/UseCases.png)
 
-### Game Context
-![Game context](output/use-cases/context/GameContextDiagram.png)
-### AI training Context
+### User Context
+![User context](output/use-cases/context/UserContextDiagram.png)
+### AI trainer Context
 
-![AI Training Context](output/use-cases/context/AITrainingContextDiagram.png)
+![AI Trainer Context](output/use-cases/context/AITrainingContextDiagram.png)
 
+## Launch use case specification
+![Lauch Specification](output/use-cases/specification/LaunchUseCaseSpecification.png)
 ## Start use case specification
 ![Start Specification](output/use-cases/specification/StartUseCaseSpecification.png)
 ## EditConfig use case specification
-![EditConfig Specification(output/use-cases/specification/EditConfigUseCaseSpecification.png)
-## PlayerMove use case specification
-![PlayerMove Specification(output/use-cases/specification/PlayerMoveUseCaseSpecification.png)
+![EditConfig Specification](output/use-cases/specification/EditConfigUseCaseSpecification.png)
+## Move use case specification
+![Move Specification](output/use-cases/specification/MoveUseCaseSpecification.png)
+## Save use case specification
+![PlayerMove Specification](output/use-cases/specification/SaveConfigUseCaseSpecification.png)
 
 ## UI Prototype
 ### Player UI Prototype
@@ -211,8 +215,8 @@ Option? [1-2]: 1
 
 ## Analysis
 ### Packages
+![packages-mvc](output/analysis/Packages.png)
 
-![packages](output/analysis/ArchitecturePackages.png)
 ### Hexagonal Architecture
-
+![packages-hex](output/analysis/ArchitecturePackages.png)
 ![hex-arch](output/analysis/ArchHexPackage.png)
