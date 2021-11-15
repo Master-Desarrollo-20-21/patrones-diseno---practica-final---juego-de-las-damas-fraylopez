@@ -1,12 +1,35 @@
 @startuml MoveCollaborationDiagram
 title MoveCollaborationDiagram
+allow_mixing
+
 actor Player
-object BoardView as BoardView
-object MoveController as MoveController
-object Coordinate
-Player -right-> BoardView : 1: move(from, to)
-BoardView -> BoardView : 2 validate(from, to)
-BoardView -up-> Coordinate :  3: new(from)\n4: new(to)
-BoardView --> MoveController : 5: move(from, to)
-MoveController -> MoveController : 6: validate(move)
+package views  {
+
+    object  CheckersView{
+
+    }
+    object  MoveView{
+
+    }
+}
+package controllers  {
+
+    object  MoveController{
+
+    }
+}
+
+Player --> CheckersView : \n1: move()
+
+' object CheckersView
+' object MoveView as MoveView
+' object MoveController as MoveController
+Player --> CheckersView : \n1: move()
+CheckersView --> MoveController : 2: move()
+MoveController --> MoveView : 3: interact(move)
+MoveView --> Player : 4: requireFromTo()
+Player --> MoveView : 5: introduceFromTo()
+MoveView -> MoveView : 6: validate()\n 7: parse()
+MoveView --> MoveController : 8: move(move)
+MoveController -> MoveController : 9: validate(move)
 @enduml

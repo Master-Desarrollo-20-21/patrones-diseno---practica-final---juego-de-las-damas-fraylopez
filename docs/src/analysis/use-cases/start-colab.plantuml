@@ -49,7 +49,7 @@ StartView ..> BoardView
 
 StartView ..> StartController
 note on link
-    interact(startController)
+    execute(startController)
 
 end note
 StartController --> Game
