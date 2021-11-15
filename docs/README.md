@@ -216,7 +216,7 @@ Option? [1-2]: 1
 
 ## Analysis
 ### Packages
-![packages-mvc](output/analysis/Packages_.png)
+![packages-mvc](output/analysis/Packages.png)
 
 ### Start Colaboration
 ![start-colab](output/analysis/use-cases/StartCollaborationDiagram.png)
