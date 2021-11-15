@@ -1,6 +1,11 @@
 @startuml Packages
 
 
+package checkers.Utils {
+  package checkers.Utils.Views {
+    boundary Menu
+  }
+}
 
 package checkers.User{
   package checkers.User.Controllers{
@@ -8,8 +13,11 @@ package checkers.User{
   }
   package checkers.User.Views{
     boundary StartView
+    StartView ..> Menu
   }
 }
+
+
 
 package checkers.AITrainer {
   package checkers.AITrainer.Controllers{
@@ -21,12 +29,16 @@ package checkers.AITrainer {
     boundary ShowConfigView
     boundary EditConfigView
     boundary SaveConfigView
+    ShowConfigView ..> Menu
+    EditConfigView ..> Menu
+    SaveConfigView ..> Menu
   }
 }
 
 package checkers.Player {
   package checkers.Player.Models{
     entity Checkers
+    entity Game
     entity Turn
     entity Player
     entity Board
@@ -37,6 +49,18 @@ package checkers.Player {
     ' entity Jump
     ' entity Piece
     ' entity Square
+    Checkers *--> Configuration
+    Checkers *--> Game
+    Game *--> Turn
+    Game *--> Player
+    Game *--> Board
+
+    Board *--> Square
+    Board *--> Piece
+    Piece --> Color
+    Player --> Color
+    Square --> Coordinate
+
   }
 
   package checkers.Player.Controllers{
@@ -48,17 +72,25 @@ package checkers.Player {
     control ExitController
     control SaveGameController
     control RestartController
+
+    MoveController *--> UndoController
+    MoveController *--> RedoController
+
   }
 
   package checkers.Player.Views{
-    ' boundary CheckersView
     boundary LaunchView
     boundary LoadView
-    boundary BoardView
-    ' boundary PieceView
     boundary MoveView
     boundary ExitView
     boundary SaveGameView
+    boundary BoardView
+
+    LaunchView ..> Menu
+    LoadView ..> Menu
+    MoveView ..> Menu
+    ExitView ..> Menu
+    SaveGameView ..> Menu
   }
 }
 

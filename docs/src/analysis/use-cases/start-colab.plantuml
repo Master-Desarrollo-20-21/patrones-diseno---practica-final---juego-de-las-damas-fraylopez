@@ -1,0 +1,60 @@
+
+@startuml start
+allow_mixing
+
+actor User
+
+package controllers  {
+
+    object  StartController{
+
+    }
+}
+
+
+package models  {
+
+    object  Board{
+
+    }
+
+    object Game{
+
+    }
+
+    Game --> Board
+
+}
+
+
+package views {
+    object BoardView{
+
+    }
+
+    object StartView{
+
+    }
+
+
+}
+
+Player --> StartView
+note on link
+    start()
+end note
+
+StartView ..> BoardView
+
+StartView ..> StartController
+note on link
+    interact(startController)
+
+end note
+StartController --> Game
+note on link
+    setNumPlayers(int)
+    setDifficulty(int)
+end note
+
+@enduml

@@ -17,11 +17,11 @@ INITIAL --> IN_GAME
         Load
     end note
 IN_GAME --> IN_GAME
-    note on link
-        Undo
-        Redo
-        ' Resume
-    end note
+note on link
+    Undo
+    Redo
+    ' Resume
+end note
 GAME_FINISHED --> IN_GAME
     note on link
         Start

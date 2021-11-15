@@ -1,0 +1,12 @@
+@startuml
+title MoveCollaborationDiagram
+actor Player
+object BoardView as BoardView
+object MoveController as MoveController
+object Coordinate
+Player -right-> BoardView : 1: move(from, to)
+BoardView -> BoardView : 2 validate(from, to)
+BoardView -up-> Coordinate :  3: new(from)\n4: new(to)
+BoardView --> MoveController : 5: move(from, to)
+MoveController -> MoveController : 6: validate(move)
+@enduml
