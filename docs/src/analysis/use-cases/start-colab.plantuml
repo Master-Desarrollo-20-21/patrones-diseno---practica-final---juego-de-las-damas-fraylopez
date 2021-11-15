@@ -38,19 +38,33 @@ package views {
 User --> StartView
 note on link
     start()
+    insertNumPlayers()
+    insertDifficulty()
+end note
+StartView --> StartView
+note on link
+    readNumPlayers()
+    readDifficulty()
 end note
 
-StartView ..> GameView
 
-StartView ..> StartController
+StartView --> StartController
 note on link
-    execute(startController)
-
+    setupGame(numPlayers,difficulty)
 end note
 StartController --> Game
 note on link
-    setNumPlayers(int)
-    setDifficulty(int)
+    new()
+    setupGame(numPlayers,difficulty)
+    getGameDTO()
+end note
+StartView --> GameView
+note on link
+    write()
+end note
+GameView --> StartController
+note on link
+    getGameDTO()
 end note
 
 @enduml
