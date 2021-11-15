@@ -1,4 +1,4 @@
-@startuml
+@startuml MoveCollaborationDiagram
 title MoveCollaborationDiagram
 actor Player
 object BoardView as BoardView

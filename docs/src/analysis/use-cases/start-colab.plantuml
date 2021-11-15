@@ -1,5 +1,6 @@
 
-@startuml start
+@startuml StartCollaborationDiagram
+title StartCollaborationDiagram
 allow_mixing
 
 actor User

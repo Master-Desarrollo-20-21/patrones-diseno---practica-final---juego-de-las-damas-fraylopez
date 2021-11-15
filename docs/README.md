@@ -9,6 +9,7 @@
 - [Analysis](#analysis)
   - [Packages](#packages-mvc)
   - [Hexagonal Architecture](#hexagonal-architecture)
+  - [Start Collaboration](#start-colaboration)
 - [UI Prototype](#player-ui-prototype)
   - [Player](#player-ui-prototype)
   - [AI Trainer](#aitrainer-ui-prototype)
@@ -217,6 +218,8 @@ Option? [1-2]: 1
 ### Packages
 ![packages-mvc](output/analysis/Packages.png)
 
+### Start Colaboration
+![start-colab](output/analysis/use-cases/StartCollaborationDiagram.png)
 ### Hexagonal Architecture
 ![packages-hex](output/analysis/ArchitecturePackages.png)
 ![hex-arch](output/analysis/ArchHexPackage.png)
