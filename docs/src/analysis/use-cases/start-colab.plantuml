@@ -15,28 +15,23 @@ package controllers  {
 
 package models  {
 
-    object  Board{
-
-    }
-
     object Game{
 
     }
 
-    Game --> Board
 
 }
 
 
 package views {
-    object BoardView{
-
-    }
 
     object StartView{
 
     }
 
+    object GameView{
+
+    }
 
 }
 
@@ -45,7 +40,7 @@ note on link
     start()
 end note
 
-StartView ..> BoardView
+StartView ..> GameView
 
 StartView ..> StartController
 note on link
