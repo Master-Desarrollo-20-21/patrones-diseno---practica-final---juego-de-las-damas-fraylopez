@@ -1,0 +1,46 @@
+@startuml EditconfigCollaborationDiagram
+title EditConfig
+allow_mixing
+left to right direction
+
+actor AITrainer
+
+object Checkers
+object StartView
+object EditConfigView
+object EditConfigController
+object Configuration
+object LaunchController
+
+AITrainer --> StartView
+note on link
+    editConfig()
+end note
+
+StartView ..> EditConfigView : new()
+
+AITrainer --> EditConfigView
+note on link
+    setConfig(config)
+    testConfig()
+end note
+
+EditConfigView --> EditConfigController
+note on link
+    setConfig(config)
+end note
+
+EditConfigController ..> Configuration : new()
+
+EditConfigController --> Checkers
+note on link
+    setConfig(config)
+end note
+
+EditConfigController --> LaunchController
+note on link
+    launch()
+end note
+
+
+@enduml
