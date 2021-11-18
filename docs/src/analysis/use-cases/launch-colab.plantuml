@@ -1,0 +1,11 @@
+@startuml
+title LaunchCollaborationDiagram
+allow_mixing
+actor player
+
+package views{
+object system
+}
+player --> system : asUser
+player --> system : as AITrainner
+@enduml

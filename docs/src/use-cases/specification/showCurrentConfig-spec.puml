@@ -1,0 +1,24 @@
+@startuml
+title ShowCurrentConfigUseCaseSpecification
+skinparam NoteBackgroundColor white
+hide empty description
+state INITIAL
+state showCurrentConfig as " "
+state IN_GAME
+
+INITIAL-[#green]-> showCurrentConfig
+note on link #white
+  <b>Player requests to
+  show current config
+end note
+
+showCurrentConfig -[#green]-> IN_GAME
+note on link #white
+  <b>System shows
+  current config
+  <b>System allows
+  editCurrentConfig
+  loadSesion
+  test
+end note
+@enduml
