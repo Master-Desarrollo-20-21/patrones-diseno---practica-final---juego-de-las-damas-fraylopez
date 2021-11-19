@@ -1,0 +1,40 @@
+@startuml save
+state IN_EXIT
+state requested as " "
+state allowed as " "
+state playerGameName as " "
+state resume as " "
+
+[*]  -[#green]-> IN_EXIT
+IN_EXIT  -[#green]-> requested
+note on link #white
+  <b>Player requests to
+  * save a game
+end note
+
+requested  -[#green]-> allowed
+note on link #white
+  <b>Systems requests to
+  * confirm
+end note
+allowed  -[#green]-> resume
+note on link #white
+  <b>Systems responds
+  * yes
+end note
+resume -[#green]-> playerGameName
+note on link #white
+  <b>Systems requests
+  * game name
+end note
+playerGameName -[#green]-> [*]
+note on link #white
+  <b>Player introduce
+  * game name
+end note
+allowed --> [*]
+note on link #white
+  <b>Player responds
+  * no
+end note
+@enduml

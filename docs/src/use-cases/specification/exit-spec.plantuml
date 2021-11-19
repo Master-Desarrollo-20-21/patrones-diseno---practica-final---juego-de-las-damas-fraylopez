@@ -1,0 +1,20 @@
+@startuml ExitUseCaseSpecification
+title ExitUseCaseSpecification
+skinparam NoteBackgroundColor white
+hide empty description
+
+state exitDialog as " "
+
+IN_GAME -[#green]-> exitDialog
+note on link #white
+  <b>Player requests to
+  * exit
+end note
+exitDialog -[#green]-> IN_EXIT
+note on link #white
+  <b>System allows
+  * Save
+end note
+
+@enduml
+

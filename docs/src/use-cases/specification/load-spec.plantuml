@@ -1,0 +1,43 @@
+@startuml LoadUseCaseSpecification
+title LoadUseCaseSpecification
+skinparam NoteBackgroundColor white
+hide empty description
+
+state savedGameList as " "
+state idFinished <<choice>>
+state redoable as " "
+state finished as " "
+
+
+
+INITIAL -[#green]-> savedGameList
+note on link #white
+  <b>Player requests to
+  * load a saved game
+end note
+savedGameList -[#green]-> idFinished
+note on link #white
+  <b>System shows
+  * game board
+end note
+
+idFinished -[#green]-> redoable
+idFinished -[#green]-> finished  : [redoable]
+
+
+redoable -[#green]-> IN_GAME
+note on link
+  <b>System allows
+  * Move
+  * Undo
+end note
+
+finished -[#green]-> IN_GAME
+note on link
+  <b>System allows
+  * Undo
+  * Restart
+end note
+
+
+@enduml

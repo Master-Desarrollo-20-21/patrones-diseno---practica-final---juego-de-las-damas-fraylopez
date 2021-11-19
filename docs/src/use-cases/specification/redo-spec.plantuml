@@ -1,0 +1,47 @@
+@startuml RedoUseCaseSpecification
+title RedoUseCaseSpecification
+skinparam NoteBackgroundColor white
+hide empty description
+
+state redoDialog as " "
+state ifRedoable <<choice>>
+state redoable as " "
+state not_redoable as " "
+
+state END_IN_GAME as "IN_GAME"
+
+
+IN_GAME -[#green]-> redoDialog
+note on link #white
+  <b>Player requests to
+  * redo last undone move
+end note
+redoDialog -[#green]-> ifRedoable
+note on link #white
+  <b>System shows
+  * updated board
+end note
+
+ifRedoable -[#green]-> redoable : [redoable]
+ifRedoable -[#green]-> not_redoable
+
+
+redoable -[#green]-> END_IN_GAME
+note on link
+  <b>System allows
+  * Move
+  * Redo [redoable]
+  * Undo
+  * Exit
+end note
+
+not_redoable -[#green]-> END_IN_GAME
+note on link
+  <b>System allows
+  * Move
+  * Undo [undoable]
+  * Exit
+end note
+
+
+@enduml
