@@ -13,7 +13,7 @@ end note
 exitDialog -[#green]-> IN_EXIT
 note on link #white
   <b>System allows
-  * Save
+  * SaveGame
 end note
 
 @enduml

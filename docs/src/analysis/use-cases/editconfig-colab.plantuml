@@ -1,5 +1,5 @@
-@startuml EditconfigCollaborationDiagram
-title EditConfig
+@startuml EditConfigCollaborationDiagram
+title EditConfigCollaborationDiagram
 allow_mixing
 left to right direction
 

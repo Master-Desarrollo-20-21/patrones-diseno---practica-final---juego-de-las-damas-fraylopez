@@ -1,5 +1,7 @@
 @startuml MoveCollaborationDiagram
 title MoveCollaborationDiagram
+left to right direction
+
 allow_mixing
 
 actor Player

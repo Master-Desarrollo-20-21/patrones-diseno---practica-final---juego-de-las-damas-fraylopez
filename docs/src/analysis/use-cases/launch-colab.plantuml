@@ -1,11 +1,13 @@
-@startuml
+@startuml LaunchCollaborationDiagram
 title LaunchCollaborationDiagram
+left to right direction
+
 allow_mixing
 actor player
 
-package views{
-object system
-}
-player --> system : asUser
-player --> system : as AITrainner
+object systemView
+player --> systemView
+note on link
+    launch()
+end note
 @enduml

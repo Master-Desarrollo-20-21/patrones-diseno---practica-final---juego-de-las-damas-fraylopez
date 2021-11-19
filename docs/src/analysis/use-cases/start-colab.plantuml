@@ -1,39 +1,17 @@
 
 @startuml StartCollaborationDiagram
 title StartCollaborationDiagram
+left to right direction
+
 allow_mixing
 
 actor User
 
-package controllers  {
+object  StartController
+object Game
+object StartView
+object GameView
 
-    object  StartController{
-
-    }
-}
-
-
-package models  {
-
-    object Game{
-
-    }
-
-
-}
-
-
-package views {
-
-    object StartView{
-
-    }
-
-    object GameView{
-
-    }
-
-}
 
 User --> StartView
 note on link

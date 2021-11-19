@@ -1,4 +1,4 @@
-@startuml
+@startuml ShowCurrentConfigUseCaseSpecification
 title ShowCurrentConfigUseCaseSpecification
 skinparam NoteBackgroundColor white
 hide empty description

@@ -1,5 +1,7 @@
-@startuml
-title ShowCurrentConfig
+@startuml ShowCurrentConfigCollaborationDiagram
+title ShowCurrentConfigCollaborationDiagram
+left to right direction
+
 allow_mixing
 actor AITrainner
 package Views{

@@ -45,10 +45,9 @@ package checkers.Player {
     entity Color
     entity Coordinate
     entity Configuration
-    ' entity Move
-    ' entity Jump
-    ' entity Piece
-    ' entity Square
+    entity Piece
+    entity Square
+
     Checkers *--> Configuration
     Checkers *--> Game
     Game *--> Turn
@@ -72,10 +71,6 @@ package checkers.Player {
     control ExitController
     control SaveGameController
     control RestartController
-
-    MoveController *--> UndoController
-    MoveController *--> RedoController
-
   }
 
   package checkers.Player.Views{

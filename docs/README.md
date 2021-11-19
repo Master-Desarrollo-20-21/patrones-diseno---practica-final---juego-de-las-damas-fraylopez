@@ -4,18 +4,42 @@
   - [Player Context](#game-context)
   - [AITrainer Context](#ai-training-context)
   - [Specification](#specification)
-    - [Start](#start-use-case-specification)
-    - [EditConfig](#editconfig-use-case-specification)
+    - [Player](#player-use-cases)
+      - [Launch](#launch-use-case-specification)
+      - [Load](#load-use-case-specification)
+      - [Move](#move-use-case-specification)
+      - [Undo](#undo-use-case-specification)
+      - [Redo](#redo-use-case-specification)
+      - [Exit](#exit-use-case-specification)
+      - [SaveGame](#savegame-use-case-specification)
+    - [User](#user-use-cases)
+      - [Start](#start-use-case-specification)
+    - [AITrainer](#aitrainer-use-cases)
+      - [ShowCurrentConfig](#showcurrentconfig-use-case-specification)
+      - [EditConfig](#editconfig-use-case-specification)
+      - [SaveConfig](#saveconfig-use-case-specification)
+- [UI Prototype](#player-ui-prototype)
+  - [User](#player-ui-prototype)
+  - [AI Trainer](#aitrainer-ui-prototype)
+
 - [Analysis](#analysis)
   - [Packages](#packages-mvc)
-  - [Start Collaboration](#start-colaboration)
+  - [Collaboration](#collaboration-diagrams)
+    - [Player](#player-use-cases-collaboration)
+      - [Launch](#launch-colaboration)
+      - [Move](#move-colaboration)
+    - [User](#user-use-cases-collaboration)
+      - [Start Collaboration](#start-colaboration)
+    - [AiTrainer](#aitrainer-use-cases-collaboration)
+      - [ShowCurrentConfig](#showcurrentconfig-colaboration)
+      - [EditConfig](#editconfig-colaboration)
   - [Hexagonal Architecture](#hexagonal-architecture)
-- [UI Prototype](#player-ui-prototype)
-  - [Player](#player-ui-prototype)
-  - [AI Trainer](#aitrainer-ui-prototype)
+
+
 
 ## Use cases
 ![Actors and Use Cases](output/use-cases/UseCases.png)
+
 
 ### User Context
 ![User context](output/use-cases/context/UserContextDiagram.png)
@@ -23,16 +47,40 @@
 
 ![AI Trainer Context](output/use-cases/context/AITrainingContextDiagram.png)
 
-## Launch use case specification
-![Lauch Specification](output/use-cases/specification/LaunchUseCaseSpecification.png)
-## Start use case specification
-![Start Specification](output/use-cases/specification/StartUseCaseSpecification.png)
-## EditConfig use case specification
-![EditConfig Specification](output/use-cases/specification/EditConfigUseCaseSpecification.png)
-## Move use case specification
+## Player Use Cases
+### Launch use case specification
+![Launch Specification](output/use-cases/specification/LaunchUseCaseSpecification.png)
+
+### Load use case specification
+![Load Specification](output/use-cases/specification/LoadUseCaseSpecification.png)
+
+### Move use case specification
 ![Move Specification](output/use-cases/specification/MoveUseCaseSpecification.png)
-## Save use case specification
-![PlayerMove Specification](output/use-cases/specification/SaveConfigUseCaseSpecification.png)
+
+### Undo use case specification
+![Undo Specification](output/use-cases/specification/UndoUseCaseSpecification.png)
+### Redo use case specification
+![Redo Specification](output/use-cases/specification/RedoUseCaseSpecification.png)
+### Exit use case specification
+![Exit Specification](output/use-cases/specification/ExitUseCaseSpecification.png)
+### SaveGame use case specification
+![SaveGame Specification](output/use-cases/specification/SaveGameUseCaseSpecification.png)
+
+
+## User Use Cases
+
+### Start use case specification
+![Start Specification](output/use-cases/specification/StartUseCaseSpecification.png)
+
+
+## AITrainer Use Cases
+
+### ShowCurrentConfig use case specification
+![ShowCurrentConfig Specification](output/use-cases/specification/ShowCurrentConfigUseCaseSpecification.png)
+### EditConfig use case specification
+![EditConfig Specification](output/use-cases/specification/EditConfigUseCaseSpecification.png)
+### SaveConfig use case specification
+![SaveConfig Specification](output/use-cases/specification/SaveConfigUseCaseSpecification.png)
 
 ## UI Prototype
 ### Player UI Prototype
@@ -218,8 +266,31 @@ Option? [1-2]: 1
 ### Packages
 ![packages-mvc](output/analysis/Packages.png)
 
+## Collaboration Diagrams
+
+## Player Use Cases collaboration
+
+### Launch Collaboration
+![launch-colab](output/analysis/use-cases/LaunchCollaborationDiagram.png)
+### Move Collaboration
+![move-colab](output/analysis/use-cases/MoveCollaborationDiagram.png)
+
+
+## User Use Cases collaboration
 ### Start Colaboration
 ![start-colab](output/analysis/use-cases/StartCollaborationDiagram.png)
+
+
+## AITrainer Use Cases collaboration
+
+### ShowCurrentConfig Collaboration
+![show-current-config-colab](output/analysis/use-cases/ShowCurrentConfigCollaborationDiagram.png)
+### EditConfig Collaboration
+![edit-config-colab](output/analysis/use-cases/EditConfigCollaborationDiagram.png)
+
+
+
+
 ### Hexagonal Architecture
 ![packages-hex](output/analysis/ArchitecturePackages.png)
 ![hex-arch](output/analysis/ArchHexPackage.png)

@@ -1,4 +1,6 @@
-@startuml save
+@startuml SaveGameUseCaseSpecification
+
+title SaveGameUseCaseSpecification
 state IN_EXIT
 state requested as " "
 state allowed as " "
