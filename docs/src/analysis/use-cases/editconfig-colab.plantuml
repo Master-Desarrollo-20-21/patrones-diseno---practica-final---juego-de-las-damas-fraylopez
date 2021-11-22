@@ -6,23 +6,27 @@ left to right direction
 actor AITrainer
 
 object Checkers
-object StartView
 object EditConfigView
+object MenuView
+object GameView
 object EditConfigController
 object Configuration
-object LaunchController
+object ConfigurationDAO
 
-AITrainer --> StartView
+AITrainer --> MenuView
 note on link
     editConfig()
 end note
-
-StartView ..> EditConfigView : new()
-
 AITrainer --> EditConfigView
 note on link
     setConfig(config)
     testConfig()
+end note
+MenuView ..> EditConfigView : new()
+
+EditConfigView --> EditConfigView
+note on link
+    getConfig()
 end note
 
 EditConfigView --> EditConfigController
@@ -30,17 +34,16 @@ note on link
     setConfig(config)
 end note
 
+EditConfigController --> ConfigurationDAO
+note on link
+    saveConfig(config)
+end note
+EditConfigView .down.> GameView : new()
+
 EditConfigController ..> Configuration : new()
 
 EditConfigController --> Checkers
 note on link
     setConfig(config)
 end note
-
-EditConfigController --> LaunchController
-note on link
-    launch()
-end note
-
-
 @enduml

@@ -4,31 +4,25 @@ left to right direction
 
 allow_mixing
 actor AITrainner
-package Views{
-object StartView
+object MenuView
 object ShowConfigView
-AITrainner --> StartView
+AITrainner --> MenuView
 note on link
 ShowCurrentConfig()
 end note
 
-StartView ..> ShowConfigView : new()
+MenuView ..> ShowConfigView : new()
 
-}
 
-package AITrainner.Controllers{
 object ShowConfigController
 ShowConfigView --> ShowConfigController
 note on link
 interact()
 end note
-}
 
-package Player.Models{
 object Checkers
 ShowConfigController --> Checkers
 note on link
 getConfig()
 end note
-}
 @enduml

@@ -3,35 +3,43 @@ title MoveCollaborationDiagram
 left to right direction
 
 allow_mixing
-
+left to right direction
 actor Player
-package views  {
+object MenuView
+object MoveView
+object Message
+object MoveController
+object Game
+object Move
 
-    object  CheckersView{
+Player --> MenuView
+note on link
+    move()
+end note
+MenuView ..> MoveView : new()
 
-    }
-    object  MoveView{
+Player --> MoveView
+note on link
+    move(origin, destination)
+end note
 
-    }
-}
-package controllers  {
+MoveView --> MoveView
+note on link
+    getMove()
+end note
 
-    object  MoveController{
+MoveView --> MoveController
+note on link
+    execute(origin, destination)
+end note
 
-    }
-}
+MoveView --> Message
 
-Player --> CheckersView : \n1: move()
 
-' object CheckersView
-' object MoveView as MoveView
-' object MoveController as MoveController
-Player --> CheckersView : \n1: move()
-CheckersView --> MoveController : 2: move()
-MoveController --> MoveView : 3: interact(move)
-MoveView --> Player : 4: requireFromTo()
-Player --> MoveView : 5: introduceFromTo()
-MoveView -> MoveView : 6: validate()\n 7: parse()
-MoveView --> MoveController : 8: move(move)
-MoveController -> MoveController : 9: validate(move)
+MoveController --> Game
+note on link
+    move(move:Move)
+end note
+
+MoveController ..> Move : new(origin,target)
 @enduml
