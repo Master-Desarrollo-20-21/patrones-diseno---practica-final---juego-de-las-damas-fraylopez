@@ -64,6 +64,7 @@ end note
 
 Piece --> Square
 note on link
-    setPiece(Piece)
+    isEmpty()
+    setPiece(Piece)    
 end note
 @enduml
