@@ -1,0 +1,14 @@
+@startuml MoveSequence
+
+title "Move - Sequence Diagram"
+
+[-> Board : move(Move)
+Board --> Board : getSquare(Coordinate):origin
+Board --> Board : getSquare(Coordinate):target
+Board -> "origin:Square" : movePiece(target:Square)
+"origin:Square" --> "origin:Square" : getPiece():Piece
+"origin:Square" -> "target:Square" : tryMove(Piece)
+"target:Square" -> Piece : jump(this)
+Piece -> "target:Square" : setPiece(this)
+
+@enduml
