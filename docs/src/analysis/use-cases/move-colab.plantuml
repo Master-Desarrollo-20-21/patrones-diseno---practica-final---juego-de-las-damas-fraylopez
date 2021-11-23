@@ -1,31 +1,28 @@
 @startuml MoveCollaborationDiagram
 title MoveCollaborationDiagram
-left to right direction
 
 allow_mixing
-left to right direction
+' left to right direction
+
 actor Player
 object MenuView
 object MoveView
-object Message
 object MoveController
 object Game
 object Move
+object Board
+object Piece
+object Square
 
 Player --> MenuView
 note on link
     move()
 end note
-MenuView ..> MoveView : new()
+MenuView ..> MoveView : new(moveController)
 
 Player --> MoveView
 note on link
     move(origin, destination)
-end note
-
-MoveView --> MoveView
-note on link
-    getMove()
 end note
 
 MoveView --> MoveController
@@ -33,13 +30,40 @@ note on link
     execute(origin, destination)
 end note
 
-MoveView --> Message
-
-
 MoveController --> Game
 note on link
-    move(move:Move)
+    move(Move)
 end note
 
 MoveController ..> Move : new(origin,target)
+
+Game --> Board
+note on link
+    move(Move)
+end note
+
+Square --> Piece
+note on link
+    jump(Square)
+end note
+
+Board --> Board : origin target
+note on link
+    getSquare(Coordinate)
+end note
+
+Board --> Square
+note on link
+    movePiece(Square)
+end note
+
+Square --> Square
+note on link
+    tryMovePiece(Piece)
+end note
+
+Piece --> Square
+note on link
+    setPiece(Piece)
+end note
 @enduml
