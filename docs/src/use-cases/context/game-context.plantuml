@@ -3,8 +3,10 @@ title UserContextDiagram
 state INITIAL
 state IN_GAME
 state GAME_FINISHED
+state IN_EXIT
 
 state IF <<choice>>
+state IF_EXIT <<choice>>
 
 [*] --> INITIAL
 note on link
@@ -39,11 +41,19 @@ IN_GAME --> IF
 IF --> IN_GAME
 IF --> GAME_FINISHED: [game finished]
 
-IN_GAME --> [*]
+IN_GAME --> IN_EXIT
     note on link
         Exit
     end note
 
+IN_EXIT --> IF_EXIT
+
+IF_EXIT --> [*]
+    note on link
+        SaveGame
+    end note
+
+IF_EXIT --> [*] : [exit without save]
 
 GAME_FINISHED --> [*]
     note on link
