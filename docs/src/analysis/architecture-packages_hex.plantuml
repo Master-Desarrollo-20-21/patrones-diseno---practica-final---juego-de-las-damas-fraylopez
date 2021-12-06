@@ -1,13 +1,15 @@
 @startuml ArchitecturePackages
 package apps #DDDDDD {
-  package user #DDDDDD { }
-  package ai-trainer #DDDDDD { }
+  package app.user #DDDDDD { }
+  package app.ai-trainer #DDDDDD { }
+  package app.shared #DDDDDD { }
 }
 
 package contexts #DDDDDD {
-  package player-context #DDDDDD {  }
-  package user-context #DDDDDD {  }
-  package ai-trainer-context #DDDDDD {  }
+  package context.shared #DDDDDD {  }
+  package context.player #DDDDDD {  }
+  package context.user #DDDDDD {  }
+  package context.ai-trainer #DDDDDD {  }
 }
 apps ..> contexts
 
@@ -15,10 +17,10 @@ apps ..> contexts
 
 
 @startuml ArchHexPackage
-  package some-app #DDDDDD {
+  package apps.player #DDDDDD {
     package framework #DDDDDD {}
   }
-  package some-context #DDDDDD {
+  package context.player #DDDDDD {
     package application #DDDDDD { }
     package domain #DDDDDD { }
     package infrastructure #DDDDDD { }

@@ -1,31 +1,32 @@
 @startuml Packages
 
 
-package checkers.Utils {
-  package checkers.Utils.Views {
+package apps {
+  package apps.shared.views {
     boundary Menu
   }
-}
 
-package checkers.User{
-  package checkers.User.Controllers{
-    control StartController
-  }
-  package checkers.User.Views{
+ package apps.player.views{
+      boundary LaunchView
+      boundary LoadView
+      boundary MoveView
+      boundary ExitView
+      boundary SaveGameView
+      boundary BoardView
+
+      LaunchView ..> Menu
+      LoadView ..> Menu
+      MoveView ..> Menu
+      ExitView ..> Menu
+      SaveGameView ..> Menu
+    }
+
+  package app.user.views{
     boundary StartView
     StartView ..> Menu
   }
-}
 
-
-
-package checkers.AITrainer {
-  package checkers.AITrainer.Controllers{
-    control ShowConfigController
-    control EditConfigController
-    control SaveConfigController
-  }
-  package checkers.AITrainer.Views{
+  package app.aitrainer.views{
     boundary ShowConfigView
     boundary EditConfigView
     boundary SaveConfigView
@@ -35,65 +36,61 @@ package checkers.AITrainer {
   }
 }
 
-package checkers.Player {
-  package checkers.Player.Models{
-    entity Checkers
-    entity Game
-    entity Turn
-    entity Player
-    entity Board
-    entity Color
-    entity Coordinate
-    entity Configuration
-    entity Piece
-    entity Square
-
-    Checkers *--> Configuration
-    Checkers *--> Game
-    Game *--> Turn
-    Game *--> Player
-    Game *--> Board
-
-    Board *--> Square
-    Board *--> Piece
-    Piece --> Color
-    Player --> Color
-    Square --> Coordinate
+package contexts{
+  package context.user{
+    package checkers.user.controllers{
+      control StartController
+    }
 
   }
 
-  package checkers.Player.Controllers{
-    control LaunchController
-    control LoadController
-    control MoveController
-    control UndoController
-    control RedoController
-    control ExitController
-    control SaveGameController
-    control RestartController
+  package context.aitrainer {
+    package checkers.aitrainer.controllers{
+      control ShowConfigController
+      control EditConfigController
+      control SaveConfigController
+    }
   }
 
-  package checkers.Player.Views{
-    boundary LaunchView
-    boundary LoadView
-    boundary MoveView
-    boundary ExitView
-    boundary SaveGameView
-    boundary BoardView
 
-    LaunchView ..> Menu
-    LoadView ..> Menu
-    MoveView ..> Menu
-    ExitView ..> Menu
-    SaveGameView ..> Menu
+  package context.player {
+    package checkers.player.models{
+      entity Checkers
+      entity Game
+      entity Turn
+      entity Player
+      entity Board
+      entity Color
+      entity Coordinate
+      entity Configuration
+      entity Piece
+      entity Square
+
+      Checkers *--> Configuration
+      Checkers *--> Game
+      Game *--> Turn
+      Game *--> Player
+      Game *--> Board
+
+      Board *--> Square
+      Board *--> Piece
+      Piece --> Color
+      Player --> Color
+      Square --> Coordinate
+
+    }
+
+    package checkers.player.controllers{
+      control LaunchController
+      control LoadController
+      control MoveController
+      control UndoController
+      control RedoController
+      control ExitController
+      control SaveGameController
+      control RestartController
+    }
   }
 }
-
-checkers.User ..> checkers.Player
-checkers.AITrainer ..> checkers.Player
-
-
-
-
 
 @enduml
