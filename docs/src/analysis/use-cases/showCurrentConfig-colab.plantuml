@@ -8,7 +8,7 @@ object MenuView
 object ShowConfigView
 AITrainner --> MenuView
 note on link
-ShowCurrentConfig()
+showCurrentConfig()
 end note
 
 MenuView ..> ShowConfigView : new()
