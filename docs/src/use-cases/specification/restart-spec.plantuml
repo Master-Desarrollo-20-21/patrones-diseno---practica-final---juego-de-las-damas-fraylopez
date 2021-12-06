@@ -1,4 +1,4 @@
-@startuml ExitUseCaseSpecification
+@startuml RestartUseCaseSpecification
 title RestartUseCaseSpecification
 skinparam NoteBackgroundColor white
 hide empty description

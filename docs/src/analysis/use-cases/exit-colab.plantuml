@@ -1,0 +1,20 @@
+@startuml ExitCollaborationDiagram
+title ExitCollaborationDiagram
+left to right direction
+
+allow_mixing
+actor Player
+
+object ExitView
+object MenuView
+object ExitController
+Player --> ExitView
+note on link
+    exit()
+end note
+ExitView ..> MenuView : exit(ExitController)
+MenuView --> ExitController
+note on link
+    exit()
+end note
+@enduml

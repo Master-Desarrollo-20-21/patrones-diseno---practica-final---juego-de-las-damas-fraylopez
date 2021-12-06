@@ -2,7 +2,7 @@
 title UndoCollaborationDiagram
 
 allow_mixing
-' left to right direction
+left to right direction
 
 actor Player
 object MenuView
@@ -11,18 +11,12 @@ object UndoController
 object Game
 object Board
 
-Player --> MenuView
-note on link
-    undo()
-end note
-MenuView ..> UndoView : new(undoController)
-
 Player --> UndoView
 note on link
     undo()
 end note
-
-UndoView --> UndoController
+UndoView ..> MenuView : interact(undoController)
+MenuView --> UndoController
 note on link
     isUndoable()
     undo()

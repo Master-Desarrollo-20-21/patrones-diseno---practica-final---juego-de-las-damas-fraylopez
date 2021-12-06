@@ -13,23 +13,22 @@ object EditConfigController
 object Configuration
 object ConfigurationDAO
 
-AITrainer --> MenuView
+AITrainer --> EditConfigView
 note on link
     editConfig()
 end note
-AITrainer --> EditConfigView
 note on link
     setConfig(config)
     testConfig()
 end note
-MenuView ..> EditConfigView : new()
+EditConfigView ..> MenuView : interact(EditConfigController)
 
-EditConfigView --> EditConfigView
+MenuView --> MenuView
 note on link
     getConfig()
 end note
 
-EditConfigView --> EditConfigController
+MenuView --> EditConfigController
 note on link
     setConfig(config)
 end note

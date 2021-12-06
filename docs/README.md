@@ -11,6 +11,7 @@
       - [Undo](#undo-use-case-specification)
       - [Redo](#redo-use-case-specification)
       - [Exit](#exit-use-case-specification)
+      - [Restart](#restart-use-case-specification)
       - [SaveGame](#savegame-use-case-specification)
     - [User](#user-use-cases)
       - [Start](#start-use-case-specification)
@@ -28,6 +29,10 @@
     - [Player](#player-use-cases-collaboration)
       - [Launch](#launch-colaboration)
       - [Move](#move-colaboration)
+      - [Move Seq](#move-sequence)
+      - [Undo](#undo-colaboration)
+      - [Redo](#undo-colaboration)
+      - [Exit](#exit-colaboration)
     - [User](#user-use-cases-collaboration)
       - [Start Collaboration](#start-colaboration)
     - [AiTrainer](#aitrainer-use-cases-collaboration)
@@ -63,6 +68,9 @@
 ![Redo Specification](output/use-cases/specification/RedoUseCaseSpecification.png)
 ### Exit use case specification
 ![Exit Specification](output/use-cases/specification/ExitUseCaseSpecification.png)
+![Redo Specification](output/use-cases/specification/RedoUseCaseSpecification.png)
+## Restart use case specification
+![Restart Specification](output/use-cases/specification/RestartUseCaseSpecification.png)
 ### SaveGame use case specification
 ![SaveGame Specification](output/use-cases/specification/SaveGameUseCaseSpecification.png)
 
@@ -275,11 +283,22 @@ Option? [1-2]: 1
 ### Move Collaboration
 ![move-colab](output/analysis/use-cases/MoveCollaborationDiagram.png)
 
+### Move Sequence
+![move-sequence](output/analysis/use-cases/MoveSequence.png)
+
+
+### Undo Collaboration
+![undo-colab](output/analysis/use-cases/UndoCollaborationDiagram.png)
+
+### Redo Collaboration
+![redo-colab](output/analysis/use-cases/RedoCollaborationDiagram.png)
+### Exit Collaboration
+![exit-colab](output/analysis/use-cases/ExitCollaborationDiagram.png)
+
 
 ## User Use Cases collaboration
 ### Start Colaboration
 ![start-colab](output/analysis/use-cases/StartCollaborationDiagram.png)
-
 
 ## AITrainer Use Cases collaboration
 
@@ -287,7 +306,6 @@ Option? [1-2]: 1
 ![show-current-config-colab](output/analysis/use-cases/ShowCurrentConfigCollaborationDiagram.png)
 ### EditConfig Collaboration
 ![edit-config-colab](output/analysis/use-cases/EditConfigCollaborationDiagram.png)
-
 
 
 

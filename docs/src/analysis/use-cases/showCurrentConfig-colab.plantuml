@@ -6,18 +6,17 @@ allow_mixing
 actor AITrainner
 object MenuView
 object ShowConfigView
-AITrainner --> MenuView
+AITrainner --> ShowConfigView
 note on link
 showCurrentConfig()
 end note
 
-MenuView ..> ShowConfigView : new()
-
+ShowConfigView ..> MenuView  : interact(ShowConfigController)
 
 object ShowConfigController
-ShowConfigView --> ShowConfigController
+MenuView --> ShowConfigController
 note on link
-interact()
+getConfig()
 end note
 
 object Checkers

@@ -14,18 +14,13 @@ object Board
 object Piece
 object Square
 
-Player --> MenuView
+Player --> MoveView
 note on link
     move()
 end note
-MenuView ..> MoveView : new(moveController)
+MoveView ..> MenuView : interact(moveController)
 
-Player --> MoveView
-note on link
-    move(origin, destination)
-end note
-
-MoveView --> MoveController
+MenuView --> MoveController
 note on link
     execute(origin, destination)
 end note
@@ -65,6 +60,6 @@ end note
 Piece --> Square
 note on link
     isEmpty()
-    setPiece(Piece)    
+    setPiece(Piece)
 end note
 @enduml
