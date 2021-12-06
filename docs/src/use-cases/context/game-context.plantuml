@@ -22,7 +22,7 @@ IN_GAME --> IN_GAME
 note on link
     Undo
     Redo
-    ' Resume
+    Restart
 end note
 GAME_FINISHED --> IN_GAME
     note on link

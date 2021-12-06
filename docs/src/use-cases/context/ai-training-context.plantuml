@@ -26,7 +26,7 @@ IN_GAME --> IN_GAME
     note on link
         Undo
         Redo
-        Resume
+        Restart
     end note
 
 IN_GAME --> IF3
