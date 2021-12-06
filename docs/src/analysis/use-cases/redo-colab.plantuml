@@ -1,0 +1,43 @@
+@startuml RedoCollaborationDiagram
+title RedoCollaborationDiagram
+
+allow_mixing
+' left to right direction
+
+actor Player
+object MenuView
+object RedoView
+object RedoController
+object Game
+object Board
+
+Player --> MenuView
+note on link
+    redo()
+end note
+MenuView ..> RedoView : new(RedoController)
+
+Player --> RedoView
+note on link
+    redo()
+end note
+
+RedoView --> RedoController
+note on link
+    isRedoable()
+    redo()
+end note
+
+RedoController --> Game
+note on link
+    isUndoable()
+    redo()
+end note
+
+Game --> Board
+note on link
+    isUndoable()
+    redo()
+end note
+
+@enduml

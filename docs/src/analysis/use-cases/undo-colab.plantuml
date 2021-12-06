@@ -1,0 +1,43 @@
+@startuml UndoCollaborationDiagram
+title UndoCollaborationDiagram
+
+allow_mixing
+' left to right direction
+
+actor Player
+object MenuView
+object UndoView
+object UndoController
+object Game
+object Board
+
+Player --> MenuView
+note on link
+    undo()
+end note
+MenuView ..> UndoView : new(undoController)
+
+Player --> UndoView
+note on link
+    undo()
+end note
+
+UndoView --> UndoController
+note on link
+    isUndoable()
+    undo()
+end note
+
+UndoController --> Game
+note on link
+    isUndoable()
+    undo()
+end note
+
+Game --> Board
+note on link
+    isUndoable()
+    undo()
+end note
+
+@enduml
