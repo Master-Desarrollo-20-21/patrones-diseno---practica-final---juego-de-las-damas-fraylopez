@@ -1,0 +1,40 @@
+@startuml ExitUseCaseSpecification
+title RestartUseCaseSpecification
+skinparam NoteBackgroundColor white
+hide empty description
+
+state IN_GAME_IN as "IN_GAME"
+state restartDialog as " "
+state confirmDialog as " "
+
+IN_GAME_IN -[#green]-> restartDialog
+note on link #white
+  <b>Player requests to
+  * Restart game with same config
+end note
+GAME_FINISHED -[#green]-> restartDialog
+note on link #white
+  <b>Player requests to
+  * Restart game with same config
+end note
+
+restartDialog -[#green]-> confirmDialog
+note on link #white
+  <b>Systems request
+  * Confirm (Yes/No)
+end note
+confirmDialog -[#green]-> IN_GAME :[Yes]
+note on link #white
+  <b>System shows
+  * Game board
+end note
+confirmDialog -[#red]-> IN_GAME : [No, Player is User]
+note on link #white
+  <b>System shows
+  * Select num players
+  * Select difficulty
+end note
+confirmDialog -[#red]-> [*] : [No, Player is Trainer]
+
+@enduml
+
