@@ -280,6 +280,8 @@ Option? [1-2]: 1
 
 ### Launch Collaboration
 ![launch-colab](output/analysis/use-cases/LaunchCollaborationDiagram.png)
+### Load Collaboration
+![load-colab](output/analysis/use-cases/LoadCollaborationDiagram.png)
 ### Move Collaboration
 ![move-colab](output/analysis/use-cases/MoveCollaborationDiagram.png)
 

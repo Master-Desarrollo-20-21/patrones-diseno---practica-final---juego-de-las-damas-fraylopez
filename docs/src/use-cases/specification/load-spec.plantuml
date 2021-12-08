@@ -1,11 +1,12 @@
 @startuml LoadUseCaseSpecification
 title LoadUseCaseSpecification
+
 skinparam NoteBackgroundColor white
 hide empty description
 
 state savedGameList as " "
 state idFinished <<choice>>
-state redoable as " "
+state continue as " "
 state finished as " "
 
 
@@ -21,15 +22,16 @@ note on link #white
   * game board
 end note
 
-idFinished -[#green]-> redoable
-idFinished -[#green]-> finished  : [redoable]
+idFinished -[#green]-> continue
+idFinished -[#green]-> finished  : [finished]
 
 
-redoable -[#green]-> IN_GAME
+continue -[#green]-> IN_GAME
 note on link
   <b>System allows
   * Move
   * Undo
+  * Restart
 end note
 
 finished -[#green]-> IN_GAME

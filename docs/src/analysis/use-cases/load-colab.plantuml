@@ -1,0 +1,52 @@
+@startuml LoadCollaborationDiagram
+title LoadCollaborationDiagram
+allow_mixing
+
+actor Player
+object LoadController
+
+object Board
+object Game
+object Turn
+object GameView
+object LoadView
+object LoadMenu
+object GameDAO
+
+Player --> LoadView
+note on link
+    load()
+end note
+LoadView ..> LoadMenu
+note on link
+    interact(LoadController)
+end note
+LoadView ..> GameView
+note on link
+    interact(LoadController)
+end note
+LoadMenu ..> LoadController
+note on link
+    getSavedGames()
+    load(gameName)
+end note
+
+LoadController ..> GameDAO
+note on link
+    getSavedGames()
+    getGameData(gameName)
+end note
+LoadController ..> Game
+note on link
+    setGame(gameData)
+end note
+Game ..> Turn
+note on link
+    setTurn(gameData)
+end note
+Game ..> Board
+note on link
+    setBoard(gameData)
+end note
+
+@enduml
