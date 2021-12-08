@@ -28,6 +28,8 @@
   - [Collaboration](#collaboration-diagrams)
     - [Player](#player-use-cases-collaboration)
       - [Launch](#launch-colaboration)
+      - [Load](#load-colaboration)
+      - [SaveGame](#saveGame-colaboration)
       - [Move](#move-colaboration)
       - [Move Seq](#move-sequence)
       - [Undo](#undo-colaboration)
@@ -282,6 +284,8 @@ Option? [1-2]: 1
 ![launch-colab](output/analysis/use-cases/LaunchCollaborationDiagram.png)
 ### Load Collaboration
 ![load-colab](output/analysis/use-cases/LoadCollaborationDiagram.png)
+### SaveGame Collaboration
+![saveGame-colab](output/analysis/use-cases/SaveGameCollaborationDiagram.png)
 ### Move Collaboration
 ![move-colab](output/analysis/use-cases/MoveCollaborationDiagram.png)
 

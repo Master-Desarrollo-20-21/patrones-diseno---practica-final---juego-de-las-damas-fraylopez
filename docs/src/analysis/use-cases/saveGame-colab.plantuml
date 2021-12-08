@@ -1,0 +1,47 @@
+@startuml SaveGameCollaborationDiagram
+title SaveGameCollaborationDiagram
+allow_mixing
+
+actor Player
+object SaveController
+
+object Board
+object Game
+object Turn
+object SaveGameView
+object SaveMenu
+object GameDAO
+
+Player --> SaveGameView
+note on link
+    save(gameName?)
+end note
+SaveGameView ..> SaveMenu
+note on link
+    interact(SaveController)
+end note
+
+SaveMenu ..> SaveController
+note on link
+    save(gameName)
+end note
+
+SaveController ..> GameDAO
+note on link
+    saveGame(gameName, gameData)
+    getSavedGames()
+end note
+SaveController ..> Game
+note on link
+    getGameData()
+end note
+Game ..> Turn
+note on link
+    getTurnData()
+end note
+Game ..> Board
+note on link
+    gteBoardData()
+end note
+
+@enduml
