@@ -5,7 +5,7 @@ allow_mixing
 ' left to right direction
 
 actor Player
-object MenuView
+object MoveMenu
 object MoveView
 object MoveController
 object Game
@@ -18,9 +18,9 @@ Player --> MoveView
 note on link
     move()
 end note
-MoveView ..> MenuView : interact(moveController)
+MoveView ..> MoveMenu : interact(moveController)
 
-MenuView --> MoveController
+MoveMenu --> MoveController
 note on link
     execute(origin, destination)
 end note

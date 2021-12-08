@@ -6,14 +6,14 @@ allow_mixing
 actor Player
 
 object ExitView
-object MenuView
+object ExitMenu
 object ExitController
 Player --> ExitView
 note on link
     exit()
 end note
-ExitView ..> MenuView : exit(ExitController)
-MenuView --> ExitController
+ExitView ..> ExitMenu : exit(ExitController)
+ExitMenu --> ExitController
 note on link
     exit()
 end note

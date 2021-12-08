@@ -7,7 +7,7 @@ actor AITrainer
 
 object Game
 object EditConfigView
-object MenuView
+object EditConfigMenu
 object GameView
 object EditConfigController
 object Configuration
@@ -17,17 +17,18 @@ note on link
     editConfig()
 end note
 note on link
-    setConfig(config)
+    editConfig()
+    setConfigParam(param)
     testConfig()
 end note
-EditConfigView ..> MenuView : interact(EditConfigController)
+EditConfigView ..> EditConfigMenu : interact(EditConfigController)
 
-MenuView --> MenuView
+EditConfigMenu --> EditConfigMenu
 note on link
-    getConfig()
+    getConfigParam()
 end note
 
-MenuView --> EditConfigController
+EditConfigMenu --> EditConfigController
 note on link
     setConfig(config)
 end note

@@ -5,7 +5,7 @@ allow_mixing
 ' left to right direction
 
 actor Player
-object MenuView
+object RedoMenu
 object RedoView
 object RedoController
 object Game
@@ -15,9 +15,9 @@ Player --> RedoView
 note on link
     redo()
 end note
-RedoView ..> MenuView : interact(RedoController)
+RedoView ..> RedoMenu : interact(RedoController)
 
-MenuView --> RedoController
+RedoMenu --> RedoController
 note on link
     isRedoable()
     redo()

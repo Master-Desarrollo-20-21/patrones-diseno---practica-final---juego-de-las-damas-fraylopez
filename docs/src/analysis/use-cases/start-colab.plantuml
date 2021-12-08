@@ -10,7 +10,7 @@ actor User
 object  StartController
 object Game
 object StartView
-object MenuView
+object StartMenu
 object GameView
 
 
@@ -20,20 +20,20 @@ note on link
     insertNumPlayers()
     insertDifficulty()
 end note
-StartView --> MenuView
+StartView --> StartMenu
 note on link
     start()
     insertNumPlayers()
     insertDifficulty()
 end note
-MenuView --> MenuView
+StartMenu --> StartMenu
 note on link
     readNumPlayers()
     readDifficulty()
 end note
 
 
-MenuView --> StartController
+StartMenu --> StartController
 note on link
     setupGame(numPlayers,difficulty)
 end note

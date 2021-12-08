@@ -5,7 +5,7 @@ allow_mixing
 ' left to right direction
 
 actor Player
-object MenuView
+object UndoMenu
 object UndoView
 object UndoController
 object Game
@@ -15,8 +15,8 @@ Player --> UndoView
 note on link
     undo()
 end note
-UndoView ..> MenuView : interact(undoController)
-MenuView --> UndoController
+UndoView ..> UndoMenu : interact(undoController)
+UndoMenu --> UndoController
 note on link
     isUndoable()
     undo()
