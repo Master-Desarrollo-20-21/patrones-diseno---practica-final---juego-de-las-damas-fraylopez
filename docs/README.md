@@ -10,9 +10,9 @@
       - [Move](#move-use-case-specification)
       - [Undo](#undo-use-case-specification)
       - [Redo](#redo-use-case-specification)
-      - [Exit](#exit-use-case-specification)
-      - [Restart](#restart-use-case-specification)
       - [SaveGame](#savegame-use-case-specification)
+      - [Restart](#restart-use-case-specification)
+      - [Exit](#exit-use-case-specification)
     - [User](#user-use-cases)
       - [Start](#start-use-case-specification)
     - [AITrainer](#aitrainer-use-cases)
@@ -29,14 +29,15 @@
     - [Player](#player-use-cases-collaboration)
       - [Launch](#launch-collaboration)
       - [Load](#load-collaboration)
-      - [SaveGame](#saveGame-collaboration)
       - [Move](#move-collaboration)
       - [Move Seq](#move-sequence)
       - [Undo](#undo-collaboration)
       - [Redo](#redo-collaboration)
+      - [SaveGame](#saveGame-collaboration)
+      - [Restart](#restart-collaboration)
       - [Exit](#exit-collaboration)
     - [User](#user-use-cases-collaboration)
-      - [Start Collaboration](#start-collaboration)
+      - [Start](#start-collaboration)
     - [AiTrainer](#aitrainer-use-cases-collaboration)
       - [ShowCurrentConfig](#showcurrentconfig-collaboration)
       - [EditConfig](#editconfig-collaboration)
@@ -69,13 +70,12 @@
 ![Undo Specification](output/use-cases/specification/UndoUseCaseSpecification.png)
 ### Redo use case specification
 ![Redo Specification](output/use-cases/specification/RedoUseCaseSpecification.png)
-### Exit use case specification
-![Exit Specification](output/use-cases/specification/ExitUseCaseSpecification.png)
-![Redo Specification](output/use-cases/specification/RedoUseCaseSpecification.png)
-## Restart use case specification
-![Restart Specification](output/use-cases/specification/RestartUseCaseSpecification.png)
 ### SaveGame use case specification
 ![SaveGame Specification](output/use-cases/specification/SaveGameUseCaseSpecification.png)
+## Restart use case specification
+![Restart Specification](output/use-cases/specification/RestartUseCaseSpecification.png)
+### Exit use case specification
+![Exit Specification](output/use-cases/specification/ExitUseCaseSpecification.png)
 
 
 ## User Use Cases
@@ -292,8 +292,7 @@ Option? [1-2]: 1
 ![launch-colab](output/analysis/use-cases/LaunchCollaborationDiagram.png)
 ### Load Collaboration
 ![load-colab](output/analysis/use-cases/LoadCollaborationDiagram.png)
-### SaveGame Collaboration
-![saveGame-colab](output/analysis/use-cases/SaveGameCollaborationDiagram.png)
+
 ### Move Collaboration
 ![move-colab](output/analysis/use-cases/MoveCollaborationDiagram.png)
 
@@ -306,6 +305,10 @@ Option? [1-2]: 1
 
 ### Redo Collaboration
 ![redo-colab](output/analysis/use-cases/RedoCollaborationDiagram.png)
+### SaveGame Collaboration
+![saveGame-colab](output/analysis/use-cases/SaveGameCollaborationDiagram.png)
+### Restart Collaboration
+![restart-colab](output/analysis/use-cases/RestartCollaborationDiagram.png)
 ### Exit Collaboration
 ![exit-colab](output/analysis/use-cases/ExitCollaborationDiagram.png)
 

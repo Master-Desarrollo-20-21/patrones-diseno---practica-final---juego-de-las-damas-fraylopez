@@ -1,0 +1,47 @@
+@startuml RestartCollaborationDiagram
+title RestartCollaborationDiagram
+allow_mixing
+
+actor Player
+object RestartController
+
+object Board
+object Game
+object Configuration
+object GameView
+object RestartView
+object RestartMenu
+object ConfigurationDAO
+
+Player --> RestartView
+note on link
+    restart()
+end note
+RestartView ..> RestartMenu
+note on link
+    interact(RestartController)
+end note
+RestartView ..> GameView
+note on link
+    interact(RestartController)
+end note
+RestartMenu ..> RestartController
+note on link
+    restart()
+end note
+
+RestartController ..> ConfigurationDAO
+note on link
+    getConfiguration()
+end note
+RestartController ..> Game : new()
+note on link
+    setConfiguration(configuration)
+end note
+Game ..> Board : new()
+Game ..> Configuration
+note on link
+    setConfiguration(configuration)
+end note
+
+@enduml
