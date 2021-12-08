@@ -27,20 +27,20 @@
   - [Packages](#packages-mvc)
   - [Collaboration](#collaboration-diagrams)
     - [Player](#player-use-cases-collaboration)
-      - [Launch](#launch-colaboration)
-      - [Load](#load-colaboration)
-      - [SaveGame](#saveGame-colaboration)
-      - [Move](#move-colaboration)
+      - [Launch](#launch-collaboration)
+      - [Load](#load-collaboration)
+      - [SaveGame](#saveGame-collaboration)
+      - [Move](#move-collaboration)
       - [Move Seq](#move-sequence)
-      - [Undo](#undo-colaboration)
-      - [Redo](#undo-colaboration)
-      - [Exit](#exit-colaboration)
+      - [Undo](#undo-collaboration)
+      - [Redo](#redo-collaboration)
+      - [Exit](#exit-collaboration)
     - [User](#user-use-cases-collaboration)
-      - [Start Collaboration](#start-colaboration)
+      - [Start Collaboration](#start-collaboration)
     - [AiTrainer](#aitrainer-use-cases-collaboration)
-      - [ShowCurrentConfig](#showcurrentconfig-colaboration)
-      - [EditConfig](#editconfig-colaboration)
-      - [SaveConfig](#saveconfig-colaboration)
+      - [ShowCurrentConfig](#showcurrentconfig-collaboration)
+      - [EditConfig](#editconfig-collaboration)
+      - [SaveConfig](#saveconfig-collaboration)
   - [Hexagonal Architecture](#hexagonal-architecture)
 
 
@@ -311,7 +311,7 @@ Option? [1-2]: 1
 
 
 ## User Use Cases collaboration
-### Start Colaboration
+### Start Collaboration
 ![start-colab](output/analysis/use-cases/StartCollaborationDiagram.png)
 
 ## AITrainer Use Cases collaboration
