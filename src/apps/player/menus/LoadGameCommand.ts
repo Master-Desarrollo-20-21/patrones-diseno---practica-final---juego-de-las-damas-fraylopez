@@ -1,7 +1,7 @@
 import { StartController } from "../../../contexts/player/application/StartController";
-import { Menu } from "../utils/Menu";
 import { Strings } from "../models/Strings";
 import { CheckersCommand } from "./Command";
+import { SelectSavedGameMenu } from "./SelectSavedGameMenu";
 
 export class LoadGameCommand extends CheckersCommand<StartController> {
   constructor(controller: StartController) {
@@ -16,21 +16,5 @@ export class LoadGameCommand extends CheckersCommand<StartController> {
 
   isActive(): boolean {
     return this.acceptorController.getSavedGamesNames().length > 0;
-  }
-}
-
-class SelectSavedGameMenu extends Menu {
-  constructor(savedGames: string[], controller: StartController) {
-    super();
-    savedGames.forEach(game => this.addCommand(new GameSelectedCommand(game, controller)));
-  };
-}
-
-class GameSelectedCommand extends CheckersCommand<StartController>{
-  execute(): void {
-    this.acceptorController.start(this.title);
-  }
-  isActive(): boolean {
-    return true;
   }
 }
