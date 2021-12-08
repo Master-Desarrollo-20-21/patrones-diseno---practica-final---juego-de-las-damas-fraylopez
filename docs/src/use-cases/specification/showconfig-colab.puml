@@ -1,18 +1,18 @@
-@startuml ShowCurrentConfigUseCaseSpecification
-title ShowCurrentConfigUseCaseSpecification
+@startuml ShowConfigUseCaseSpecification
+title ShowConfigUseCaseSpecification
 skinparam NoteBackgroundColor white
 hide empty description
 state INITIAL
-state showCurrentConfig as " "
+state showConfig as " "
 state IN_GAME
 
-INITIAL-[#green]-> showCurrentConfig
+INITIAL-[#green]-> showConfig
 note on link #white
   <b>Player requests to
   show current config
 end note
 
-showCurrentConfig -[#green]-> IN_GAME
+showConfig -[#green]-> IN_GAME
 note on link #white
   <b>System shows
   current config

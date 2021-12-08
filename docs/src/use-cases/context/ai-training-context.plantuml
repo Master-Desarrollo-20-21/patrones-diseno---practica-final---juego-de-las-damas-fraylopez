@@ -14,7 +14,7 @@ end note
 
 INITIAL --> INITIAL
     note on link
-        ShowCurrentConfig
+        ShowConfig
     end note
 
 INITIAL --> IN_GAME

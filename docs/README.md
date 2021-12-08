@@ -16,7 +16,7 @@
     - [User](#user-use-cases)
       - [Start](#start-use-case-specification)
     - [AITrainer](#aitrainer-use-cases)
-      - [ShowCurrentConfig](#showcurrentconfig-use-case-specification)
+      - [ShowConfig](#showconfig-use-case-specification)
       - [EditConfig](#editconfig-use-case-specification)
       - [SaveConfig](#saveconfig-use-case-specification)
 - [UI Prototype](#player-ui-prototype)
@@ -39,7 +39,7 @@
     - [User](#user-use-cases-collaboration)
       - [Start](#start-collaboration)
     - [AiTrainer](#aitrainer-use-cases-collaboration)
-      - [ShowCurrentConfig](#showcurrentconfig-collaboration)
+      - [ShowConfig](#showconfig-collaboration)
       - [EditConfig](#editconfig-collaboration)
       - [SaveConfig](#saveconfig-collaboration)
   - [Hexagonal Architecture](#hexagonal-architecture)
@@ -86,8 +86,8 @@
 
 ## AITrainer Use Cases
 
-### ShowCurrentConfig use case specification
-![ShowCurrentConfig Specification](output/use-cases/specification/ShowCurrentConfigUseCaseSpecification.png)
+### ShowConfig use case specification
+![ShowConfig Specification](output/use-cases/specification/ShowConfigUseCaseSpecification.png)
 ### EditConfig use case specification
 ![EditConfig Specification](output/use-cases/specification/EditConfigUseCaseSpecification.png)
 ### SaveConfig use case specification
@@ -319,8 +319,8 @@ Option? [1-2]: 1
 
 ## AITrainer Use Cases collaboration
 
-### ShowCurrentConfig Collaboration
-![showcurrent-config-colab](output/analysis/use-cases/ShowCurrentConfigCollaborationDiagram.png)
+### ShowConfig Collaboration
+![showconfig-config-colab](output/analysis/use-cases/ShowConfigCollaborationDiagram.png)
 ### EditConfig Collaboration
 ![editconfig-colab](output/analysis/use-cases/EditConfigCollaborationDiagram.png)
 

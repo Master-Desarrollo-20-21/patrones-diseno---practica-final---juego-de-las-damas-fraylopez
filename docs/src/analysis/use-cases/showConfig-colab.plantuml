@@ -1,5 +1,5 @@
-@startuml ShowCurrentConfigCollaborationDiagram
-title ShowCurrentConfigCollaborationDiagram
+@startuml ShowConfigCollaborationDiagram
+title ShowConfigCollaborationDiagram
 ' left to right direction
 
 allow_mixing
@@ -13,7 +13,7 @@ object ConfigurationDAO
 
 AITrainer --> ShowConfigView
 note on link
-    load()
+    showConfig()
 end note
 ShowConfigView ..> LoadMenu
 note on link
