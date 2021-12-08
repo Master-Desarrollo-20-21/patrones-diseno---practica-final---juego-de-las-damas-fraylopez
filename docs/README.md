@@ -40,6 +40,7 @@
     - [AiTrainer](#aitrainer-use-cases-collaboration)
       - [ShowCurrentConfig](#showcurrentconfig-colaboration)
       - [EditConfig](#editconfig-colaboration)
+      - [SaveConfig](#saveconfig-colaboration)
   - [Hexagonal Architecture](#hexagonal-architecture)
 
 
@@ -248,7 +249,14 @@ Save Configuration? (y/n): y
 -------------------
 
 Assign difficulty to this configuration(1-10): 6
-Done, now exiting.
+Done!
+
+-------------------
+
+1) Read current config
+2) Edit config
+3) Load edit session
+Option? [1-3]
 
 -------------------
 
@@ -309,12 +317,16 @@ Option? [1-2]: 1
 ## AITrainer Use Cases collaboration
 
 ### ShowCurrentConfig Collaboration
-![show-current-config-colab](output/analysis/use-cases/ShowCurrentConfigCollaborationDiagram.png)
+![showcurrent-config-colab](output/analysis/use-cases/ShowCurrentConfigCollaborationDiagram.png)
 ### EditConfig Collaboration
-![edit-config-colab](output/analysis/use-cases/EditConfigCollaborationDiagram.png)
+![editconfig-colab](output/analysis/use-cases/EditConfigCollaborationDiagram.png)
+
+### SaveConfig Collaboration
+![saveconfig-colab](output/analysis/use-cases/SaveConfigCollaborationDiagram.png)
 
 
 
 ### Hexagonal Architecture
 ![packages-hex](output/analysis/ArchitecturePackages.png)
+
 ![hex-arch](output/analysis/ArchHexPackage.png)

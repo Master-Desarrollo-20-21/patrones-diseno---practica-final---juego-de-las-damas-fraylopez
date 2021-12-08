@@ -1,0 +1,41 @@
+@startuml SaveConfigCollaborationDiagram
+title SaveConfigCollaborationDiagram
+allow_mixing
+
+actor Player
+object SaveConfigController
+
+object Configuration
+object Game
+object SaveConfigView
+object SaveConfigMenu
+object ConfigurationDAO
+
+Player --> SaveConfigView
+note on link
+    save(difficultyLevel)
+end note
+SaveConfigView ..> SaveConfigMenu
+note on link
+    interact(SaveConfigController)
+end note
+
+SaveConfigMenu ..> SaveConfigController
+note on link
+    save(difficultyLevel)
+end note
+
+SaveConfigController ..> ConfigurationDAO
+note on link
+    saveGame(configuration, difficultyLevel)
+end note
+SaveConfigController ..> Game
+note on link
+    getConfigurationData()
+end note
+Game ..> Configuration
+note on link
+    getConfigurationData()
+end note
+
+@enduml

@@ -1,6 +1,6 @@
 @startuml ExitCollaborationDiagram
 title ExitCollaborationDiagram
-left to right direction
+' left to right direction
 
 allow_mixing
 actor Player

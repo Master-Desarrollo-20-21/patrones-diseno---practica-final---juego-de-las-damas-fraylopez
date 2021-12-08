@@ -1,6 +1,6 @@
 @startuml LaunchCollaborationDiagram
 title LaunchCollaborationDiagram
-left to right direction
+' left to right direction
 
 allow_mixing
 actor player

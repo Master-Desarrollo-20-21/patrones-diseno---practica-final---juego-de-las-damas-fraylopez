@@ -7,11 +7,13 @@ object LoadController
 
 object Board
 object Game
+object Configuration
 object Turn
 object GameView
 object LoadView
 object LoadMenu
 object GameDAO
+object ConfigurationDAO
 
 Player --> LoadView
 note on link
@@ -36,6 +38,10 @@ note on link
     getSavedGames()
     getGameData(gameName)
 end note
+GameDAO ..> ConfigurationDAO
+note on link
+    getConfiguration()
+end note
 LoadController ..> Game
 note on link
     setGame(gameData)
@@ -47,6 +53,10 @@ end note
 Game ..> Board
 note on link
     setBoard(gameData)
+end note
+Game ..> Configuration
+note on link
+    setConfiguration(configuration)
 end note
 
 @enduml

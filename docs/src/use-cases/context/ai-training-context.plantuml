@@ -57,7 +57,7 @@ IF2 --> IN_GAME
         Restart
     end note
 
-GAME_FINISHED --> [*] : [won]
+GAME_FINISHED --> INITIAL : [won]
     note on link
         SaveConfig
     end note

@@ -1,17 +1,16 @@
 @startuml EditConfigCollaborationDiagram
 title EditConfigCollaborationDiagram
 allow_mixing
-left to right direction
+' left to right direction
 
 actor AITrainer
 
-object Checkers
+object Game
 object EditConfigView
 object MenuView
 object GameView
 object EditConfigController
 object Configuration
-object ConfigurationDAO
 
 AITrainer --> EditConfigView
 note on link
@@ -33,15 +32,12 @@ note on link
     setConfig(config)
 end note
 
-EditConfigController --> ConfigurationDAO
-note on link
-    saveConfig(config)
-end note
+
 EditConfigView .down.> GameView : new()
 
-EditConfigController ..> Configuration : new()
+Game ..> Configuration : new()
 
-EditConfigController --> Checkers
+EditConfigController --> Game
 note on link
     setConfig(config)
 end note

@@ -1,7 +1,7 @@
 
 @startuml StartCollaborationDiagram
 title StartCollaborationDiagram
-left to right direction
+' left to right direction
 
 allow_mixing
 

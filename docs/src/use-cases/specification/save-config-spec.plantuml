@@ -5,7 +5,7 @@ hide empty description
 
 state startedGame as " "
 state numberOfPlayers as " "
-state ifValidNumberOfPlayers <<choice>>
+state ifValidDifficultyLevel <<choice>>
 
 GAME_FINISHED -[#green]-> startedGame
 note on link #white
@@ -19,22 +19,17 @@ note on link
   * Difficulty level [1,10]
 end note
 
-numberOfPlayers -[#green]-> ifValidNumberOfPlayers
+numberOfPlayers -[#green]-> ifValidDifficultyLevel
 note on link
   <b>Player provides
-  * number of players
   * difficulty level
 end note
 
-ifValidNumberOfPlayers --> startedGame
+ifValidDifficultyLevel --> startedGame
 note on link
-  [invalid number of players and/or difficulty level]
+  [invalid difficulty level]
 end note
 
-ifValidNumberOfPlayers -[#green]-> IN_GAME
-note on link
-  <b>System shows
-  * Game board in its initial state
-end note
+ifValidDifficultyLevel -[#green]-> INITIAL
 
 @enduml

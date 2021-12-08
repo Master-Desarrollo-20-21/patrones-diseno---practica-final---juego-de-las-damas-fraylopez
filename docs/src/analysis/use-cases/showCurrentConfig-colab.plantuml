@@ -1,27 +1,33 @@
 @startuml ShowCurrentConfigCollaborationDiagram
 title ShowCurrentConfigCollaborationDiagram
-left to right direction
+' left to right direction
 
 allow_mixing
-actor AITrainner
-object MenuView
-object ShowConfigView
-AITrainner --> ShowConfigView
-note on link
-showCurrentConfig()
-end note
 
-ShowConfigView ..> MenuView  : interact(ShowConfigController)
-
+actor AITrainer
 object ShowConfigController
-MenuView --> ShowConfigController
+
+object ShowConfigView
+object LoadMenu
+object ConfigurationDAO
+
+AITrainer --> ShowConfigView
 note on link
-getConfig()
+    load()
+end note
+ShowConfigView ..> LoadMenu
+note on link
+    interact(ShowConfigController)
 end note
 
-object Checkers
-ShowConfigController --> Checkers
+LoadMenu ..> ShowConfigController
 note on link
-getConfig()
+    getCurrentConfig()
 end note
+
+ShowConfigController ..> ConfigurationDAO
+note on link
+    getCurrentConfig()
+end note
+
 @enduml
