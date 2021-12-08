@@ -31,5 +31,9 @@ note on link
 end note
 
 ifValidDifficultyLevel -[#green]-> INITIAL
+note on link
+<b>System shows
+  * Saved feedback
+end note
 
 @enduml
