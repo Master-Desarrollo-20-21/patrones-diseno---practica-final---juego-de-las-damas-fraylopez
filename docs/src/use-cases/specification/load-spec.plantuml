@@ -30,7 +30,7 @@ continue -[#green]-> IN_GAME
 note on link
   <b>System allows
   * Move
-  * Undo
+  * Undo [undoable]
   * Restart
 end note
 
