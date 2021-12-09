@@ -1,8 +1,8 @@
 # Checkers requirements
 
 - [Use cases](#use-cases)
-  - [Player Context](#game-context)
-  - [AITrainer Context](#ai-training-context)
+  - [User Context](#user-context)
+  - [AITrainer Context](#ai-trainer-context)
   - [Specification](#specification)
     - [Player](#player-use-cases)
       - [Launch](#launch-use-case-specification)
