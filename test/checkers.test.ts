@@ -1,22 +1,26 @@
 import { PlayView } from "../src/apps/player/PlayView";
 import { PlayController } from "../src/contexts/player/application/PlayController";
 import { Color } from "../src/contexts/player/domain/Color";
-import { Session } from "../src/contexts/player/domain/Session";
 import { expect } from "chai";
+import { Logic } from "../src/contexts/player/application/Logic";
+import { Session } from "../src/contexts/player/domain/Session";
+import { PlayViewModel } from "../src/contexts/player/application/viewModels/PlayViewModel";
 describe('checkers tests', () => {
+  let logic: Logic;
   let session: Session;
-  let playController: PlayController;
+  let playViewModel: PlayViewModel;
   beforeEach(() => {
-    session = new Session();
-    playController = new PlayController(session);
+    logic = new Logic();
+    session = logic.getSession();
+    playViewModel = logic.getViewModel<PlayViewModel>(PlayController);
 
   });
   describe('Play', () => {
     it('should play a View AI game', () => {
       session.setNumPlayers(0);
-      const playView = new PlayView();
+      const playView = new PlayView(playViewModel);
       while (!session.isGameOver()) {
-        playView.interact(playController);
+        playView.interact(playViewModel);
       }
       expect(session.isWinner(Color.Black) || session.isWinner(Color.White));
     });

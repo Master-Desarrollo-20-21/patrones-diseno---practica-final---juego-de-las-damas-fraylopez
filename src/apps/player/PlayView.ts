@@ -4,12 +4,16 @@ import { PlayerType } from "../../contexts/player/domain/player/PlayerType";
 import { HumanPlayerView } from "./models/HumanPlayerView";
 import { PlayerView } from "./models/PlayerView";
 import { AIPlayerView } from "./models/AIPlayerView";
+import { PlayViewModel } from "../../contexts/player/application/viewModels/PlayViewModel";
 
 export class PlayView {
   private gameView!: GameView;
 
+  constructor(playViewModel: PlayViewModel) {
+    this.gameView = new GameView(playViewModel);
+  }
+
   interact(controller: PlayController) {
-    this.gameView = new GameView(controller);
     this.render();
     this.getPlayerView(controller).executeNextMove();
   }

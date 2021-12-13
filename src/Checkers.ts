@@ -8,7 +8,7 @@ export class Checkers {
 
   constructor() {
     this.logic = new Logic();
-    this.view = new View();
+    this.view = new View(this.logic);
   }
 
   play() {
