@@ -1,3 +1,4 @@
+import { Move } from "../../domain/Move";
 import { Session } from "../../domain/Session";
 import { PlayController } from "../PlayController";
 import { IObserver } from "./IObserver";
@@ -8,6 +9,22 @@ export class PlayViewModel extends PlayController implements IObserver {
     super(session);
     this.subscriptions = [];
   }
+
+  executeMove(move?: Move): void {
+    super.executeMove(move);
+    this.onChange();
+  }
+
+  undo(): void {
+    super.undo();
+    this.onChange();
+  }
+
+  redo(): void {
+    super.redo();
+    this.onChange();
+  }
+
   onChange(): void {
     this.subscriptions.forEach(s => s());
   }

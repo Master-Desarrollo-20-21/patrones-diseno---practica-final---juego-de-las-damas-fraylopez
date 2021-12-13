@@ -11,11 +11,10 @@ export class PlayView {
 
   constructor(playViewModel: PlayViewModel) {
     this.gameView = new GameView(playViewModel);
-    playViewModel.subscribe(this.render);
+    playViewModel.subscribe(this.render.bind(this));
   }
 
   interact(controller: PlayController) {
-    this.render();
     this.getPlayerView(controller).executeNextMove();
   }
 
