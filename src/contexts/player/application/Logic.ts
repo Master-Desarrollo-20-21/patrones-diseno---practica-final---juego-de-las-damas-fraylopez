@@ -33,6 +33,10 @@ export class Logic {
   getViewModel<T>(type: Constructor): T & IAcceptorController {
     return this.viewModels.find(c => c instanceof type)! as any as T & IAcceptorController;
   }
+
+  getSession(): Session {
+    return this.session;
+  }
 }
 
 type Constructor<T = {}> = new (...args: any[]) => T;
