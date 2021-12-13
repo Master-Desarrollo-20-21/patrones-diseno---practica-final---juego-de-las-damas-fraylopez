@@ -6,9 +6,16 @@ import { PlayerView } from "./models/PlayerView";
 import { AIPlayerView } from "./models/AIPlayerView";
 
 export class PlayView {
+  private gameView!: GameView;
+
   interact(controller: PlayController) {
-    new GameView(controller);
+    this.gameView = new GameView(controller);
+    this.render();
     this.getPlayerView(controller).executeNextMove();
+  }
+
+  render() {
+    this.gameView.render();
   }
 
   getPlayerView(controller: PlayController): PlayerView {
