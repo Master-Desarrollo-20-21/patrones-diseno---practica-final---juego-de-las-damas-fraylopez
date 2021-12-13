@@ -1,6 +1,6 @@
-import { ISubscription } from "./ISubscription";
+import { Subscription } from "./Subscription";
 
 export interface IObserver {
   onChange(): void;
-  subscribe(subscription: ISubscription): void;
+  subscribe(subscription: Subscription): void;
 }

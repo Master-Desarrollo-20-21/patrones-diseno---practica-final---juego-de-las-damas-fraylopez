@@ -1,17 +1,17 @@
 import { Session } from "../../domain/Session";
 import { PlayController } from "../PlayController";
 import { IObserver } from "./IObserver";
-import { ISubscription } from "./ISubscription";
+import { Subscription } from "./Subscription";
 export class PlayViewModel extends PlayController implements IObserver {
-  private readonly subscriptions: ISubscription[];
+  private readonly subscriptions: Subscription[];
   constructor(session: Session) {
     super(session);
     this.subscriptions = [];
   }
   onChange(): void {
-    this.subscriptions.forEach(s => s.onChange());
+    this.subscriptions.forEach(s => s());
   }
-  subscribe(subscription: ISubscription): void {
+  subscribe(subscription: Subscription): void {
     this.subscriptions.push(subscription);
   }
 }
