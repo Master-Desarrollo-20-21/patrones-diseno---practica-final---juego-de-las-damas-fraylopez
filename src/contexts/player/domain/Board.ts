@@ -42,12 +42,10 @@ export class Board {
   }
 
   isEmpty(coordinate: Coordinate): boolean {
-    return !this.coordinates[coordinate.row][coordinate.column];
+    const token = this.coordinates[coordinate.row][coordinate.column];
+    return !token;
   }
 
-  isMovingForward(move: Move): boolean {
-    return move.isMovingForward(this);
-  }
 
   getToken(coordinate: Coordinate): Token {
     return this.coordinates[coordinate.row][coordinate.column] || new NullToken();
@@ -67,12 +65,17 @@ export class Board {
     return colorExists && otherColorDoesNotExists;
   }
   isValidMove(move: Move) {
-    return !this.isEmpty(move.from) && this.isEmpty(move.to) && this.isMovingForward(move) && this.isValidJump(move);
+    return move.isValid &&
+      move.isWithinBoard(this) &&
+      move.isMovingForward(this) &&
+      !this.isEmpty(move.from) &&
+      this.isEmpty(move.to) &&
+      this.isValidJump(move);
   }
 
   move(move: Move) {
     assert(!this.isEmpty(move.from), "Empty from");
-    assert(this.isEmpty(move.to), "Empty to");
+    assert(this.isEmpty(move.to), "Not empty to");
     assert(move.isValid, "wrong move!");
 
     const token = this.getToken(move.from);

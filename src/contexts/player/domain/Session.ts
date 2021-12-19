@@ -48,7 +48,7 @@ export class Session {
 
   setNumPlayers(users: number) {
     this.game.setNumPlayers(users);
-    this.register(); //initial game state as memento
+    this.register(); // initial game state as memento
   }
 
   redo() {

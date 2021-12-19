@@ -4,6 +4,6 @@ module.exports = {
     "ts-node/register",
   ],
   "full-trace": true,
-  bail: true,
+  bail: false,
   exit: true,
 };

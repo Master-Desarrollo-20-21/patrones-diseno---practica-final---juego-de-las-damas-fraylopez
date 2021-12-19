@@ -12,7 +12,7 @@ describe('HelpMoveController', () => {
     controller = new HelpMoveController(session);
   });
   it('should exist', () => {
-    expect(controller).not.to.be.undefined;
+    expect(controller).not.to.eq(undefined);
   });
 
   it('should execute a help move', () => {
@@ -33,7 +33,7 @@ describe('HelpMoveController', () => {
     const newBoardState = new BoardDAO(session.getGame().getBoard()).serialize();
     expect(JSON.stringify(newBoardState)).equal(JSON.stringify(getBlackCapturedBoard()));
   });
-});;
+});
 
 function getBlackCapturableBoard(): ISerializedBoard {
   return {
