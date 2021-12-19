@@ -1,5 +1,6 @@
 {
   "plantuml.diagramsRoot": "docs/src",
   "plantuml.exportOutDir": "docs/output",
-  "plantuml.exportSubFolder": false
+  "plantuml.exportSubFolder": false,
+  "mochaExplorer.files": "test/**/*.ts"
 }
