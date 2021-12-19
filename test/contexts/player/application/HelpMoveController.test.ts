@@ -16,6 +16,8 @@ describe('HelpMoveController', () => {
 
   it('should execute a help move', () => {
     session.startNewGame();
+    session.setNumPlayers(1);
+
     const initialBoardState = new BoardDAO(session.getGame().getBoard()).serialize();
     controller.executeHelpMove();
     const newBoardState = new BoardDAO(session.getGame().getBoard()).serialize();
