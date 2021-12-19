@@ -1,0 +1,29 @@
+@startuml HelpMoveUseCaseSpecification
+title HelpMoveUseCaseSpecification
+skinparam NoteBackgroundColor white
+hide empty description
+state IN_GAME as "IN_GAME"
+state IN_GAME_FINISH as "IN_GAME"
+state startedGame as " "
+state state1 as " "
+
+' [*] --> IN_GAME
+IN_GAME -[#green]-> startedGame
+note on link #white
+ <b>Player request
+ help move
+end note
+startedGame-[#green]-> state1
+note on link
+  <b>System shows
+  game board
+end note
+
+state1 -[#green]-> IN_GAME_FINISH
+state1 -[#green]-> GAME_FINISHED : [game finished]
+note on link
+  <b>System shows
+  result
+end note
+
+@enduml

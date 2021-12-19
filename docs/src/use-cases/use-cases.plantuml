@@ -8,7 +8,6 @@ AITrainer -down-|> Player
 User -down-|> Player
 
 usecase Launch
-usecase Start
 usecase Move
 usecase Restart
 usecase Undo
@@ -26,7 +25,11 @@ Player --> Restart
 Player --> Load
 Player --> Move
 
+usecase Start
+usecase HelpMove
+
 User --> Start
+User --> HelpMove
 ' User --> Move
 
 usecase ShowConfig

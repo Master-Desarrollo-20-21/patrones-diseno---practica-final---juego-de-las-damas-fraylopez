@@ -15,6 +15,7 @@
       - [Exit](#exit-use-case-specification)
     - [User](#user-use-cases)
       - [Start](#start-use-case-specification)
+      - [HelpMove](#helpmove-use-case-specification)
     - [AITrainer](#aitrainer-use-cases)
       - [ShowConfig](#showconfig-use-case-specification)
       - [EditConfig](#editconfig-use-case-specification)
@@ -82,6 +83,8 @@
 
 ### Start use case specification
 ![Start Specification](output/use-cases/specification/StartUseCaseSpecification.png)
+### HelpMove use case specification
+![HelpMove Specification](output/use-cases/specification/HelpMoveUseCaseSpecification.png)
 
 
 ## AITrainer Use Cases
