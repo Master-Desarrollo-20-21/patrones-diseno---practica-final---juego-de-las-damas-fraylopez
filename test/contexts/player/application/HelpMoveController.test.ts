@@ -2,6 +2,7 @@ import { expect } from "chai";
 import { HelpMoveController } from "../../../../src/contexts/player/application/HelpMoveController";
 import { Session } from "../../../../src/contexts/player/domain/Session";
 import { BoardDAO } from "../../../../src/contexts/player/infrastructure/dao/BoardDAO";
+import { ISerializedBoard } from "../../../../src/contexts/player/infrastructure/dao/ISerializedBoard";
 
 describe('HelpMoveController', () => {
   let controller: HelpMoveController;
@@ -23,4 +24,44 @@ describe('HelpMoveController', () => {
     const newBoardState = new BoardDAO(session.getGame().getBoard()).serialize();
     expect(JSON.stringify(newBoardState)).not.equal(JSON.stringify(initialBoardState));
   });
+
+  it('should choose the better move', () => {
+    session.startNewGame();
+    session.setNumPlayers(1);
+    new BoardDAO(session.getGame().getBoard()).load(getBlackCapturableBoard());
+    controller.executeHelpMove();
+    const newBoardState = new BoardDAO(session.getGame().getBoard()).serialize();
+    expect(JSON.stringify(newBoardState)).equal(JSON.stringify(getBlackCapturedBoard()));
+  });
 });;
+
+function getBlackCapturableBoard(): ISerializedBoard {
+  return {
+    rows: [
+      ["-", "0", "-", "-", "-", "-", "-", "-"],
+      ["-", "-", "1", "-", "-", "-", "-", "-"],
+      ["-", "-", "-", "-", "-", "-", "-", "-"],
+      ["-", "-", "-", "-", "-", "-", "-", "-"],
+      ["-", "-", "-", "-", "-", "-", "-", "-"],
+      ["-", "-", "-", "-", "-", "-", "-", "-"],
+      ["-", "-", "-", "-", "-", "-", "-", "-"],
+      ["-", "-", "-", "-", "-", "-", "-", "-"],
+    ]
+  };
+}
+
+function getBlackCapturedBoard(): ISerializedBoard {
+  return {
+    rows: [
+      ["-", "-", "-", "-", "-", "-", "-", "-"],
+      ["-", "-", "-", "-", "-", "-", "-", "-"],
+      ["-", "-", "-", "0", "-", "-", "-", "-"],
+      ["-", "-", "-", "-", "-", "-", "-", "-"],
+      ["-", "-", "-", "-", "-", "-", "-", "-"],
+      ["-", "-", "-", "-", "-", "-", "-", "-"],
+      ["-", "-", "-", "-", "-", "-", "-", "-"],
+      ["-", "-", "-", "-", "-", "-", "-", "-"],
+    ]
+  };
+}
+
