@@ -1,14 +1,16 @@
-import { expect } from "chai";
 import { HelpMoveController } from "../../../../src/contexts/player/application/HelpMoveController";
 import { Session } from "../../../../src/contexts/player/domain/Session";
 import { BoardDAO } from "../../../../src/contexts/player/infrastructure/dao/BoardDAO";
-import { ISerializedBoard } from "../../../../src/contexts/player/infrastructure/dao/ISerializedBoard";
+import { expect } from "chai";
+import { SessionTestHelper } from "./SessionBuilder";
+import { BoardBuilder } from "./BoardBuilder";
 
 describe('HelpMoveController', () => {
   let controller: HelpMoveController;
-  let session: Session;
-  before(() => {
-    session = new Session();
+  let session: SessionTestHelper;
+
+  beforeEach(() => {
+    session = new SessionTestHelper();
     controller = new HelpMoveController(session);
   });
   it('should exist', () => {
@@ -16,52 +18,20 @@ describe('HelpMoveController', () => {
   });
 
   it('should execute a help move', () => {
-    session.startNewGame();
-    session.setNumPlayers(1);
-
-    const initialBoardState = new BoardDAO(session.getGame().getBoard()).serialize();
+    session.initializeForOnePlayer();
+    const initialBoardState = session.getSerializedBoard();
     controller.executeHelpMove();
-    const newBoardState = new BoardDAO(session.getGame().getBoard()).serialize();
-    expect(JSON.stringify(newBoardState)).not.equal(JSON.stringify(initialBoardState));
+    expect(session.getSerializedBoard()).not.equal(initialBoardState);
   });
 
   it('should choose the better move', () => {
-    session.startNewGame();
-    session.setNumPlayers(1);
-    new BoardDAO(session.getGame().getBoard()).load(getBlackCapturableBoard());
+    session
+      .initializeForOnePlayer()
+      .withSampleBlackCapturableBoard()
+      ;
     controller.executeHelpMove();
-    const newBoardState = new BoardDAO(session.getGame().getBoard()).serialize();
-    expect(JSON.stringify(newBoardState)).equal(JSON.stringify(getBlackCapturedBoard()));
+    const newBoardState = session.getSerializedBoard();
+    const capturedBoardState = BoardBuilder.getSerializedString(BoardBuilder.getSampleBlackCapturedBoard());
+    expect(newBoardState).eql(capturedBoardState);
   });
 });
-
-function getBlackCapturableBoard(): ISerializedBoard {
-  return {
-    rows: [
-      ["-", "0", "-", "-", "-", "-", "-", "-"],
-      ["-", "-", "1", "-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-", "-", "-", "-"],
-    ]
-  };
-}
-
-function getBlackCapturedBoard(): ISerializedBoard {
-  return {
-    rows: [
-      ["-", "-", "-", "-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-", "-", "-", "-"],
-      ["-", "-", "-", "0", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-", "-", "-", "-"],
-    ]
-  };
-}
-

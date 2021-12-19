@@ -9,8 +9,10 @@ export class BoardDAO {
   serialize(): ISerializedBoard {
     const coordinates = this.board.getCoordinates();
     const rows: Array<Array<"0" | "1" | "00" | "11" | "-">> = [];
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
     for (let i = 0; i < coordinates.length; i++) {
       const row: Array<"0" | "1" | "00" | "11" | "-"> = [];
+      // eslint-disable-next-line @typescript-eslint/prefer-for-of
       for (let j = 0; j < coordinates[i].length; j++) {
         const token = coordinates[i][j];
         const encodedCoordinate = token ?
@@ -32,6 +34,7 @@ export class BoardDAO {
     for (let i = 0; i < data.rows.length; i++) {
       const readRow = data.rows[i];
       coordinates[i] = [];
+      // eslint-disable-next-line @typescript-eslint/prefer-for-of
       for (let j = 0; j < readRow.length; j++) {
         const encodedToken = readRow[j];
         const token = this.decodeToken(encodedToken as any);

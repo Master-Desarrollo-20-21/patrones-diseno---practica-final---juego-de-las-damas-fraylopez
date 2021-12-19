@@ -58,7 +58,7 @@ export class GameDAO {
     }
   }
 
-  private getNextMove(player: Player) {
+  private getNextMove(_player: Player) {
     return undefined;
 
     // TODO: this fails on game won save game. Review and uncomment
