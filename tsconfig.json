@@ -29,13 +29,12 @@
   "files": [
     "src/index.ts",
   ],
+  "rootDirs": [
+    "./src",
+    "./tests"
+  ], /* List of root folders whose combined content represents the structure of the project at runtime. */
   "exclude": [
     "node_modules",
     "dist",
-    // "test"
   ],
-  "include": [
-    "src/**/*",
-    "test/**/*",
-  ]
 }
