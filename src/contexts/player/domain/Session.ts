@@ -10,6 +10,7 @@ import { StateValue } from "./StateValue";
 import { Token } from "./Token";
 
 export class Session {
+
   private readonly state: State;
   private readonly game: Game;
   private readonly registry: GameRegistry;
@@ -109,6 +110,10 @@ export class Session {
         this.register();
       }
     }
+  }
+
+  executeHelpMove() {
+    this.game.executeHelpMove();
   }
 
   goNextTurn() {

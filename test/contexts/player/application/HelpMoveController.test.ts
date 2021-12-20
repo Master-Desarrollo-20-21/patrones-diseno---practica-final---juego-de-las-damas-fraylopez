@@ -18,8 +18,9 @@ describe('HelpMoveController', () => {
   });
 
   it('should execute a help move', () => {
-    session.initializeForOnePlayer();
-    const initialBoardState = session.getSerializedBoard();
+    const initialBoardState = session
+      .initializeForOnePlayer()
+      .getSerializedBoard();
     controller.executeHelpMove();
     expect(session.getSerializedBoard()).not.equal(initialBoardState);
   });

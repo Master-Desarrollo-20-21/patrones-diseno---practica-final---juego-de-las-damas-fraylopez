@@ -17,7 +17,7 @@ export abstract class Player {
   move(move?: Move) {
     const playerMove = move || this.getNextMove();
     assert(playerMove);
-    this.board.move(playerMove!);
+    this.board.move(playerMove);
     this.nextMove = undefined;
     this.lastMove = playerMove;
   }

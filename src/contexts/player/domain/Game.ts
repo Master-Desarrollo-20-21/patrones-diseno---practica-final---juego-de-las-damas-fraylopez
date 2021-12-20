@@ -1,8 +1,10 @@
+import assert from "assert";
 import { Coordinate } from "../_shared/Coordinate";
 import { Board } from "./Board";
 import { Color } from "./Color";
 import { Memento } from "./Memento";
 import { Move } from "./Move";
+import { MoveHelper } from "./MoveHelper";
 import { AIPlayer } from "./player/AIPlayer";
 import { HumanPlayer } from "./player/HumanPlayer";
 import { Player } from "./player/Player";
@@ -14,6 +16,7 @@ export class Game {
     private board!: Board;
     private turn!: Turn;
     private players!: Player[];
+    private moveHelper!: MoveHelper;
 
     constructor() {
         this.startNewGame();
@@ -23,6 +26,7 @@ export class Game {
         this.board = new Board();
         this.players = [];
         this.turn = new Turn(this.players, 0);
+        this.moveHelper = new MoveHelper(this.board);
     }
 
     setNumPlayers(numHumanPlayers: number) {
@@ -99,6 +103,12 @@ export class Game {
     }
     isCaptureMove(move: Move) {
         return this.board.isCaptureMove(move);
+    }
+
+    executeHelpMove() {
+        assert(this.getCurrentPlayerType() === PlayerType.Human);
+        const move = this.moveHelper.getHelpMove(this.getCurrentPlayer().color);
+        this.executeMove(move);
     }
 
     private getPlayersCopy(players: Player[], board: Board): Player[] {
