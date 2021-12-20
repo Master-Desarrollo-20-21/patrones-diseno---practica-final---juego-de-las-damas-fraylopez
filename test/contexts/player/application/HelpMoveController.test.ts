@@ -25,7 +25,7 @@ describe('HelpMoveController', () => {
     expect(session.getSerializedBoard()).not.equal(initialBoardState);
   });
 
-  it('should choose the better move', () => {
+  it('should choose capture over non capture', () => {
     session
       .initializeForOnePlayer()
       .withSampleBlackCapturableBoard()
@@ -33,6 +33,17 @@ describe('HelpMoveController', () => {
     controller.executeHelpMove();
     const newBoardState = session.getSerializedBoard();
     const capturedBoardState = BoardBuilder.getSerializedString(BoardBuilder.getSampleBlackCapturedBoard());
+    expect(newBoardState).eql(capturedBoardState);
+  });
+
+  it('should choose capture chaining over single capture', () => {
+    session
+      .initializeForOnePlayer()
+      .withSampleBlackSingleAndChainCapurableBoard()
+      ;
+    controller.executeHelpMove();
+    const newBoardState = session.getSerializedBoard();
+    const capturedBoardState = BoardBuilder.getSerializedString(BoardBuilder.getSampleBlackChainCapturedBoard());
     expect(newBoardState).eql(capturedBoardState);
   });
 });
