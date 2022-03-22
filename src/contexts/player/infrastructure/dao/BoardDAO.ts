@@ -22,7 +22,6 @@ export class BoardDAO {
         row.push(encodedCoordinate as "0" | "1" | "00" | "11" | "-");
       }
       rows.push(row);
-
     }
     return {
       rows

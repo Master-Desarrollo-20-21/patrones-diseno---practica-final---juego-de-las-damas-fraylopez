@@ -3,9 +3,8 @@ import { BoardDAO } from "../../../../src/contexts/player/infrastructure/dao/Boa
 import { ISerializedBoard } from "../../../../src/contexts/player/infrastructure/dao/ISerializedBoard";
 
 export class BoardBuilder {
-  static getSampleBlackChainCapturedBoard(): ISerializedBoard {
-    throw new Error("Method not implemented.");
-  }
+
+
   static getSerializedObject(board: Board) {
     return new BoardDAO(board).serialize();
   }
@@ -42,6 +41,35 @@ export class BoardBuilder {
         ["-", "-", "-", "-", "-", "-", "-", "-"],
         ["-", "-", "-", "0", "-", "-", "-", "-"],
         ["-", "-", "-", "-", "-", "-", "-", "-"],
+        ["-", "-", "-", "-", "-", "-", "-", "-"],
+        ["-", "-", "-", "-", "-", "-", "-", "-"],
+        ["-", "-", "-", "-", "-", "-", "-", "-"],
+        ["-", "-", "-", "-", "-", "-", "-", "-"],
+      ]
+    };
+  }
+
+  static withSampleBlackSingleAndChainCapurableBoard(): ISerializedBoard {
+    return {
+      rows: [
+        ["-", "-", "-", "0", "-", "-", "-", "-"],
+        ["-", "-", "1", "-", "1", "-", "-", "-"],
+        ["-", "-", "-", "-", "-", "-", "-", "-"],
+        ["-", "-", "-", "-", "1", "-", "-", "-"],
+        ["-", "-", "-", "-", "-", "-", "-", "-"],
+        ["-", "-", "-", "-", "-", "-", "-", "-"],
+        ["-", "-", "-", "-", "-", "-", "-", "-"],
+        ["-", "-", "-", "-", "-", "-", "-", "-"],
+      ]
+    };
+  }
+  static getSampleBlackChainCapturedBoard(): ISerializedBoard {
+    return {
+      rows: [
+        ["-", "-", "-", "-", "-", "-", "-", "-"],
+        ["-", "-", "1", "-", "-", "-", "-", "-"],
+        ["-", "-", "-", "-", "-", "0", "-", "-"],
+        ["-", "-", "-", "-", "1", "-", "-", "-"],
         ["-", "-", "-", "-", "-", "-", "-", "-"],
         ["-", "-", "-", "-", "-", "-", "-", "-"],
         ["-", "-", "-", "-", "-", "-", "-", "-"],

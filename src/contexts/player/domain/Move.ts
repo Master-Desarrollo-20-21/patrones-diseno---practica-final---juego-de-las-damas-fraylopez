@@ -47,7 +47,15 @@ export class Move {
     return board.isCaptureMove(this) || this.token.isKing || Math.pow(-1, this.token.color) * (this.to.row - this.from.row) > 0;
   }
   isWithinBoard(board: Board): boolean {
-    return this.from.row >= 0 && this.from.column >= 0 && this.to.row < board.getSize() && this.to.column < board.getSize();
+    return this.from.row >= 0 &&
+      this.from.column >= 0 &&
+      this.from.row < board.getSize() &&
+      this.from.column < board.getSize() &&
+      this.to.row >= 0 &&
+      this.to.column >= 0 &&
+      this.to.row < board.getSize() &&
+      this.to.column < board.getSize()
+      ;
   }
 
   getScore(board: Board): number {
